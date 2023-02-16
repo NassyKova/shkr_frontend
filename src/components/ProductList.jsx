@@ -26,6 +26,7 @@ function ProductList() {
     ]
     return (
         <>
+
             <h2>Products</h2>
 
                 {items.map((item) => {
