@@ -3,12 +3,16 @@
 import "./App.css";
 import { GlobalStyle } from "./GlobalStyle";
 import { ProductList } from "./components/ProductList";
+import Footer from "./components/Footer/Footer";
+import SpinnerBlue from "./components/Spinner";
 
 function App() {
     return (
         <div className="App">
             <GlobalStyle />
+            <SpinnerBlue />
             <ProductList />
+            <Footer />
         </div>
     );
 }
