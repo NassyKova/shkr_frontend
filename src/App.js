@@ -10,8 +10,8 @@ function App() {
     return (
         <div className="App">
             <GlobalStyle />
-            <SpinnerBlue />
             <ProductList />
+            <SpinnerBlue />
             <Footer />
         </div>
     );

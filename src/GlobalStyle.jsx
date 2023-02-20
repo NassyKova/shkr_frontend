@@ -29,22 +29,8 @@ body{
   margin: 0;
   padding: 0;
   background: var(--background);
-  color: var(--white)
+  color: var(--white);
 
-img{
-  width: 300px;
-  height: 300px;
-  border: 1px solid black;
-  color: var(--white)
-}
-
-.App{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100vh;
-  }
 
   .cocktail-container{
     display: flex;

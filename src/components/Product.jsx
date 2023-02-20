@@ -1,4 +1,4 @@
-import { Wrapper, Img, Text } from "./Product.Styles";
+import { Wrapper, Img,Title, Ingridients } from "./Product.Styles";
 import React from "react";
 
 
@@ -9,8 +9,8 @@ function Product(props) {
             <Img>
                 <img src={item.image} alt="drink"></img>
             </Img>
-            <Text>{item.title}</Text>
-            <div>{item.ingridients}</div>
+            <Title>{item.title}</Title>
+            <Ingridients>{item.ingridients}</Ingridients>
             <div>{item.receipt}</div>
         </Wrapper>
     );
