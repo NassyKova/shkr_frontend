@@ -4,6 +4,7 @@ import "./App.css";
 import { GlobalStyle } from "./GlobalStyle";
 import { ProductList } from "./components/ProductList";
 import Footer from "./components/Footer/Footer";
+import Header from "./components/Header/Header"
 import SpinnerBlue from "./components/Spinner";
 import NavBar from "./components/mui/NavBar";
 
@@ -11,6 +12,7 @@ function App() {
     return (
         <div className="App">
             <GlobalStyle />
+            <Header/>
             <NavBar/>
             <ProductList />
             <SpinnerBlue />
