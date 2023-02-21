@@ -14,10 +14,12 @@ export const Content = styled.div`
 `;
 
 export const Slogan = styled.div`
-color: var(--green)
+color: var(--green);
+font-size: var(--fontBig);
+font-weight: 700;
 `
 export const LogoImg = styled.img`
-    width: 200px;
+    width:100px;
     /* @media screen and (max-width: 500px) {
         width: 150px; */
     }
