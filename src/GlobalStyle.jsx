@@ -31,16 +31,19 @@ body{
   background: var(--background);
   color: var(--white);
 
-
-  .cocktail-container{
+  /* .cocktail-container{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     height: 100vh;
     color: rgb(34, 141, 143)
-  }
+  } */
 
+
+  :hover {
+  color: var(--blueGreen);
+}
   button {
     background-color: rgb(56, 131, 43);
     color: white;

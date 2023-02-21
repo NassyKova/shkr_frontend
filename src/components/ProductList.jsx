@@ -27,7 +27,7 @@ function ProductList() {
     return (
         <>
 
-            <h2>Products</h2>
+            <h2>Base</h2>
 
                 {items.map((item) => {
                     return <Product key={item.id} productInfo={item} />                })}
