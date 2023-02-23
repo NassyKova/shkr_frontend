@@ -1,4 +1,5 @@
-import Product from "./Product"
+// import Product from "./Product"
+import ProductClass from "./ProductClass"
 
 function ProductList() {
     const items = [
@@ -30,7 +31,7 @@ function ProductList() {
             <h2>Base</h2>
 
                 {items.map((item) => {
-                    return <Product key={item.id} productInfo={item} />                })}
+                    return <ProductClass key={item.id} productInfo={item} />                })}
 
         </>
     )

@@ -2,17 +2,37 @@
 // import axios from "axios";
 import "./App.css";
 import { GlobalStyle } from "./GlobalStyle";
-import { ProductList } from "./components/ProductList";
+// import { ProductList } from "./components/ProductList";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import SpinnerBlue from "./components/Spinner";
 import NavBar from "./components/mui/NavBar";
 import { useState } from "react";
 import Box from "@mui/material/Box"
-import CircularProgress from "@mui/material/CircularProgress"
+import ProductListClass from "./components/ProductListClass";
+// import CircularProgress from "@mui/material/CircularProgress"
+// import {
+//     createBrowserRouter,
+//     createRoutesFromElements,
+//     Outlet,
+//     Route,
+//     RouterProvider,
+// } from "react-router-dom"
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
+
+    // const router = createBrowserRouter(
+    //     createRoutesFromElements(
+    //         <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
+    //             <Route path="login" element={<Login />} />
+    //             <Route element={<ProtectedRoute />}>
+    //                 <Route path="products/add" element={<AddProduct />} />
+    //                 <Route path="cart" element={<Cart />} loader={loader} />
+    //             </Route>
+    //             <Route path="product/:productId" element={<ProductInfo />} />
+    //             <Route path="/" element={<ProductList />} />
+    //         </Route>))
 
     setTimeout(() => {
         setIsLoading(false);
@@ -35,7 +55,7 @@ function App() {
                     <GlobalStyle />
                     <Header />
                     <NavBar />
-                    <ProductList />
+                    <ProductListClass />
                     <Footer />
                 </div>
             )}
