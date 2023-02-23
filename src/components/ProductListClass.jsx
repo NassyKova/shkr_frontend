@@ -27,26 +27,39 @@ const items = [
 
 class ProductListClass extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            items: []
-        }
+            items: [],
+            isLoading: true
+        };
     }
 
-    componentDidMount(){
+    componentDidMount() {
+        fetch('https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=margarita')
+            .then((res) => res.json())
+            .then((json) => {
+                const newItems = json.drinks.map((product) => {
 
+                    return product
+                })
+                console.log(newItems);
+                this.setState({
+                    items: json.drinks.slice(0, 5),
+                    isLoading: false
+                })
+            })
     }
 
-    componentDidUpdate(){}
+    componentDidUpdate() {}
 
-    componentWillUnmount(){}
+    componentWillUnmount() {}
 
     render() {
         return (
             <>
                 <h2>Base</h2>
 
-                {items.map((item) => {
+                {this.state.items.map((item) => {
                     return <ProductClass key={item.id} productInfo={item} />;
                 })}
             </>

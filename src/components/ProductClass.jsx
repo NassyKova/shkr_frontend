@@ -32,11 +32,11 @@ class ProductClass extends Component {
             <Grid>
                 <Wrapper>
                     <Img>
-                        <img src={item.image} alt="drink"></img>
+                        <img src={item.strDrinkThumb} style={{ width: 300, height: 300 }} alt="drink"></img>
                     </Img>
-                    <Title>{item.title}</Title>
-                    <Ingridients>{item.ingridients}</Ingridients>
-                    <div>{item.receipt}</div>
+                    <Title>{item.strDrink}</Title>
+                    <Ingridients>{item.strIngredient1}</Ingridients>
+                    <div>{item.strInstructions}</div>
                 </Wrapper>
             </Grid>
         );

@@ -1,3 +1,11 @@
+To do:
+Capslock to lowercase
+Global font
+color on nav bar
+footer in the center
+header is located perfectly
+
+
 CMP1043-1.1 Demonstrate separation of concerns in the App.
 
 CMP1043-1.2 Demonstrate DRY (Don’t Repeat Yourself) principles in all code.
