@@ -6,7 +6,9 @@ function Product(props) {
     const item = props.productInfo
     return (
         // <Grid>
-        <Wrapper>
+        <Wrapper style={{cursor:'pointer'}} onClick={() => {
+            props.setItem(item)
+        }}>
             <Img>
                 <img src={item.strDrinkThumb} style={{ width: 300, height: 300 }} alt="drink"></img>
             </Img>

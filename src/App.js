@@ -2,14 +2,14 @@
 // import axios from "axios";
 import "./App.css";
 import { GlobalStyle } from "./GlobalStyle";
-// import { ProductList } from "./components/ProductList";
+import { ProductList } from "./components/ProductList";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import SpinnerBlue from "./components/Spinner";
 import NavBar from "./components/mui/NavBar";
 import { useState } from "react";
 import Box from "@mui/material/Box"
-import ProductListClass from "./components/ProductListClass";
+// import ProductListClass from "./components/ProductListClass";
 import ProductInfo from "./components/ProductInfo";
 
 // import CircularProgress from "@mui/material/CircularProgress"
@@ -64,7 +64,7 @@ function App() {
                     <GlobalStyle />
                     <Header />
                     <NavBar />
-                    <ProductListClass setItem={setItem} />
+                    <ProductList setItem={setItem} />
                     <ProductInfo item={selectedItem} />
                     <Footer />
 
