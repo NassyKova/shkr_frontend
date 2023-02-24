@@ -60,7 +60,13 @@ class ProductListClass extends Component {
                 <h2>Base</h2>
 
                 {this.state.items.map((item) => {
-                    return <ProductClass key={item.id} productInfo={item} />;
+                    return (
+                    <ProductClass 
+                    key={item.id} 
+                    productInfo={item}
+                    setItem={this.props.setItem} 
+                    />
+                    );
                 })}
             </>
         );

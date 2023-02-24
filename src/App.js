@@ -10,6 +10,8 @@ import NavBar from "./components/mui/NavBar";
 import { useState } from "react";
 import Box from "@mui/material/Box"
 import ProductListClass from "./components/ProductListClass";
+import ProductInfo from "./components/ProductInfo";
+
 // import CircularProgress from "@mui/material/CircularProgress"
 // import {
 //     createBrowserRouter,
@@ -21,6 +23,12 @@ import ProductListClass from "./components/ProductListClass";
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
+    const [selectedItem, setSelectedItem] = useState(null)
+
+    //receive item from the Product component, will set selected item as item
+    function setItem (item) {
+        setSelectedItem(item)
+    }
 
     // const router = createBrowserRouter(
     //     createRoutesFromElements(
@@ -37,6 +45,7 @@ function App() {
     setTimeout(() => {
         setIsLoading(false);
     }, 2000);
+
     return (
         <>
             {isLoading ? (
@@ -55,49 +64,16 @@ function App() {
                     <GlobalStyle />
                     <Header />
                     <NavBar />
-                    <ProductListClass />
+                    <ProductListClass setItem={setItem} />
+                    <ProductInfo item={selectedItem} />
                     <Footer />
+
                 </div>
             )}
         </>
     );
+
 }
 
-// function App() {
-//   const [loading, setLoading] = useState(false);
-//   const [data, setData] = useState([]);
 
-//   const url = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
-
-//   const fetchCocktailHandler = useCallback(() => {
-//     setLoading(true);
-//     axios
-//       .get(url)
-//       .then((response) => {
-//         console.log(response.data);
-//         setData(response.data.drinks);
-//       })
-//       .catch((error) => console.log(error))
-//       .finally(() => setLoading(false));
-//   }, []);
-
-//   useEffect(() => {
-//     fetchCocktailHandler();
-//   }, [fetchCocktailHandler]);
-
-//   if (loading) {
-//     return <h2>Loading...</h2>;
-//   }
-//   return (
-//     <div className="App">
-//       {data.map((cocktail) => (
-//         <div key={cocktail.idDrink} className="cocktail-container">
-//           <h2>{cocktail.strDrink}</h2>
-//           <img src={cocktail.strDrinkThumb} alt="drink_pic" />
-//           <button onClick={fetchCocktailHandler}>Next random cocktail</button>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// }
 export default App;

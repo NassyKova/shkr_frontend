@@ -18,7 +18,7 @@ export default function ColorTabs() {
                 textColor="primary"
                 indicatorColor="secondary"
                 aria-label="secondary tabs example"
-                minWidth="50%"
+                // minWidth="50%"
             >
                 <Tab value="About" label="About" />
                 <Tab value="Finder" label="Finder" />

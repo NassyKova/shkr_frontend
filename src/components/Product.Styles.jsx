@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-export const Grid = styled.div`
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    align-items: center; 
-    justify-items: center;
-`;
+// export const Grid = styled.div`
+//     display: grid;
+//     grid-template-columns: 1fr;
+//     grid-template-rows: 1fr;
+//     align-items: center; 
+//     justify-items: center;
+// `;
 export const Wrapper = styled.div`
     margin: 10px;
     padding: 20px;
@@ -15,9 +15,9 @@ export const Wrapper = styled.div`
     align-items: center;
     border-radius: 10px;
     transition: 0.3s;
-    box-shadow: 0px 0px 8px 1px rgba(13, 12, 12, 0.75);
+    box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.75);
     :hover {
-        box-shadow: 0px 0px 20px 1px rgba(13, 12, 12, 0.75);
+        box-shadow: 0px 0px 20px 1px rgba(4, 4, 4, 1);
     }
 `;
 

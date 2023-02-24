@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Wrapper, Img, Title, Ingridients, Grid } from "./Product.Styles";
+import { Wrapper, Img, Title, Ingridients } from "./Product.Styles";
 
 class ProductClass extends Component {
     constructor(props) {
@@ -29,16 +29,18 @@ class ProductClass extends Component {
         const item = this.props.productInfo;
         console.log("render");
         return (
-            <Grid>
-                <Wrapper>
+            // <Grid >
+                <Wrapper style={{cursor:'pointer'}} onClick={() => {
+                this.props.setItem(item)
+            }}>
                     <Img>
                         <img src={item.strDrinkThumb} style={{ width: 300, height: 300 }} alt="drink"></img>
                     </Img>
                     <Title>{item.strDrink}</Title>
-                    <Ingridients>{item.strIngredient1}</Ingridients>
+                    <Ingridients>{item.strIngredient1}{", "}{item.strIngredient2}{", "}{item.strIngredient3}{", "}{item.strIngredient4}{", "}{item.strIngredient5}</Ingridients>
                     <div>{item.strInstructions}</div>
                 </Wrapper>
-            </Grid>
+            // </Grid>
         );
     }
 }
