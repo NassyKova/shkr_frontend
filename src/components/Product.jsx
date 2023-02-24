@@ -8,11 +8,11 @@ function Product(props) {
         // <Grid>
         <Wrapper>
             <Img>
-                <img src={item.image} alt="drink"></img>
+                <img src={item.strDrinkThumb} style={{ width: 300, height: 300 }} alt="drink"></img>
             </Img>
-            <Title>{item.title}</Title>
-            <Ingridients>{item.ingridients}</Ingridients>
-            <div>{item.receipt}</div>
+            <Title>{item.strDrink}</Title>
+            <Ingridients>{item.strIngredient1}{", "}{item.strIngredient2}{", "}{item.strIngredient3}{", "}{item.strIngredient4}{", "}{item.strIngredient5}</Ingridients>
+            <div>{item.strInstructions}</div>
         </Wrapper>
         // </Grid>
     );
