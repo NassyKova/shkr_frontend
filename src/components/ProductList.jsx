@@ -1,29 +1,35 @@
 import Product from "./Product";
 // import ProductClass from "./ProductClass";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { Box } from "@mui/system";
 import SpinnerBlue from "./Spinner";
+// import axios from "axios";
+
+import useApi from "./utils/useApi";
 
 function ProductList(props) {
-    const [items, setItems] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, items] = useApi("/search.php?s=vodka")
 
-    //component didMount, fire only when mounted => []
-    useEffect(() => {
-        fetch(
-            "https://www.thecocktaildb.com/api/json/v2/9973533/search.php?s=margarita"
-        )
-            .then((res) => res.json())
-            .then((json) => {
-                const newItems = json.drinks.map((product) => {
-                    return product;
-                });
-                console.log(newItems);
+    // const drinks = items.drinks?.slice(0,5) ?? []
 
-                setItems(newItems.slice(0, 5));
-                setIsLoading(false);
-            });
-    }, []);
+    // const [items, setItems] = useState([]);
+    // const [isLoading, setIsLoading] = useState(true);
+
+    // //component didMount, fire only when mounted => []
+    // useEffect(() => {
+    //     axios
+    //         .get("/search.php?s=brandy")
+    //         .then((res) => res.data)
+    //         .then((json) => {
+    //             const newItems = json.drinks.map((product) => {
+    //                 return product;
+    //             });
+    //             console.log(newItems);
+
+    //             setItems(newItems.slice(0, 5));
+    //             setIsLoading(false);
+    //         });
+    // }, []);
 
     return (
         <>
