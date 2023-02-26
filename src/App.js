@@ -11,6 +11,8 @@ import { useState } from "react";
 import Box from "@mui/material/Box"
 // import ProductListClass from "./components/ProductListClass";
 import ProductInfo from "./components/ProductInfo";
+import AddProduct from "./components/AddProduct";
+import Login from "./components/Login";
 
 // import CircularProgress from "@mui/material/CircularProgress"
 // import {
@@ -63,7 +65,9 @@ function App() {
                 <div className="App">
                     <GlobalStyle />
                     <Header />
+                    <Login/>
                     <NavBar />
+                    <AddProduct/>
                     <ProductList setItem={setItem} />
                     <ProductInfo item={selectedItem} />
                     <Footer />
