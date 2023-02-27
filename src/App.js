@@ -1,83 +1,116 @@
-// import { useState, useCallback, useEffect } from "react";
-// import axios from "axios";
-import "./App.css";
+
+import { useEffect, useReducer, useState } from "react"
+import {
+    createBrowserRouter,
+    createRoutesFromElements,
+    Outlet,
+    Route,
+    RouterProvider,
+} from "react-router-dom"
+
 import { GlobalStyle } from "./GlobalStyle";
 import { ProductList } from "./components/ProductList";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import SpinnerBlue from "./components/Spinner";
 import NavBar from "./components/mui/NavBar";
-import { useState } from "react";
+
 import Box from "@mui/material/Box"
 // import ProductListClass from "./components/ProductListClass";
 import ProductInfo from "./components/ProductInfo";
 import AddProduct from "./components/AddProduct";
 import Login from "./components/Login";
+import NotFound from "./NotFound";
 
-// import CircularProgress from "@mui/material/CircularProgress"
-// import {
-//     createBrowserRouter,
-//     createRoutesFromElements,
-//     Outlet,
-//     Route,
-//     RouterProvider,
-// } from "react-router-dom"
+import globalReducer from "./components/reducers/globalReducer"
+
+
 
 function App() {
-    const [isLoading, setIsLoading] = useState(true);
-    const [selectedItem, setSelectedItem] = useState(null)
+    const [isLoading, setIsLoading] = useState(true)
 
-    //receive item from the Product component, will set selected item as item
-    function setItem (item) {
-        setSelectedItem(item)
+    const initialState = {
+        loggedInUserName: "",
+        token: "",
     }
 
-    // const router = createBrowserRouter(
-    //     createRoutesFromElements(
-    //         <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
-    //             <Route path="login" element={<Login />} />
-    //             <Route element={<ProtectedRoute />}>
-    //                 <Route path="products/add" element={<AddProduct />} />
-    //                 <Route path="cart" element={<Cart />} loader={loader} />
-    //             </Route>
-    //             <Route path="product/:productId" element={<ProductInfo />} />
-    //             <Route path="/" element={<ProductList />} />
-    //         </Route>))
+    const [store, dispatch] = useReducer(globalReducer, initialState)
+
+    const router = createBrowserRouter(
+        createRoutesFromElements(
+            <Route path="/" element={<MainPage />}>
+                <Route path="login" element={<Login />} />
+            </Route>
+        )
+    )
 
     setTimeout(() => {
-        setIsLoading(false);
-    }, 2000);
+        setIsLoading(false)
+    }, 2000)
+
+    useEffect(() => {
+        const username = localStorage.getItem("username")
+        const token = localStorage.getItem("token")
+        if (username && token) {
+            dispatch({
+                type: "setLoggedInUserName",
+                data: username,
+            })
+            dispatch({
+                type: "setToken",
+                data: token,
+            })
+        }
+    }, [])
 
     return (
         <>
-            {isLoading ? (
+        {isLoading ? (
                 <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    height: '100vh'
-                }}
-            >
-                <SpinnerBlue />
+                    sx={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        height: "100vh",
+                    }}
+                >
+                    <SpinnerBlue/>
                 </Box>
             ) : (
                 <div className="App">
-                    <GlobalStyle />
-                    <Header />
-                    <Login/>
-                    <NavBar />
-                    <AddProduct/>
-                    <ProductList setItem={setItem} />
-                    <ProductInfo item={selectedItem} />
-                    <Footer />
+
+                        <RouterProvider router={router} />
 
                 </div>
             )}
         </>
-    );
-
+    )
 }
 
+
+
+function MainPage() {
+    const [selectedItem, setSelectedItem] = useState(null)
+
+    function setItem(item) {
+        setSelectedItem(item)
+    }
+
+    return (
+        <>
+                            <GlobalStyle />
+                    <Header />
+                    <Login/>
+                    <NavBar />
+                    <Outlet />
+                    <AddProduct/>
+                    <ProductList setItem={setItem} />
+                    <ProductInfo item={selectedItem} />
+                    <Outlet />
+                    <Footer />
+        </>
+    )
+
+    }
 
 export default App;
