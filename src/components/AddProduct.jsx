@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import Title from "./styled/Title";
 
 const InputWrapper = styled.div`
     display: grid;
@@ -57,7 +58,7 @@ function AddProduct() {
 
     return (
         <div id="addProduct">
-            Add Product
+            <Title>Add Product</Title>
             <form
                 style={{
                     display: "flex",
