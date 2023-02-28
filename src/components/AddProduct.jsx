@@ -156,6 +156,7 @@ function AddProduct() {
                             width: "200px",
                             height: "30px",
                             margin: "10px",
+                            cursor: "pointer",
                         }}
                         type="submit"
                         value="Add Recipe"
