@@ -1,11 +1,11 @@
-import { Wrapper, Img,Title, Ingridients,  } from "./Product.Styles";
+import { Wrapper, Img,Title, Ingridients,  Grid} from "./Product.Styles";
 import React from "react";
 
 
 function Product(props) {
     const item = props.productInfo
     return (
-        // <Grid>
+        <Grid>
         <Wrapper style={{cursor:'pointer'}} onClick={() => {
             props.setItem(item)
         }}>
@@ -16,7 +16,7 @@ function Product(props) {
             <Ingridients>{item.strIngredient1}{", "}{item.strIngredient2}{", "}{item.strIngredient3}{", "}{item.strIngredient4}{", "}{item.strIngredient5}</Ingridients>
             <div>{item.strInstructions}</div>
         </Wrapper>
-        // </Grid>
+        </Grid>
     );
 }
 
