@@ -52,7 +52,7 @@ function NavBar() {
                 >
                     {navBarItems.map((item) => {
                         return (
-                            <Link to={`/${item.id}`} style={{ textDecoration: 'none' }}>
+                            <Link to={`finder/${item.id}`} style={{ textDecoration: 'none' }}>
                                 {" "}
                                 <a 
                                     key={item.title}

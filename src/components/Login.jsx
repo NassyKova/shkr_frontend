@@ -56,7 +56,7 @@ function Login() {
                 apiError: null,
             });
             axios
-                .post("/auth/login", user)
+                .post("/login", user)
                 .then((res) => res.data)
                 .then((json) => {
                     setUserFetched(true);
@@ -95,16 +95,19 @@ function Login() {
                             display: "flex",
                             flexDirection: "column",
                             alignItems: "center",
+                            color:"red"
                         }}
                         onSubmit={handleSubmit}
                     >
                         <InputWrapper>
-                            <label htmlFor="username">Username:</label>
+                            <label htmlFor="username"  >Username:</label>
                             <input
                                 type="text"
                                 name="username"
+                                color="red"
                                 value={user.username}
                                 onChange={handleOnChange}
+                                style={{color: "black"}}
                             />
                         </InputWrapper>
                         {errorMessage.username}
@@ -115,11 +118,12 @@ function Login() {
                                 name="password"
                                 value={user.password}
                                 onChange={handleOnChange}
+                                style={{color: "black"}}
                             />
                         </InputWrapper>
                         {errorMessage.password}
                         <div>
-                            <input
+                            <input 
                                 type="submit"
                                 value="Login"
                                 style={{

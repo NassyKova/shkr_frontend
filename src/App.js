@@ -17,7 +17,14 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import SpinnerBlue from "./components/Spinner";
 import NavBar from "./components/mui/NavBar";
-import SearchByBase from "./components/SearchByBase/SearchByBase";
+import SearchByBase from "./components/SearchBy/SearchByBase";
+import {
+    SearchByFruity,
+    SearchByFizzy,
+    SearchByNoAlc,
+    SearchByHeavy,
+    SearchByName,
+} from "./components/SearchBy/SearchBy";
 
 import Box from "@mui/material/Box";
 // import ProductListClass from "./components/ProductListClass";
@@ -43,16 +50,40 @@ function App() {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
-                <Route path="/login" element={<Login />}>
-                    <Route path="/login/addproduct" element={<AddProduct />} >
-                        </Route>
+                <Route path="login" element={<Login />}>
+                    <Route path="addproduct" element={<AddProduct />}></Route>
                 </Route>
 
                 <Route path="/about" element={<About />} />
-                <Route path="/" element={<NavBar />}>
+                <Route path="/finder" element={<NavBar />}>
                     <Route
-                        path="/base"
+                        path=":itemId"
                         element={<SearchByBase />}
+                        errorElement={<NotFound />}
+                    ></Route>
+                    <Route
+                        path="finder/fruity"
+                        element={<SearchByFruity />}
+                        errorElement={<NotFound />}
+                    ></Route>
+                    <Route
+                        path="finder/fruity"
+                        element={<SearchByHeavy />}
+                        errorElement={<NotFound />}
+                    ></Route>
+                    <Route
+                        path="finder/fruity"
+                        element={<SearchByFizzy />}
+                        errorElement={<NotFound />}
+                    ></Route>
+                    <Route
+                        path="finder/fruity"
+                        element={<SearchByNoAlc />}
+                        errorElement={<NotFound />}
+                    ></Route>
+                    <Route
+                        path="finder/fruity"
+                        element={<SearchByName />}
                         errorElement={<NotFound />}
                     ></Route>
                 </Route>
