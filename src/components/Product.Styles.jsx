@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
 
-    width: 40%;
+    width: 50%;
     border-radius: 10px;
     transition: 0.3s;
     box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.75);
@@ -38,7 +38,7 @@ export const Img = styled.div`
 export const Title = styled.div`
     display: flex;
     /* justify-content: center; */
-    font-size: var(--fontSuperBig);
+    font-size: var(--fontBig);
     color: var(--blueGreen);
 `;
 

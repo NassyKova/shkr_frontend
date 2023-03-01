@@ -6,15 +6,15 @@ export const GlobalStyle = createGlobalStyle`
   --maxWidth: 1280px;
 
   --background: #252c27;
-  --green: #59824e;
+  --green: #37a01b;
   --blue: #43d9f0;
   --pink: #d585b2;
   --blueGreen: #00a18e;
   --white: #fff;
   --black: black;
 
-  --fontSuperBig: 2.5rem;
-  --fontBig: 1.4rem;
+  --fontSuperBig: 3rem;
+  --fontBig: 2.5rem;
   --fontMed: 1.2rem;
   --fontSmall: 1rem;
 }
@@ -23,6 +23,11 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
 
   color: var(--white)
+}
+
+:hover{
+  color: var(--hover-color),
+  
 }
 
 body{
