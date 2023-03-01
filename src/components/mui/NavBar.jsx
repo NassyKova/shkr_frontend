@@ -5,39 +5,39 @@ import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 
+import { Link } from "react-router-dom";
 
 function NavBar() {
     const navBarItems = [
         {
             title: "Base",
-            id: "#base",
+            id: "base",
         },
         {
             title: "Fruity",
-            id: "#fruity",
+            id: "fruity",
         },
         {
             title: "Heavy",
-            id: "#heavy",
+            id: "heavy",
         },
         {
             title: "Fizzy",
-            id: "#fizzy",
+            id: "fizzy",
         },
         {
             title: "No Alc",
-            id: "#noAlc",
+            id: "noAlc",
         },
         {
             title: "Search By Name",
-            id: "#searchByName",
+            id: "searchByName",
         },
         {
             title: "Add Product",
-            id: "#addProduct",
+            id: "addProduct",
         },
     ];
-
 
     return (
         <AppBar position="static" style={{ background: "#252c27" }}>
@@ -52,31 +52,33 @@ function NavBar() {
                 >
                     {navBarItems.map((item) => {
                         return (
-                            <a
-                                key={item.title}
-                                style={{
-                                    textDecoration: "none",
-                                }}
-                                href={item.id}
-                            >
-                                <Button
+                            <Link to={`/${item.id}`} style={{ textDecoration: 'none' }}>
+                                {" "}
+                                <a 
+                                    key={item.title}
                                     style={{
-                                        background: "#43d9f0",
-                                        margin: "5px",
+                                        textDecoration: "none",
                                     }}
-                                    sx={{
-                                        my: 2,
-                                        color: "black",
-                                        display: "block",
-                                    }}
+                                    href={item.id}
                                 >
-                                    {item.title}
-                                </Button>
-                            </a>
+                                    <Button 
+                                        style={{
+                                            background: "#43d9f0",
+                                            margin: "5px",
+                                        }}
+                                        sx={{
+                                            my: 2,
+                                            color: "black",
+                                            display: "block",
+                                        }}
+                                    >
+                                        {item.title}
+                                    </Button>
+                                </a>
+                            </Link>
                         );
                     })}
                 </Box>
-
             </Toolbar>
         </AppBar>
     );
