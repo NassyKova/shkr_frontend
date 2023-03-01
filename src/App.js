@@ -9,6 +9,7 @@ import {
     Router,
 } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { GlobalContext } from "./components/utils/globalStateContext";
 
 import { GlobalStyle } from "./GlobalStyle";
 import { ProductList } from "./components/ProductList";
@@ -16,6 +17,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import SpinnerBlue from "./components/Spinner";
 import NavBar from "./components/mui/NavBar";
+import SearchByBase from "./components/SearchByBase/SearchByBase";
 
 import Box from "@mui/material/Box";
 // import ProductListClass from "./components/ProductListClass";
@@ -23,6 +25,8 @@ import ProductInfo from "./components/ProductInfo";
 import AddProduct from "./components/AddProduct";
 import Login from "./components/Login";
 import NotFound from "./NotFound";
+import About from "./components/About";
+import Contact from "./components/Contact";
 
 import globalReducer from "./components/reducers/globalReducer";
 
@@ -39,9 +43,20 @@ function App() {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
-                <Route path="login" element={<Login />} />
-                {/* <Link to="/fizzy" /> */}
-                {/* <Route path="/fizzy" element={<Home />} /> */}
+                <Route path="/login" element={<Login />}>
+                    <Route path="/login/addproduct" element={<AddProduct />} >
+                        </Route>
+                </Route>
+
+                <Route path="/about" element={<About />} />
+                <Route path="/" element={<NavBar />}>
+                    <Route
+                        path="/base"
+                        element={<SearchByBase />}
+                        errorElement={<NotFound />}
+                    ></Route>
+                </Route>
+                <Route path="/contact" element={<Contact />} />
             </Route>
         )
     );
@@ -80,7 +95,9 @@ function App() {
                 </Box>
             ) : (
                 <div className="App">
-                    <RouterProvider router={router} />
+                    <GlobalContext.Provider value={{ store, dispatch }}>
+                        <RouterProvider router={router} />
+                    </GlobalContext.Provider>
                 </div>
             )}
         </>
@@ -96,21 +113,17 @@ function MainPage() {
 
     return (
         <>
-            {/* <Router> */}
-                <GlobalStyle />
-                <Header />
-                <NavBar />
-                <Login/>
-                {/* <Routes> */}
-                    {/* <Route exact path="/" element={<ProductList />} /> */}
-                    {/* <Route path="/login" element={<Login />} /> */}
-                    <Outlet />
-                    <AddProduct />
-                    <ProductList setItem={setItem} />
-                    <ProductInfo item={selectedItem} />
-                {/* </Routes> */}
-                <Footer />
-            {/* </Router> */}
+            <GlobalStyle />
+            <Header />
+            <Outlet />
+            {/* <NavBar /> */}
+            {/* <SearchByBase /> */}
+
+            {/* <AddProduct /> */}
+            {/* <ProductList setItem={setItem} />
+            <ProductInfo item={selectedItem} /> */}
+
+            <Footer />
         </>
     );
 }
