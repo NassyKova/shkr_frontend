@@ -12,9 +12,9 @@ const Header = () => {
             <Content>
                 <LogoImg src={ShkrLogo} alt="logo" />
 
-                <Slogan>The cocktail finder for you!</Slogan>
                 <TopMenu/>
             </Content>
+                <Slogan>The cocktail finder for you!</Slogan>
         </Wrapper>
     );
 };
