@@ -33,6 +33,8 @@ export const GlobalStyle = createGlobalStyle`
     background-color: var(--pink);
 }
 
+
+
 body{
   margin: 0;
   padding: 0;

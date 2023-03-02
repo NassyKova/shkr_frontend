@@ -122,7 +122,7 @@ function NavBar() {
                         </Button>
                     </Link>
                 </Box>
-                {store.loggedInUserName}
+                {/* {store.loggedInUserName} */}
                     {/* {store.loggedInUserName ? (
                         <button
                             onClick={() => {
