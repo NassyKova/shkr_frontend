@@ -7,25 +7,31 @@ import {
 
 import { Space } from "antd";
 
-import { Wrapper } from "./Socials.Styles";
+import { Wrapper, Hover1 } from "./Socials.Styles";
 
 const Socials = () => {
     return (
         <Wrapper>
             <Space>
-                <a href="https://facebook.com" target="_blank" rel="noreferrer">
-                    <FacebookOutlined />
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noreferrer">
+                <Hover1>
+                    <a
+                        href="https://facebook.com"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        <FacebookOutlined />
+                    </a>
+                </Hover1>
+                <Hover1><a href="https://twitter.com" target="_blank" rel="noreferrer">
                     <TwitterOutlined />
-                </a>
-                <a
+                </a></Hover1>
+                <Hover1><a
                     href="https://instagram.com"
                     target="_blank"
                     rel="noreferrer"
                 >
                     <InstagramOutlined />
-                </a>
+                </a></Hover1>
             </Space>
         </Wrapper>
     );
