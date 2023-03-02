@@ -1,147 +1,101 @@
-import axios from "axios";
-import { useState } from "react";
-import styled from "styled-components";
+import * as React from "react";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
-import Title from "./styled/Title";
+const theme = createTheme();
 
-const InputWrapper = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    width: 400px;
-    margin-bottom: 10px;
-`;
-
-function Login() {
-    const [user, setUser] = useState({
-        username: "",
-        password: "",
-    });
-
-    const [errorMessage, setErrorMessage] = useState({
-        username: null,
-        password: null,
-        apiError: null,
-    });
-
-    const [userFetched, setUserFetched] = useState(false);
-
+export default function SignIn() {
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(user);
-        let haveError = false;
-        if (!user.username) {
-            setErrorMessage((prevErrorMessage) => {
-                return {
-                    ...prevErrorMessage,
-                    username: "Username must be provided",
-                };
-            });
-            haveError = true;
-        }
-
-        if (!user.password) {
-            setErrorMessage((prevErrorMessage) => {
-                return {
-                    ...prevErrorMessage,
-                    password: "Password must be provided",
-                };
-            });
-            haveError = true;
-        }
-
-        if (!haveError) {
-            setErrorMessage({
-                username: null,
-                password: null,
-                apiError: null,
-            });
-            axios
-                .post("/login", user)
-                .then((res) => res.data)
-                .then((json) => {
-                    setUserFetched(true);
-                    localStorage.setItem("token", json.token);
-                    console.log(json);
-                })
-                .catch(() => {
-                    setErrorMessage((prevErrorMessage) => {
-                        return {
-                            ...prevErrorMessage,
-                            apiError: "Username/Password doesn't exist",
-                        };
-                    });
-                });
-        }
-    };
-
-    const handleOnChange = (event) => {
-        setUser((prevUser) => {
-            return {
-                ...prevUser,
-                [event.target.name]: event.target.value,
-            };
+        const data = new FormData(event.currentTarget);
+        console.log({
+            email: data.get("email"),
+            password: data.get("password"),
         });
     };
 
     return (
-        <>
-            {userFetched ? (
-                <Title>Login Successful</Title>
-            ) : (
-                <div>
-                    <Title>Login</Title>
-                    <form
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            color:"red"
-                        }}
-                        onSubmit={handleSubmit}
+        <ThemeProvider theme={theme}>
+            <Container component="main" maxWidth="xs">
+                <CssBaseline />
+                <Box
+                    sx={{
+                        marginTop: 8,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                    }}
+                >
+                    <Typography
+                        style={{ color: "white" }}
+                        component="h1"
+                        variant="h5"
                     >
-                        <InputWrapper>
-                            <label htmlFor="username"  >Username:</label>
-                            <input
-                                type="text"
-                                name="username"
-                                color="red"
-                                value={user.username}
-                                onChange={handleOnChange}
-                                style={{color: "black"}}
-                            />
-                        </InputWrapper>
-                        {errorMessage.username}
-                        <InputWrapper>
-                            <label htmlFor="password">Password:</label>
-                            <input
-                                type="password"
-                                name="password"
-                                value={user.password}
-                                onChange={handleOnChange}
-                                style={{color: "black"}}
-                            />
-                        </InputWrapper>
-                        {errorMessage.password}
-                        <div>
-                            <input 
-                                type="submit"
-                                value="Login"
-                                style={{
-                                    backgroundColor: "green",
-                                    borderRadius: "5px",
-                                    width: "200px",
-                                    height: "30px",
-                                    margin: "10px",
-                                    cursor: "pointer",
-                                }}
-                            />
-                        </div>
-                        {errorMessage.apiError}
-                    </form>
-                </div>
-            )}
-        </>
+                        Sign in
+                    </Typography>
+                    <Box
+                        component="form"
+                        onSubmit={handleSubmit}
+                        noValidate
+                        sx={{ mt: 1 }}
+                    >
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="email"
+                            label="Email Address"
+                            name="email"
+                            autoComplete="email"
+                            autoFocus
+                        />
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox value="remember" color="primary" />
+                            }
+                            label="Remember me"
+                        />
+                        <Button
+                            type="submit"
+                            fullWidth
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }}
+                            style={{ backgroundColor: "#37a01b" }}
+                        >
+                            Sign In
+                        </Button>
+                        {/* <Grid container> */}
+                        {/* <Grid item xs> */}
+                        {/* <Link href="#" variant="body2">
+                                    Forgot password?
+                                </Link> */}
+                        {/* </Grid>
+                            <Grid item> */}
+                        {/* <Link href="#" variant="body2">
+                                    {"Don't have an account? Sign Up"}
+                                </Link> */}
+                        {/* </Grid> */}
+                        {/* </Grid> */}
+                    </Box>
+                </Box>
+            </Container>
+        </ThemeProvider>
     );
 }
-
-export default Login;
