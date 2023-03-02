@@ -63,7 +63,7 @@ function App() {
                         errorElement={<NotFound />}
                     ></Route>
                     <Route
-                        path=":itemId"
+                        path="fruity"
                         element={<SearchByFruity />}
                         errorElement={<NotFound />}
                     ></Route>

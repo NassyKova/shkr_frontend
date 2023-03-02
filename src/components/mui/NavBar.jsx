@@ -64,7 +64,7 @@ function NavBar() {
                         return (
                             <>
                                 <Link
-                                    to={itemId}
+                                    to={`${item.id}`}
                                     style={{ textDecoration: "none" }}
                                 >
                                     {" "}
