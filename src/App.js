@@ -11,7 +11,7 @@ import {
 import { GlobalContext } from "./components/utils/globalStateContext";
 
 import { GlobalStyle } from "./GlobalStyle";
-// import { ProductList } from "./components/ProductList";
+import { ProductList } from "./components/ProductList";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import SpinnerBlue from "./components/Spinner";
@@ -27,7 +27,7 @@ import {
 
 import Box from "@mui/material/Box";
 // import ProductListClass from "./components/ProductListClass";
-// import ProductInfo from "./components/ProductInfo";
+import ProductInfo from "./components/ProductInfo";
 import AddProduct from "./components/AddProduct";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
@@ -147,14 +147,11 @@ function MainPage() {
         <>
             <GlobalStyle />
             <Header />
-            <Outlet />
-            {/* <NavBar /> */}
-            {/* <SearchByBase /> */}
 
-            {/* <AddProduct /> */}
             {/* <ProductList setItem={setItem} />
             <ProductInfo item={selectedItem} /> */}
 
+            <Outlet />
             <Footer />
         </>
     );

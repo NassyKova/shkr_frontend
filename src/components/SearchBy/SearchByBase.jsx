@@ -9,7 +9,7 @@ const SearchByBase = () => {
         <Button>Gin</Button>
         <Button>Tequila</Button>
         <Button>Brandy</Button>
-        <Button>Scitch</Button>
+        <Button>Scotch</Button>
         <Button>Triple Sec</Button>
         </Wrapper>
     )

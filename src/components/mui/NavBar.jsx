@@ -5,7 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 
 function NavBar() {
@@ -120,6 +120,7 @@ function NavBar() {
                     </Link>
                 </Box>
             </Toolbar>
+            <Outlet/>
         </AppBar>
     );
 }
