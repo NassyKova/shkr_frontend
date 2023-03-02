@@ -1,3 +1,5 @@
+import SearchAppBar from "./SearchByName";
+
 const SearchByFizzy = () => {
     return <div>SearchByFizzy</div>;
 };
@@ -15,7 +17,7 @@ const SearchByNoAlc = () => {
 };
 
 const SearchByName = () => {
-    return <div>SearchByName</div>;
+    return <div><SearchAppBar/></div>;
 };
 
 

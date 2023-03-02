@@ -5,7 +5,6 @@ import {
     Outlet,
     Route,
     RouterProvider,
-
 } from "react-router-dom";
 // import { Link } from "react-router-dom";
 import { GlobalContext } from "./components/utils/globalStateContext";
@@ -46,9 +45,7 @@ function App() {
 
     const [store, dispatch] = useReducer(globalReducer, initialState);
 
-
     const router = createBrowserRouter(
-        
         createRoutesFromElements(
             <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
                 <Route path="login" element={<Login />}>
@@ -61,7 +58,13 @@ function App() {
                         path="searchbybase"
                         element={<SearchByBase />}
                         errorElement={<NotFound />}
-                    ></Route>
+                    >
+                        <Route
+                            path="vodka"
+                            element={<ProductList />}
+                            errorElement={<NotFound />}
+                        ></Route>
+                    </Route>
                     <Route
                         path="fruity"
                         element={<SearchByFruity />}
