@@ -4,12 +4,11 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import { useParams } from "react-router-dom";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../utils/globalStateContext"
 
 
 function NavBar() {
-    const { itemId } = useParams();
     const navBarItems = [
         {
             title: "Fruity",
@@ -28,6 +27,10 @@ function NavBar() {
             id: "noAlc",
         },
     ];
+
+    const { store, dispatch } = useGlobalContext()
+
+    const navigate = useNavigate()
 
     return (
         <AppBar position="static" style={{ background: "#252c27" }}>
@@ -119,6 +122,32 @@ function NavBar() {
                         </Button>
                     </Link>
                 </Box>
+                {store.loggedInUserName}
+                    {/* {store.loggedInUserName ? (
+                        <button
+                            onClick={() => {
+                                dispatch({
+                                    type: "setToken",
+                                    data: null,
+                                })
+                                dispatch({
+                                    type: "setLoggedInUserName",
+                                    data: null,
+                                })
+                            }}
+                        >
+                            Logout
+                        </button>
+                    ) : (
+                        <button sx={{backgroundColor: "green"}}
+                            onClick={() => {
+                                navigate("login")
+                                
+                            }}
+                        >
+                            Login
+                        </button>
+                    )} */}
             </Toolbar>
             <Outlet/>
         </AppBar>

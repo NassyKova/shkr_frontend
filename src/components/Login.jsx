@@ -1,249 +1,148 @@
-// import * as React from "react";
-// import Button from "@mui/material/Button";
-// import CssBaseline from "@mui/material/CssBaseline";
-// import TextField from "@mui/material/TextField";
-// import FormControlLabel from "@mui/material/FormControlLabel";
-// import Checkbox from "@mui/material/Checkbox";
-// import Box from "@mui/material/Box";
-// import Typography from "@mui/material/Typography";
-// import Container from "@mui/material/Container";
-// import { createTheme, ThemeProvider } from "@mui/material/styles";
-
-// const theme = createTheme();
-
-// export default function SignIn() {
-//     const handleSubmit = (event) => {
-//         event.preventDefault();
-//         const data = new FormData(event.currentTarget);
-//         console.log({
-//             email: data.get("email"),
-//             password: data.get("password"),
-//         });
-//     };
-
-//     return (
-//         <ThemeProvider theme={theme}>
-//             <Container component="main" maxWidth="xs">
-//                 <CssBaseline />
-//                 <Box
-//                     sx={{
-//                         marginTop: 8,
-//                         display: "flex",
-//                         flexDirection: "column",
-//                         alignItems: "center",
-//                     }}
-//                 >
-//                     <Typography
-//                         style={{ color: "white" }}
-//                         component="h1"
-//                         variant="h5"
-//                     >
-//                         Admin login
-//                     </Typography>
-//                     <Box
-//                         component="form"
-//                         onSubmit={handleSubmit}
-//                         noValidate
-//                         sx={{ mt: 1 }}
-//                     >
-//                         <TextField
-//                             margin="normal"
-//                             required
-//                             fullWidth
-//                             id="email"
-//                             label="Email Address"
-//                             name="email"
-//                             autoComplete="email"
-//                             autoFocus
-//                         />
-//                         <TextField
-//                             margin="normal"
-//                             required
-//                             fullWidth
-//                             name="password"
-//                             label="Password"
-//                             type="password"
-//                             id="password"
-//                             autoComplete="current-password"
-//                         />
-//                         <FormControlLabel
-//                             control={
-//                                 <Checkbox value="remember" color="primary" />
-//                             }
-//                             label="Remember me"
-//                         />
-//                         <Button
-//                             type="submit"
-//                             fullWidth
-//                             variant="contained"
-//                             sx={{ mt: 3, mb: 2 }}
-//                             style={{ backgroundColor: "#37a01b" }}
-//                         >
-//                             Sign In
-//                         </Button>
-//                         {/* <Grid container> */}
-//                         {/* <Grid item xs> */}
-//                         {/* <Link href="#" variant="body2">
-//                                     Forgot password?
-//                                 </Link> */}
-//                         {/* </Grid>
-//                             <Grid item> */}
-//                         {/* <Link href="#" variant="body2">
-//                                     {"Don't have an account? Sign Up"}
-//                                 </Link> */}
-//                         {/* </Grid> */}
-//                         {/* </Grid> */}
-//                     </Box>
-//                 </Box>
-//             </Container>
-//         </ThemeProvider>
-//     );
-// }
-
-
-
-
+import axios from "axios"
 import { useState } from "react"
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
-import IconButton from '@mui/material/IconButton';
-import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
-import VpnKeyTwoToneIcon from '@mui/icons-material/VpnKeyTwoTone';
-import { useNavigate } from "react-router-dom";
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import styled from "styled-components"
+
+import Title from "./styled/Title"
 import { useGlobalContext } from "./utils/globalStateContext"
 
-
+const InputWrapper = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    width: 400px;
+    margin-bottom: 10px;
+`
 
 function Login() {
+    const [user, setUser] = useState({
+        username: "",
+        password: "",
+    })
+
+    const [errorMessage, setErrorMessage] = useState({
+        username: null,
+        password: null,
+        apiError: null,
+    })
 
     const { store, dispatch } = useGlobalContext()
 
-    const initialUserState = {
-        username: "",
-        password: "",
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(user)
+        let haveError = false
+        if (!user.username) {
+            setErrorMessage((prevErrorMessage) => {
+                return {
+                    ...prevErrorMessage,
+                    username: "Username must be provided",
+                }
+            })
+            haveError = true
+        }
+
+        if (!user.password) {
+            setErrorMessage((prevErrorMessage) => {
+                return {
+                    ...prevErrorMessage,
+                    password: "Password must be provided",
+                }
+            })
+            haveError = true
+        }
+
+        if (!haveError) {
+            setErrorMessage({
+                username: null,
+                password: null,
+                apiError: null,
+            })
+            axios
+                .post("/login", user)
+                .then((res) => res.data)
+                .then((json) => {
+                    dispatch({
+                        type: 'setToken',
+                        data: json.token
+                    })
+                    dispatch({
+                        type: 'setLoggedInUserName',
+                        data: user.username
+                    })
+                    console.log(json)
+                })
+                .catch(() => {
+                    setErrorMessage((prevErrorMessage) => {
+                        return {
+                            ...prevErrorMessage,
+                            apiError: "Username/Password doesn't exist",
+                        }
+                    })
+                })
+        }
     }
-    const [user, setUser] = useState(initialUserState)
 
-
-    const navigate = useNavigate();
-
-    const handleFormChange = (e) => {
-
+    const handleOnChange = (event) => {
         setUser((prevUser) => {
             return {
                 ...prevUser,
-                [e.target.name]: e.target.value,
+                [event.target.name]: event.target.value,
             }
         })
     }
 
-
-
-    const handleFormSubmit = (e) => {
-        e.preventDefault();
-
-        dispatch({
-            type: 'setUserName',
-            data: e.target.username.value
-        })
-        dispatch({
-            type: 'setToken',
-            data: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-        })
-
-        setUser(initialUserState)
-
-        navigate("/")
-
-    };
-
-
-    const handleFormClose = () => {
-        setUser(initialUserState)
-        navigate("/");
-    }
-
-
     return (
-
-
-        <Container component="main" maxWidth="xs">
-            <CssBaseline />
-
-            <Box display="block" sx={{ marginTop: 12 }}>
-
-            </Box>
-            <Box
-                sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                }}
-            >
-
-                <Typography component="h1" variant="h5" sx={{ p: 2 }} >
-                    Login
-                </Typography>
-                <ValidatorForm component="form" noValidate onSubmit={handleFormSubmit} >
-                    <Grid container spacing={2}>
-                        <Grid item xs={12} >
-                            <TextValidator
-                                name="username"
-                                required
-                                fullWidth
-                                id="username"
-                                label="Username"
-                                value={user.username}
-                                autoFocus
-                                onChange={handleFormChange}
-                                validators={['required']}
-                                errorMessages={['This field is required']}
-
-                            />
-                        </Grid>
-                        <Grid item xs={12} >
-                            <TextValidator
-                                required
-                                fullWidth
-                                id="password"
-                                label="Password"
-                                name="password"
-                                type="password"
-                                value={user.password}
-                                onChange={handleFormChange}
-                                validators={['required']}
-                                errorMessages={['This field is required']}
-
-                            />
-                        </Grid>
-
-
-
-
-                    </Grid>
-                    <Button
-                        type="submit"
-                        fullWidth
-                        variant="contained"
-                        sx={{ mt: 3, mb: 2, backgroundColor: "#37a01b" }}
+        <>
+            {store.loggedInUserName ? (
+                <Title>Login Successful</Title>
+            ) : (
+                <div>
+                    <Title>Login</Title>
+                    <form
+                        style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                        }}
+                        onSubmit={handleSubmit}
                     >
-                        Login
-                    </Button>
-
-                </ValidatorForm>
-            </Box>
-
-        </Container>
-
+                        <InputWrapper>
+                            <label htmlFor="username">Username:</label>
+                            <input
+                                type="text"
+                                name="username"
+                                value={user.username}
+                                onChange={handleOnChange}
+                                style={{color: "black"}}
+                            />
+                        </InputWrapper>
+                        {errorMessage.username}
+                        <InputWrapper>
+                            <label htmlFor="password">Password:</label>
+                            <input
+                                type="password"
+                                name="password"
+                                value={user.password}
+                                onChange={handleOnChange}
+                                style={{color: "black"}}
+                            />
+                        </InputWrapper>
+                        {errorMessage.password}
+                        <div>
+                            <input                                 style={{
+                                    backgroundColor: "green",
+                                    borderRadius: "5px",
+                                    width: "200px",
+                                    height: "30px",
+                                    margin: "10px",
+                                    cursor: "pointer",
+                                }}type="submit" value="Login" />
+                        </div>
+                        {errorMessage.apiError}
+                    </form>
+                </div>
+            )}
+        </>
     )
-
-
 }
 
 export default Login
