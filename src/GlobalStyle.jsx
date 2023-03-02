@@ -25,9 +25,18 @@ export const GlobalStyle = createGlobalStyle`
   color: var(--white)
 }
 
+/* .hover-item {
+    background-color: var(--pink);
+} */
+
+.hover-item:hover {
+    background-color: var(--pink);
+}
+
 body{
   margin: 0;
   padding: 0;
   background: var(--background);
   color: var(--white);
+}
 `;

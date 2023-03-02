@@ -4,15 +4,13 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 
+
 function NavBar() {
+    const { itemId } = useParams();
     const navBarItems = [
-        {
-            title: "Base",
-            id: "base",
-        },
         {
             title: "Fruity",
             id: "fruity",
@@ -29,14 +27,6 @@ function NavBar() {
             title: "No Alc",
             id: "noAlc",
         },
-        {
-            title: "Search By Name",
-            id: "searchByName",
-        },
-        {
-            title: "Add Product",
-            id: "addProduct",
-        },
     ];
 
     return (
@@ -50,34 +40,84 @@ function NavBar() {
                         justifyContent: "center",
                     }}
                 >
+                    <Link
+                        to="/finder/searchbybase"
+                        style={{ textDecoration: "none" }}
+                    >
+                        <Button
+                            style={{
+                                background: "#43d9f0",
+                                margin: "5px",
+                            }}
+                            sx={{
+                                my: 2,
+                                color: "black",
+                                display: "block",
+                            }}
+                        >
+                            <div class="hover-item" style={{ color: "black" }}>
+                                Base
+                            </div>
+                        </Button>
+                    </Link>
                     {navBarItems.map((item) => {
                         return (
-                            <Link to={`finder/${item.id}`} style={{ textDecoration: 'none' }}>
-                                {" "}
-                                <a 
-                                    key={item.title}
-                                    style={{
-                                        textDecoration: "none",
-                                    }}
-                                    href={item.id}
+                            <>
+                                <Link
+                                    to={itemId}
+                                    style={{ textDecoration: "none" }}
                                 >
-                                    <Button 
+                                    {" "}
+                                    <a
+                                        key={item.title}
                                         style={{
-                                            background: "#43d9f0",
-                                            margin: "5px",
+                                            textDecoration: "none",
                                         }}
-                                        sx={{
-                                            my: 2,
-                                            color: "black",
-                                            display: "block",
-                                        }}
+                                        href={item.id}
                                     >
-                                        {item.title}
-                                    </Button>
-                                </a>
-                            </Link>
+                                        <Button
+                                            style={{
+                                                background: "#43d9f0",
+                                                margin: "5px",
+                                            }}
+                                            sx={{
+                                                my: 2,
+                                                color: "black",
+                                                display: "block",
+                                            }}
+                                        >
+                                            <div
+                                                class="hover-item"
+                                                style={{ color: "black" }}
+                                            >
+                                                {item.title}
+                                            </div>
+                                        </Button>
+                                    </a>
+                                </Link>
+                            </>
                         );
                     })}
+                    <Link
+                        to="/finder/searchbyname"
+                        style={{ textDecoration: "none" }}
+                    >
+                        <Button
+                            style={{
+                                background: "#43d9f0",
+                                margin: "5px",
+                            }}
+                            sx={{
+                                my: 2,
+                                color: "black",
+                                display: "block",
+                            }}
+                        >
+                            <div class="hover-item" style={{ color: "black" }}>
+                                Search By Name
+                            </div>
+                        </Button>
+                    </Link>
                 </Box>
             </Toolbar>
         </AppBar>

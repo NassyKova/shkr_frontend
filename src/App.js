@@ -5,14 +5,13 @@ import {
     Outlet,
     Route,
     RouterProvider,
-    Routes,
-    Router,
+
 } from "react-router-dom";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { GlobalContext } from "./components/utils/globalStateContext";
 
 import { GlobalStyle } from "./GlobalStyle";
-import { ProductList } from "./components/ProductList";
+// import { ProductList } from "./components/ProductList";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import SpinnerBlue from "./components/Spinner";
@@ -28,10 +27,10 @@ import {
 
 import Box from "@mui/material/Box";
 // import ProductListClass from "./components/ProductListClass";
-import ProductInfo from "./components/ProductInfo";
+// import ProductInfo from "./components/ProductInfo";
 import AddProduct from "./components/AddProduct";
 import Login from "./components/Login";
-import NotFound from "./NotFound";
+import NotFound from "./components/NotFound";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
@@ -47,7 +46,9 @@ function App() {
 
     const [store, dispatch] = useReducer(globalReducer, initialState);
 
+
     const router = createBrowserRouter(
+        
         createRoutesFromElements(
             <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
                 <Route path="login" element={<Login />}>
@@ -57,32 +58,32 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/finder" element={<NavBar />}>
                     <Route
-                        path=":itemId"
+                        path="searchbybase"
                         element={<SearchByBase />}
                         errorElement={<NotFound />}
                     ></Route>
                     <Route
-                        path="finder/fruity"
+                        path=":itemId"
                         element={<SearchByFruity />}
                         errorElement={<NotFound />}
                     ></Route>
                     <Route
-                        path="finder/fruity"
+                        path=":itemId"
                         element={<SearchByHeavy />}
                         errorElement={<NotFound />}
                     ></Route>
                     <Route
-                        path="finder/fruity"
+                        path=":itemId"
                         element={<SearchByFizzy />}
                         errorElement={<NotFound />}
                     ></Route>
                     <Route
-                        path="finder/fruity"
+                        path=":itemId"
                         element={<SearchByNoAlc />}
                         errorElement={<NotFound />}
                     ></Route>
                     <Route
-                        path="finder/fruity"
+                        path="searchbyname"
                         element={<SearchByName />}
                         errorElement={<NotFound />}
                     ></Route>
