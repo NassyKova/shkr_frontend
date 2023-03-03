@@ -6,11 +6,11 @@ import {
     Route,
     RouterProvider,
 } from "react-router-dom";
-// import { Link } from "react-router-dom";
 import { GlobalContext } from "./components/utils/globalStateContext";
 
 import { GlobalStyle } from "./GlobalStyle";
-import { ProductList } from "./components/ProductList";
+import { ProductListVodka } from "./components/ProductList.Vodka";
+import { ProductListRum } from "./components/ProductList.Rum";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import SpinnerBlue from "./components/Spinner";
@@ -25,7 +25,6 @@ import {
 } from "./components/SearchBy/SearchBy";
 
 import Box from "@mui/material/Box";
-// import ProductListClass from "./components/ProductListClass";
 import ProductInfo from "./components/ProductInfo";
 import AddProduct from "./components/AddProduct";
 import Login from "./components/Login";
@@ -33,7 +32,9 @@ import NotFound from "./components/NotFound";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
+
 import globalReducer from "./components/reducers/globalReducer";
+import AdminOptions from "./components/admin/AdminOptions";
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
@@ -52,16 +53,23 @@ function App() {
                     <Route path="addproduct" element={<AddProduct />}></Route>
                 </Route>
 
-                <Route path="/about" element={<About />} />
+                {/* <Route path="/about" element={<About />} /> */}
+                <Route path="/about" element={<AdminOptions />} />
                 <Route path="/finder" element={<NavBar />}>
-                    <Route
-                        path="searchbybase"
-                        element={<SearchByBase />}
-                        errorElement={<NotFound />}
-                    >
+                    <Route path="searchbybase">
+                        <Route
+                            index={true}
+                            element={<SearchByBase />}
+                            errorElement={<NotFound />}
+                        ></Route>
                         <Route
                             path="vodka"
-                            element={<ProductList />}
+                            element={<ProductListVodka />}
+                            errorElement={<NotFound />}
+                        ></Route>
+                        <Route
+                            path="rum"
+                            element={<ProductListRum />}
                             errorElement={<NotFound />}
                         ></Route>
                     </Route>
