@@ -4,8 +4,18 @@ import { Link } from "react-router-dom";
 const SearchByBase = () => {
     return (
         <Wrapper>
-            <Button>Rum</Button>
-            <Link to="/finder/base/vodka" style={{ textDecoration: "none" }}>
+            <Link
+                to="/finder/searchbybase/rum"
+                style={{ textDecoration: "none" }}
+            >
+                {" "}
+                <Button>Rum</Button>
+            </Link>
+
+            <Link
+                to="/finder/searchbybase/vodka"
+                style={{ textDecoration: "none" }}
+            >
                 {" "}
                 <Button>Vodka</Button>
             </Link>
