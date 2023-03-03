@@ -6,10 +6,10 @@ function ProductInfo(props) {
         return null;
     }
     return (
-        <>
+        <div>
             {item.title}
             <Product productInfo={item} />
-        </>
+        </div>
     );
 }
 

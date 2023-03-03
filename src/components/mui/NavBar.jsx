@@ -5,8 +5,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../utils/globalStateContext"
-
+import { useGlobalContext } from "../utils/globalStateContext";
 
 function NavBar() {
     const navBarItems = [
@@ -28,9 +27,9 @@ function NavBar() {
         },
     ];
 
-    const { store, dispatch } = useGlobalContext()
+    const { store, dispatch } = useGlobalContext();
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     return (
         <AppBar position="static" style={{ background: "#252c27" }}>
@@ -51,6 +50,7 @@ function NavBar() {
                             style={{
                                 background: "#43d9f0",
                                 margin: "5px",
+                                textTransform: "none",
                             }}
                             sx={{
                                 my: 2,
@@ -58,47 +58,43 @@ function NavBar() {
                                 display: "block",
                             }}
                         >
-                            <div class="hover-item" style={{ color: "black" }}>
+                            <div
+                                className="hover-item"
+                                style={{ color: "black" }}
+                            >
                                 Base
                             </div>
                         </Button>
                     </Link>
                     {navBarItems.map((item) => {
                         return (
-                            <>
+                            <div key={"navbar-item-" + item.id}>
                                 <Link
                                     to={`${item.id}`}
                                     style={{ textDecoration: "none" }}
                                 >
                                     {" "}
-                                    <a
-                                        key={item.title}
+                                    <Button
                                         style={{
-                                            textDecoration: "none",
+                                            background: "#43d9f0",
+                                            margin: "5px",
+                                            textTransform: "none",
                                         }}
-                                        href={item.id}
+                                        sx={{
+                                            my: 2,
+                                            color: "black",
+                                            display: "block",
+                                        }}
                                     >
-                                        <Button
-                                            style={{
-                                                background: "#43d9f0",
-                                                margin: "5px",
-                                            }}
-                                            sx={{
-                                                my: 2,
-                                                color: "black",
-                                                display: "block",
-                                            }}
+                                        <div
+                                            className="hover-item"
+                                            style={{ color: "black" }}
                                         >
-                                            <div
-                                                class="hover-item"
-                                                style={{ color: "black" }}
-                                            >
-                                                {item.title}
-                                            </div>
-                                        </Button>
-                                    </a>
+                                            {item.title}
+                                        </div>
+                                    </Button>
                                 </Link>
-                            </>
+                            </div>
                         );
                     })}
                     <Link
@@ -109,6 +105,7 @@ function NavBar() {
                             style={{
                                 background: "#43d9f0",
                                 margin: "5px",
+                                textTransform: "none",
                             }}
                             sx={{
                                 my: 2,
@@ -116,40 +113,17 @@ function NavBar() {
                                 display: "block",
                             }}
                         >
-                            <div class="hover-item" style={{ color: "black" }}>
+                            <div
+                                className="hover-item"
+                                style={{ color: "black" }}
+                            >
                                 Search By Name
                             </div>
                         </Button>
                     </Link>
                 </Box>
-                {/* {store.loggedInUserName} */}
-                    {/* {store.loggedInUserName ? (
-                        <button
-                            onClick={() => {
-                                dispatch({
-                                    type: "setToken",
-                                    data: null,
-                                })
-                                dispatch({
-                                    type: "setLoggedInUserName",
-                                    data: null,
-                                })
-                            }}
-                        >
-                            Logout
-                        </button>
-                    ) : (
-                        <button sx={{backgroundColor: "green"}}
-                            onClick={() => {
-                                navigate("login")
-                                
-                            }}
-                        >
-                            Login
-                        </button>
-                    )} */}
             </Toolbar>
-            <Outlet/>
+            <Outlet />
         </AppBar>
     );
 }
