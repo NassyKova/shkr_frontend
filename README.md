@@ -11,6 +11,7 @@ CMP1043-1.1 Demonstrate separation of concerns in the App.
 CMP1043-1.2 Demonstrate DRY (Don’t Repeat Yourself) principles in all code.
 
 CMP1043-1.3 Appropriate use of libraries used in the app
+## Server Libraries and Dependencies
 
 PRG1006-1.1 Demonstrate code flow control
 

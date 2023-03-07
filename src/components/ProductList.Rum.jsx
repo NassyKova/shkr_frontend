@@ -4,7 +4,7 @@ import SpinnerBlue from "./Spinner";
 import useApi from "./utils/useApi";
 
 function ProductListRum(props) {
-    const [isLoading, items] = useApi("/search.php?s=rum");
+    const [isLoading, items] = useApi("/drinks/base/rum");
     return (
         <div>
             {isLoading ? (

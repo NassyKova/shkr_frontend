@@ -4,8 +4,9 @@ import SpinnerBlue from "./Spinner";
 import useApi from "./utils/useApi";
 
 function ProductListVodka(props) {
-    const [isLoading, items] = useApi("/search.php?s=vodka");
+    const [isLoading, items] = useApi("/drinks/base/vodka");
     return (
+        
         <div>
             {isLoading ? (
                 <Box
@@ -27,10 +28,12 @@ function ProductListVodka(props) {
                                 productInfo={item}
                                 setItem={props.setItem}
                             />
+                            
                         );
                     })}
                 </div>
             )}
+            
         </div>
     );
 }

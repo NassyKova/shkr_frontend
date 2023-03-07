@@ -59,43 +59,35 @@ function App() {
                         <Route
                             index={true}
                             element={<SearchByBase />}
-                            errorElement={<NotFound />}
                         ></Route>
                         <Route
                             path="vodka"
                             element={<ProductListVodka />}
-                            errorElement={<NotFound />}
                         ></Route>
                         <Route
                             path="rum"
                             element={<ProductListRum />}
-                            errorElement={<NotFound />}
                         ></Route>
                     </Route>
                     <Route
                         path="fruity"
                         element={<SearchByFruity />}
-                        errorElement={<NotFound />}
                     ></Route>
                     <Route
                         path=":itemId"
                         element={<SearchByHeavy />}
-                        errorElement={<NotFound />}
                     ></Route>
                     <Route
                         path=":itemId"
                         element={<SearchByFizzy />}
-                        errorElement={<NotFound />}
                     ></Route>
                     <Route
                         path=":itemId"
                         element={<SearchByNoAlc />}
-                        errorElement={<NotFound />}
                     ></Route>
                     <Route
                         path="searchbyname"
                         element={<SearchByName />}
-                        errorElement={<NotFound />}
                     ></Route>
                 </Route>
                 <Route path="/contact" element={<Contact />} />
