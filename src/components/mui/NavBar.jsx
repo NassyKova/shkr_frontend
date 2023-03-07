@@ -43,7 +43,7 @@ function NavBar() {
                     }}
                 >
                     <Link
-                        to="/finder/searchbybase"
+                        to="/drinks/base"
                         style={{ textDecoration: "none" }}
                     >
                         <Button
@@ -98,7 +98,7 @@ function NavBar() {
                         );
                     })}
                     <Link
-                        to="/finder/searchbyname"
+                        to="/drinks/name"
                         style={{ textDecoration: "none" }}
                     >
                         <Button

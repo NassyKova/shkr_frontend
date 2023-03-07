@@ -32,7 +32,6 @@ import NotFound from "./components/NotFound";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
-
 import globalReducer from "./components/reducers/globalReducer";
 import AdminOptions from "./components/admin/AdminOptions";
 
@@ -55,8 +54,8 @@ function App() {
 
                 {/* <Route path="/about" element={<About />} /> */}
                 <Route path="/about" element={<AdminOptions />} />
-                <Route path="/finder" element={<NavBar />}>
-                    <Route path="searchbybase">
+                <Route path="/drinks" element={<NavBar />}>
+                    <Route path="base">
                         <Route
                             index={true}
                             element={<SearchByBase />}

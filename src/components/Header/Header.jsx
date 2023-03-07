@@ -5,16 +5,15 @@ import TopMenu from "./TopMenu";
 
 import ShkrLogo from "../../images/Shkr_logo.png";
 
-
 const Header = () => {
     return (
         <Wrapper>
             <Content>
                 <LogoImg src={ShkrLogo} alt="logo" />
 
-                <TopMenu/>
+                <TopMenu />
             </Content>
-                <Slogan>The cocktail finder for you!</Slogan>
+            <Slogan>The cocktail drinks for you!</Slogan>
         </Wrapper>
     );
 };

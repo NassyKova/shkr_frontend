@@ -5,7 +5,9 @@ import App from './App';
 // import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 
-axios.defaults.baseURL="https://www.thecocktaildb.com/api/json/v2/9973533"
+// axios.defaults.baseURL="https://www.thecocktaildb.com/api/json/v2/9973533"
+axios.defaults.baseURL="http://localhost:5000"
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -5,7 +5,7 @@ const SearchByBase = () => {
     return (
         <Wrapper>
             <Link
-                to="/finder/searchbybase/rum"
+                to="/drinks/base/rum"
                 style={{ textDecoration: "none" }}
             >
                 {" "}
@@ -13,7 +13,7 @@ const SearchByBase = () => {
             </Link>
 
             <Link
-                to="/finder/searchbybase/vodka"
+                to="/drinks/base/vodka"
                 style={{ textDecoration: "none" }}
             >
                 {" "}

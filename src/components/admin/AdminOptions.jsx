@@ -10,7 +10,7 @@ const AdminOptions = () => {
             <Title>What would you like to do?</Title>
             <Wrapper>
                 <Stack direction="row" spacing={2}>
-                    <Button
+                    <Button 
                         style={{
                             backgroundColor: "white",
                             color: "black",
@@ -22,7 +22,7 @@ const AdminOptions = () => {
                         {" "}
                         Update or delete cockail
                     </Button>
-                    <Button
+                    <Button 
                         style={{
                             backgroundColor: "white",
                             color: "black",
