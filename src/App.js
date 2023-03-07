@@ -15,13 +15,7 @@ import Header from "./components/Header/Header";
 import SpinnerBlue from "./components/Spinner";
 import NavBar from "./components/mui/NavBar";
 import SearchByBase from "./components/SearchBy/SearchByBase";
-import {
-    // SearchByFruity,
-    // SearchByFizzy,
-    // SearchByNoAlc,
-    // SearchByHeavy,
-    SearchByName,
-} from "./components/SearchBy/SearchBy";
+import SearchAppBar from "./components/SearchBy/SearchByName";
 
 import Box from "@mui/material/Box";
 import ProductInfo from "./components/ProductInfo";
@@ -125,7 +119,7 @@ function App() {
                     ></Route>
                     <Route
                         path="searchbyname"
-                        element={<ProductByBase specificUrl="/drinks/name/:drinkName" />}
+                        element={<SearchAppBar />}
                     ></Route>
                 </Route>
                 <Route path="/contact" element={<Contact />} />
