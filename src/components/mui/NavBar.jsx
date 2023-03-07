@@ -12,18 +12,22 @@ function NavBar() {
         {
             title: "Fruity",
             id: "fruity",
+            specificUrl: "/drinks/fruity",
         },
         {
             title: "Heavy",
             id: "heavy",
+            specificUrl: "/drinks/heavy",
         },
         {
             title: "Fizzy",
             id: "fizzy",
+            specificUrl: "/drinks/fizzy",
         },
         {
-            title: "No Alc",
-            id: "noAlc",
+            title: "Non Alc",
+            id: "nonAlc",
+            specificUrl: "/drinks/non-alc",
         },
     ];
 
@@ -70,7 +74,7 @@ function NavBar() {
                         return (
                             <div key={"navbar-item-" + item.id}>
                                 <Link
-                                    to={`${item.id}`}
+                                    to={`${item.specificUrl}`}
                                     style={{ textDecoration: "none" }}
                                 >
                                     {" "}

@@ -16,10 +16,10 @@ import SpinnerBlue from "./components/Spinner";
 import NavBar from "./components/mui/NavBar";
 import SearchByBase from "./components/SearchBy/SearchByBase";
 import {
-    SearchByFruity,
-    SearchByFizzy,
-    SearchByNoAlc,
-    SearchByHeavy,
+    // SearchByFruity,
+    // SearchByFizzy,
+    // SearchByNoAlc,
+    // SearchByHeavy,
     SearchByName,
 } from "./components/SearchBy/SearchBy";
 
@@ -56,34 +56,73 @@ function App() {
                 <Route path="/drinks" element={<NavBar />}>
                     <Route path="base">
                         <Route index={true} element={<SearchByBase />}></Route>
-                        <Route path="rum" element={<ProductByBase specificUrl="/drinks/base/rum" />}></Route>
-                        <Route path="vodka" element={<ProductByBase specificUrl="/drinks/base/vodka"/>}></Route>
+                        <Route
+                            path="rum"
+                            element={
+                                <ProductByBase specificUrl="/drinks/base/rum" />
+                            }
+                        ></Route>
+                        <Route
+                            path="vodka"
+                            element={
+                                <ProductByBase specificUrl="/drinks/base/vodka" />
+                            }
+                        ></Route>
                         <Route
                             path="bourbon"
-                            element={<ProductByBase specificUrl="/drinks/base/bourbon"/>}
+                            element={
+                                <ProductByBase specificUrl="/drinks/base/bourbon" />
+                            }
                         ></Route>
-                        <Route path="gin" element={<ProductByBase specificUrl="/drinks/base/gin" />}></Route>
+                        <Route
+                            path="gin"
+                            element={
+                                <ProductByBase specificUrl="/drinks/base/gin" />
+                            }
+                        ></Route>
                         <Route
                             path="tequila"
-                            element={<ProductByBase specificUrl="/drinks/base/tequila" />}
+                            element={
+                                <ProductByBase specificUrl="/drinks/base/tequila" />
+                            }
                         ></Route>
                         <Route
                             path="brandy"
-                            element={<ProductByBase specificUrl="/drinks/base/brandy"/>}
+                            element={
+                                <ProductByBase specificUrl="/drinks/base/brandy" />
+                            }
                         ></Route>
                         <Route
                             path="scotch"
-                            element={<ProductByBase specificUrl="/drinks/base/scotch" />}
+                            element={
+                                <ProductByBase specificUrl="/drinks/base/scotch" />
+                            }
                         ></Route>
                         <Route
                             path="triplesec"
-                            element={<ProductByBase specificUrl="/drinks/base/triple_sec" />}
+                            element={
+                                <ProductByBase specificUrl="/drinks/base/triple_sec" />
+                            }
                         ></Route>
                     </Route>
-                    <Route path="fruity" element={<SearchByFruity />}></Route>
-                    <Route path=":itemId" element={<SearchByHeavy />}></Route>
-                    <Route path=":itemId" element={<SearchByFizzy />}></Route>
-                    <Route path=":itemId" element={<SearchByNoAlc />}></Route>
+                    <Route
+                        path="fruity"
+                        element={<ProductByBase specificUrl="/drinks/fruity" />}
+                    ></Route>
+                    <Route
+                        path="heavy"
+                        element={<ProductByBase specificUrl="/drinks/heavy" />}
+                    ></Route>
+                    <Route
+                        path="fizzy"
+                        element={<ProductByBase specificUrl="/drinks/fizzy" />}
+                    ></Route>
+                    <Route
+                        path="non-alc"
+                        element={
+                            <ProductByBase specificUrl="/drinks/non-alc" />
+                        }
+                    ></Route>
                     <Route
                         path="searchbyname"
                         element={<SearchByName />}

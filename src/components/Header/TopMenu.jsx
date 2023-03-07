@@ -9,7 +9,7 @@ const TopMenu = () => {
                 <Button>About us</Button>
             </Link>
             <Link to="/drinks" style={{ textDecoration: "none" }}>
-                <Button>drinks</Button>
+                <Button>Drinks</Button>
             </Link>
             <Link to="/contact" style={{ textDecoration: "none" }}>
                 <Button>Contact Us</Button>
