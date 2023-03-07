@@ -9,8 +9,7 @@ import {
 import { GlobalContext } from "./components/utils/globalStateContext";
 
 import { GlobalStyle } from "./GlobalStyle";
-import { ProductListVodka } from "./components/ProductList.Vodka";
-import { ProductListRum } from "./components/ProductList.Rum";
+import { ProductByBase } from "./components/ReturnProductByBase/ProductBase";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import SpinnerBlue from "./components/Spinner";
@@ -56,35 +55,41 @@ function App() {
                 <Route path="/about" element={<AdminOptions />} />
                 <Route path="/drinks" element={<NavBar />}>
                     <Route path="base">
+                        <Route index={true} element={<SearchByBase />}></Route>
+                        <Route path="rum" element={<ProductByBase specificUrl="/drinks/base/rum" />}></Route>
+                        <Route path="vodka" element={<ProductByBase specificUrl="/drinks/base/vodka"/>}></Route>
                         <Route
-                            index={true}
-                            element={<SearchByBase />}
+                            path="bourbon"
+                            element={<ProductByBase specificUrl="/drinks/base/bourbon"/>}
+                        ></Route>
+                        <Route path="gin" element={<ProductByBase specificUrl="/drinks/base/gin" />}></Route>
+                        <Route
+                            path="tequila"
+                            element={<ProductByBase specificUrl="/drinks/base/tequila" />}
+                        ></Route>
+                        <Route
+                            path="brandy"
+                            element={<ProductByBase specificUrl="/drinks/base/brandy"/>}
+                        ></Route>
+                        <Route
+                            path="scotch"
+                            element={<ProductByBase specificUrl="/drinks/base/scotch" />}
+                        ></Route>
+                        <Route
+                            path="triplesec"
+                            element={<ProductByBase specificUrl="/drinks/base/triplesec" />}
                         ></Route>
                         <Route
                             path="vodka"
-                            element={<ProductListVodka />}
-                        ></Route>
-                        <Route
-                            path="rum"
-                            element={<ProductListRum />}
+                            element={
+                                <ProductByBase specificUrl="/drinks/base/vodka" />
+                            }
                         ></Route>
                     </Route>
-                    <Route
-                        path="fruity"
-                        element={<SearchByFruity />}
-                    ></Route>
-                    <Route
-                        path=":itemId"
-                        element={<SearchByHeavy />}
-                    ></Route>
-                    <Route
-                        path=":itemId"
-                        element={<SearchByFizzy />}
-                    ></Route>
-                    <Route
-                        path=":itemId"
-                        element={<SearchByNoAlc />}
-                    ></Route>
+                    <Route path="fruity" element={<SearchByFruity />}></Route>
+                    <Route path=":itemId" element={<SearchByHeavy />}></Route>
+                    <Route path=":itemId" element={<SearchByFizzy />}></Route>
+                    <Route path=":itemId" element={<SearchByNoAlc />}></Route>
                     <Route
                         path="searchbyname"
                         element={<SearchByName />}
@@ -150,7 +155,7 @@ function MainPage() {
             <GlobalStyle />
             <Header />
 
-            {/* <ProductList setItem={setItem} />
+            {/* <Product setItem={setItem} />
             <ProductInfo item={selectedItem} /> */}
 
             <Outlet />

@@ -1,12 +1,11 @@
-import Product from "./Product";
+import Product from "../Product";
 import { Box } from "@mui/system";
-import SpinnerBlue from "./Spinner";
-import useApi from "./utils/useApi";
+import SpinnerBlue from "../Spinner";
+import useApi from "../utils/useApi";
 
-function ProductListVodka(props) {
-    const [isLoading, items] = useApi("/drinks/base/vodka");
+function ProductByBase(props) {
+    const [isLoading, items] = useApi(props.specificUrl);
     return (
-        
         <div>
             {isLoading ? (
                 <Box
@@ -28,14 +27,12 @@ function ProductListVodka(props) {
                                 productInfo={item}
                                 setItem={props.setItem}
                             />
-                            
                         );
                     })}
                 </div>
             )}
-            
         </div>
     );
 }
 
-export { ProductListVodka };
+export { ProductByBase };

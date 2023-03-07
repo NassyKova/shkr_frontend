@@ -20,12 +20,60 @@ const SearchByBase = () => {
                 <Button>Vodka</Button>
             </Link>
 
-            <Button>Bourbon</Button>
-            <Button>Gin</Button>
-            <Button>Tequila</Button>
-            <Button>Brandy</Button>
-            <Button>Scotch</Button>
-            <Button>Triple Sec</Button>
+            <Link
+                to="/drinks/base/bourbon"
+                style={{ textDecoration: "none" }}
+            >
+                {" "}
+                <Button>Bourbon</Button>
+            </Link>
+
+            <Link
+                to="/drinks/base/gin"
+                style={{ textDecoration: "none" }}
+            >
+                {" "}
+                <Button>Gin</Button>
+            </Link>
+
+            <Link
+                to="/drinks/base/tequila"
+                style={{ textDecoration: "none" }}
+            >
+                {" "}
+                <Button>Tequila</Button>
+            </Link>
+
+            <Link
+                to="/drinks/base/brandy"
+                style={{ textDecoration: "none" }}
+            >
+                {" "}
+                <Button>Brandy</Button>
+            </Link>
+
+            <Link
+                to="/drinks/base/scotch"
+                style={{ textDecoration: "none" }}
+            >
+                {" "}
+                <Button>Scotch</Button>
+            </Link>
+
+            <Link
+                to="/drinks/base/triplesec"
+                style={{ textDecoration: "none" }}
+            >
+                {" "}
+                <Button>Triple Sec</Button>
+            </Link>
+
+
+
+           
+            
+            
+            
         </Wrapper>
     );
 };
