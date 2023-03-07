@@ -125,7 +125,7 @@ function App() {
                     ></Route>
                     <Route
                         path="searchbyname"
-                        element={<SearchByName />}
+                        element={<ProductByBase specificUrl="/drinks/name/:drinkName" />}
                     ></Route>
                 </Route>
                 <Route path="/contact" element={<Contact />} />

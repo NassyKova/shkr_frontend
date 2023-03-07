@@ -57,7 +57,7 @@ function Login() {
                 apiError: null,
             })
             axios
-                .post("/login", user)
+                .post("/user/login", user)
                 .then((res) => res.data)
                 .then((json) => {
                     dispatch({
