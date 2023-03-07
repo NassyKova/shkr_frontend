@@ -118,7 +118,7 @@ function App() {
                         }
                     ></Route>
                     <Route
-                        path="searchbyname"
+                        path="name"
                         element={<SearchAppBar />}
                     ></Route>
                 </Route>
