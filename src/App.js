@@ -77,13 +77,7 @@ function App() {
                         ></Route>
                         <Route
                             path="triplesec"
-                            element={<ProductByBase specificUrl="/drinks/base/triplesec" />}
-                        ></Route>
-                        <Route
-                            path="vodka"
-                            element={
-                                <ProductByBase specificUrl="/drinks/base/vodka" />
-                            }
+                            element={<ProductByBase specificUrl="/drinks/base/triple_sec" />}
                         ></Route>
                     </Route>
                     <Route path="fruity" element={<SearchByFruity />}></Route>
