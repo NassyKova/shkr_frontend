@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import TextField from "@mui/material/TextField";
-import List from "./List";
 import axios from "axios";
 import Product from "../Product";
 function SearchBar() {

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
-import Title from "./styled/Title";
+import Title from "../styled/Title";
 
 const InputWrapper = styled.div`
     display: grid;
@@ -44,7 +44,7 @@ function AddProduct() {
                 .then((json) => console.log(json));
         }
     };
-    
+
     const handleOnChange = (event) => {
         // console.log(event.target.name);
         // console.log(event.target.value);

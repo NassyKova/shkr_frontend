@@ -4,36 +4,40 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { Link } from "react-router-dom";
+import SearchBar from "../SearchBy/SearchByName";
 
 const AdminOptions = () => {
+    function deleteCocktail() {
+        return;
+    }
     return (
         <div>
             <Title>What would you like to do?</Title>
+            <SearchBar />
             <Wrapper>
                 <Stack direction="row" spacing={2}>
-                <Link to="/cocktail" style={{ textDecoration: "none" }}><Button
-                        style={{
-                            backgroundColor: "white",
-                            color: "black",
-                            textTransform: "none",
-                        }}
-                        variant="outlined"
-
-                    >
-                        {" "}
-                        Update or delete cockail
-                    </Button>
+                    <Link to="/ingr" style={{ textDecoration: "none" }}>
+                        <Button
+                            style={{
+                                backgroundColor: "white",
+                                color: "black",
+                                textTransform: "none",
+                            }}
+                            variant="outlined"
+                        >
+                            {" "}
+                            Update Ingridients
+                        </Button>
                     </Link>
-                    <Button 
+                    <Button
+                        onClick={deleteCocktail}
                         style={{
-                            backgroundColor: "white",
+                            backgroundColor: "#d585b2",
                             color: "black",
                             textTransform: "none",
                         }}
-                        variant="outlined"
-                        href="#outlined-buttons"
                     >
-                        Update or replace ingridient
+                        Delete cocktail
                     </Button>
                 </Stack>
             </Wrapper>

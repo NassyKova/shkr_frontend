@@ -19,16 +19,15 @@ import SearchAppBar from "./components/SearchBy/SearchByName";
 
 import Box from "@mui/material/Box";
 import ProductInfo from "./components/ProductInfo";
-import AddProduct from "./components/AddProduct";
+import AddProduct from "./components/admin/Update";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
 import globalReducer from "./components/reducers/globalReducer";
-import AdminOptions from "./components/admin/AdminOptions";
-import UpdateOrDelete from "./components/admin/UpdateOrDelete";
 import ReplaceIngridient from "./components/admin/ReplaceIngridient";
+import AdminOptions from "./components/admin/AdminOptions";
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
@@ -44,16 +43,18 @@ function App() {
         createRoutesFromElements(
             <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
                 {/* <Route path="login" element={<Login />}> */}
-                <Route index={true} path="/admin" element={<AdminOptions />}></Route>
-                <Route path="cocktail" element={<UpdateOrDelete />}></Route>
+                <Route
+                    index={true}
+                    path="/admin"
+                    element={<AdminOptions />}
+                ></Route>
                 <Route path="ingr" element={<ReplaceIngridient />}></Route>
                 {/* </Route> */}
 
-                    <Route path="addproduct" element={<AddProduct />}></Route>
-                
+                <Route path="addproduct" element={<AddProduct />}></Route>
 
                 <Route path="/about" element={<About />} />
-                {/* <Route path="/about" element={<AdminOptions />} /> */}
+                {/* <Route path="/about" element={<ReplaceIngridients />} /> */}
                 <Route path="/drinks" element={<NavBar />}>
                     <Route path="base">
                         <Route index={true} element={<SearchByBase />}></Route>
@@ -124,10 +125,7 @@ function App() {
                             <ProductByBase specificUrl="/drinks/non-alc" />
                         }
                     ></Route>
-                    <Route
-                        path="name"
-                        element={<SearchAppBar />}
-                    ></Route>
+                    <Route path="name" element={<SearchAppBar />}></Route>
                 </Route>
                 <Route path="/contact" element={<Contact />} />
             </Route>
