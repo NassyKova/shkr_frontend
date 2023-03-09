@@ -28,6 +28,7 @@ import Contact from "./components/Contact";
 import globalReducer from "./components/reducers/globalReducer";
 import AdminOptions from "./components/admin/AdminOptions";
 import UpdateOrDelete from "./components/admin/UpdateOrDelete";
+import ReplaceIngridient from "./components/admin/ReplaceIngridient";
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
@@ -42,14 +43,17 @@ function App() {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
-                <Route path="login" element={<Login />}>
-                <Route path="upordel" element={<UpdateOrDelete />}></Route>
+                {/* <Route path="login" element={<Login />}> */}
+                <Route index={true} path="/admin" element={<AdminOptions />}></Route>
+                <Route path="cocktail" element={<UpdateOrDelete />}></Route>
+                <Route path="ingr" element={<ReplaceIngridient />}></Route>
+                {/* </Route> */}
 
                     <Route path="addproduct" element={<AddProduct />}></Route>
-                </Route>
+                
 
-                {/* <Route path="/about" element={<About />} /> */}
-                <Route path="/about" element={<AdminOptions />} />
+                <Route path="/about" element={<About />} />
+                {/* <Route path="/about" element={<AdminOptions />} /> */}
                 <Route path="/drinks" element={<NavBar />}>
                     <Route path="base">
                         <Route index={true} element={<SearchByBase />}></Route>

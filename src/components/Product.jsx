@@ -19,7 +19,7 @@ function Product(props) {
                     ></img>
                 </Img>
                 <Title>{item.strDrink}</Title>
-                <Ingridients key={"ingrindient-item-" + item.id}>
+                <Ingridients key={"ingrindient-item-" + item.strDrink}>
                     {item.strIngredient1}
                     {", "}
                     {item.strIngredient2}

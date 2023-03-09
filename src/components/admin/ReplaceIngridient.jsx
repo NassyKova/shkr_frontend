@@ -4,45 +4,39 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { Link } from "react-router-dom";
-import SearchBar from "../SearchBy/SearchByName";
 
-
-const UpdateOrDelete = () => {
-    function deleteCocktail() {
-        return;
-    }
+const ReplaceIngridient= () => {
     return (
         <div>
             <Title>Update or delete cocktail</Title>
-            <SearchBar />
             <Wrapper>
                 <Stack direction="row" spacing={2}>
                     <Link to="/update" style={{ textDecoration: "none" }}>
                         <Button
                             style={{
-                                backgroundColor: "#37a01b",
+                                backgroundColor: "green",
                                 color: "black",
                                 textTransform: "none",
                             }}
                             variant="outlined"
                         >
-                            Update
+                            {" "}
+                            Search
                         </Button>
                     </Link>
-                    <Button
-                        onClick={deleteCocktail}
-                        style={{
-                            backgroundColor: "#d585b2",
-                            color: "black",
-                            textTransform: "none",
-                        }}
-                    >
-                        Delete
-                    </Button>
                 </Stack>
+                <Link to="/delete" style={{ textDecoration: "none" }}>
+                    <Button style={{ backgroundColor: "green" }}>Update</Button>
+                </Link>
+                <Button
+                    onCLick="deleteCocktail"
+                    style={{ backgroundColor: "#d585b2" }}
+                >
+                    Delete
+                </Button>
             </Wrapper>
         </div>
     );
 };
 
-export default UpdateOrDelete;
+export default ReplaceIngridient;

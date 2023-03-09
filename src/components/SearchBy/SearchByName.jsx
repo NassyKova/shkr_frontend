@@ -33,7 +33,6 @@ function SearchBar() {
         <div
             style={{
                 display: "flex",
-                height: "100vh",
                 width: "100%",
                 alignItems: "center",
                 flexDirection: "column",
@@ -58,9 +57,10 @@ function SearchBar() {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        backgroundColor: "green",
+                        backgroundColor: "#37a01b",
                         borderRadius: "15px",
-                        margin: "10px",
+                        height: "50px",
+                        margin: "20px",
                     }}
                     onClick={onClickSearchByName}
                 >
