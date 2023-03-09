@@ -23,7 +23,7 @@ function ProductByBase(props) {
                     {items.map((item) => {
                         return (
                             <Product
-                                key={"product-base-" + item.title}
+                                key={"product-base-" + item.strDrink}
                                 productInfo={item}
                                 setItem={props.setItem}
                             />

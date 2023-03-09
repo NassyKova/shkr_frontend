@@ -3,7 +3,6 @@ import TextField from "@mui/material/TextField";
 import List from "./List";
 import axios from "axios";
 import Product from "../Product";
-
 function SearchBar() {
     const [drinkName, setDrinkName] = useState("");
     let inputHandler = (e) => {
@@ -68,15 +67,7 @@ function SearchBar() {
                     Search
                 </button>
             </div>
-            {data.map((item) => {
-                        return (
-                            <Product
-                                key={"product-base-" + item.title}
-                                productInfo={item}
-                                // setItem={props.setItem}
-                            />
-                        );
-                    })}
+            {/* <List input={drinkName} /> */}
         </div>
     );
 }
