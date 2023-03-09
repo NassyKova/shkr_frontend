@@ -33,7 +33,7 @@ const WrapperReplacedIngridients = styled.div`
     margin: 10px;
 `;
 
-const ReplaceIngridient = () => {
+const RebrandSpirit = () => {
     const [product, setProduct] = useState({
         title: "",
         ingridientOne: "",
@@ -59,24 +59,28 @@ const ReplaceIngridient = () => {
     };
     return (
         <div>
-            <Title>Replace Ingridients</Title>
+            <Title>Rebrand Spirits</Title>
 
             <WrapperGeneral>
                 <WrapperOriginalIngridients>
-                    <Title style={{color: "#00a18e"}}>Original Ingridients</Title>
+                    <Title style={{ color: "#00a18e" }}>
+                        Original names
+                    </Title>
                     <InputWrapper>
                         <label htmlFor="ingridient">Ingridient One: </label>
-                        <input style={{color:"black"}}
-
+                        <input
+                            style={{ color: "black" }}
                             type="text"
                             name="ingridientOne"
                             value={product.ingridientOne}
                             onChange={handleOnChange}
+                            placeholder="take it from the backend?? we have only 6 for replacement"
                         />
                     </InputWrapper>
                     <InputWrapper>
                         <label htmlFor="ingridient">Ingridient Two: </label>
-                        <input style={{color:"black"}}
+                        <input
+                            style={{ color: "black" }}
                             type="text"
                             name="ingridientTwo"
                             value={product.ingridientTwo}
@@ -85,7 +89,8 @@ const ReplaceIngridient = () => {
                     </InputWrapper>
                     <InputWrapper>
                         <label htmlFor="ingridient">Ingridient Three: </label>
-                        <input style={{color:"black"}}
+                        <input
+                            style={{ color: "black" }}
                             type="text"
                             name="Ingridient Three"
                             value={product.ingridientThree}
@@ -94,7 +99,8 @@ const ReplaceIngridient = () => {
                     </InputWrapper>
                     <InputWrapper>
                         <label htmlFor="ingridient">Ingridient Four: </label>
-                        <input style={{color:"black"}}
+                        <input
+                            style={{ color: "black" }}
                             type="text"
                             name="Ingridient Four"
                             value={product.ingridientFour}
@@ -103,7 +109,8 @@ const ReplaceIngridient = () => {
                     </InputWrapper>
                     <InputWrapper>
                         <label htmlFor="ingridient">Ingridient Five: </label>
-                        <input style={{color:"black"}}
+                        <input
+                            style={{ color: "black" }}
                             type="text"
                             name="Ingridient Five"
                             value={product.ingridientFive}
@@ -112,7 +119,8 @@ const ReplaceIngridient = () => {
                     </InputWrapper>
                     <InputWrapper>
                         <label htmlFor="ingridient">Ingridient Six: </label>
-                        <input style={{color:"black"}}
+                        <input
+                            style={{ color: "black" }}
                             type="text"
                             name="Ingridient Six"
                             value={product.ingridientSix}
@@ -122,10 +130,11 @@ const ReplaceIngridient = () => {
                 </WrapperOriginalIngridients>
 
                 <WrapperReplacedIngridients>
-                    <Title style={{color: "#d585b2"}}>Replace with</Title>
+                    <Title style={{ color: "#d585b2" }}>Replace with</Title>
                     <InputWrapper>
                         <label htmlFor="ingridient">Ingridient One: </label>
-                        <input style={{color:"black"}}
+                        <input
+                            style={{ color: "black" }}
                             type="text"
                             name="ingridientOne"
                             value={product.ingridientOne}
@@ -134,7 +143,8 @@ const ReplaceIngridient = () => {
                     </InputWrapper>
                     <InputWrapper>
                         <label htmlFor="ingridient">Ingridient Two: </label>
-                        <input style={{color:"black"}}
+                        <input
+                            style={{ color: "black" }}
                             type="text"
                             name="ingridientTwo"
                             value={product.ingridientTwo}
@@ -143,7 +153,8 @@ const ReplaceIngridient = () => {
                     </InputWrapper>
                     <InputWrapper>
                         <label htmlFor="ingridient">Ingridient Three: </label>
-                        <input style={{color:"black"}}
+                        <input
+                            style={{ color: "black" }}
                             type="text"
                             name="Ingridient Three"
                             value={product.ingridientThree}
@@ -152,7 +163,8 @@ const ReplaceIngridient = () => {
                     </InputWrapper>
                     <InputWrapper>
                         <label htmlFor="ingridient">Ingridient Four: </label>
-                        <input style={{color:"black"}}
+                        <input
+                            style={{ color: "black" }}
                             type="text"
                             name="Ingridient Four"
                             value={product.ingridientFour}
@@ -161,7 +173,8 @@ const ReplaceIngridient = () => {
                     </InputWrapper>
                     <InputWrapper>
                         <label htmlFor="ingridient">Ingridient Five: </label>
-                        <input style={{color:"black"}}
+                        <input
+                            style={{ color: "black" }}
                             type="text"
                             name="Ingridient Five"
                             value={product.ingridientFive}
@@ -170,7 +183,8 @@ const ReplaceIngridient = () => {
                     </InputWrapper>
                     <InputWrapper>
                         <label htmlFor="ingridient">Ingridient Six: </label>
-                        <input style={{color:"black"}}
+                        <input
+                            style={{ color: "black" }}
                             type="text"
                             name="Ingridient Six"
                             value={product.ingridientSix}
@@ -211,4 +225,4 @@ const ReplaceIngridient = () => {
     );
 };
 
-export default ReplaceIngridient;
+export default RebrandSpirit;

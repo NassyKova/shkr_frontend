@@ -26,10 +26,10 @@ const AdminOptions = () => {
                             variant="outlined"
                         >
                             {" "}
-                            Update Ingridients
+                            Rebrand Spirit
                         </Button>
                     </Link>
-                    <Button
+                    <Link to="/deleted" style={{ textDecoration: "none" }}><Button
                         onClick={deleteCocktail}
                         style={{
                             backgroundColor: "#d585b2",
@@ -39,6 +39,7 @@ const AdminOptions = () => {
                     >
                         Delete cocktail
                     </Button>
+                    </Link>
                 </Stack>
             </Wrapper>
         </div>
