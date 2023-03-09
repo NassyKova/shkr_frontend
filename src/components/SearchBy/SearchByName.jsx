@@ -71,7 +71,7 @@ function SearchBar() {
                     {data.map((item) => {
                         return (
                             <Product
-                                key={"product-base-" + item.id}
+                                key={"product-base-" + item.strDrink}
                                 productInfo={item}
                                 // setItem={props.setItem}
                             />
