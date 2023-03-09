@@ -1,81 +1,75 @@
-import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
+import { React, useState } from "react";
+import TextField from "@mui/material/TextField";
+import List from "./List";
+import axios from "axios";
 
-const Search = styled("div")(({ theme }) => ({
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    "&:hover": {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-        marginLeft: theme.spacing(1),
-        width: "auto",
-    },
-}));
+function SearchBar() {
+    const [drinkName, setDrinkName] = useState("");
+    let inputHandler = (e) => {
+        //convert input text to lower case
+        var lowerCase = e.target.value.toLowerCase();
+        setDrinkName(lowerCase);
+    };
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-}));
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: "inherit",
-    "& .MuiInputBase-input": {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create("width"),
-        width: "100%",
-        [theme.breakpoints.up("sm")]: {
-            width: "12ch",
-            "&:focus": {
-                width: "20ch",
-            },
-        },
-    },
-}));
+    function onClickSearchByName() {
+        axios
+            .get(`/drinks/name/${drinkName}`)
+            .then((res) => res.data)
+            .then((json) => {
+                const newItems = json.drinks.map((product) => {
+                    return product;
+                });
+                console.log(newItems);
 
-export default function SearchAppBar() {
+                setData(newItems.slice(0, 5));
+                setIsLoading(false);
+            });
+    }
+
     return (
-        <Box sx={{ flexGrow: 1 }} style={{
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "center",
-            margin: "20px",
-            
-            }}>
-
-                    <IconButton 
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2 }}
-                    >
-                    </IconButton>
-                    <Search style={{color: "#00a18e"}}>
-                        <SearchIconWrapper >
-                            <SearchIcon  />
-                        </SearchIconWrapper>
-                        <StyledInputBase  
-                            placeholder="Search…"
-                            inputProps={{ "aria-label": "search" }}
-                        />
-                    </Search>
-
-        </Box>
+        <div
+            style={{
+                display: "flex",
+                height: "100vh",
+                width: "100%",
+                alignItems: "center",
+                flexDirection: "column",
+                rowGap: "20px",
+            }}
+        >
+            <div style={{ width: "30%" }}>
+                <TextField
+                    style={{
+                        backgroundColor: "white",
+                        color: "#00a18e",
+                        borderRadius: "15px",
+                    }}
+                    id="outlined-basic"
+                    onChange={inputHandler}
+                    variant="outlined"
+                    fullWidth
+                    label="Search"
+                />
+                <button
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor: "green",
+                        borderRadius: "15px",
+                        margin: "10px",
+                    }}
+                    onClick={onClickSearchByName()}
+                >
+                    Search
+                </button>
+            </div>
+            {/* <List input={drinkName} /> */}
+        </div>
     );
 }
+
+export default SearchBar;
