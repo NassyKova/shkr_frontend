@@ -4,13 +4,16 @@ import { Wrapper, Content, Slogan, LogoImg } from "../Header/Header.Styles";
 import TopMenu from "./TopMenu";
 
 import ShkrLogo from "../../images/Shkr_logo.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     return (
         <Wrapper>
             <Content>
-                <LogoImg src={ShkrLogo} alt="logo" />
-
+                <Link to="/drinks" style={{ textDecoration: "none" }}>
+                    {" "}
+                    <LogoImg src={ShkrLogo} alt="logo" />
+                </Link>
                 <TopMenu />
             </Content>
             <Slogan>The cocktail drinks for you!</Slogan>

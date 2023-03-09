@@ -59,7 +59,9 @@ function SearchBar() {
                         backgroundColor: "#37a01b",
                         borderRadius: "15px",
                         height: "50px",
+                        width: "100px",
                         margin: "20px",
+                        cursor: "pointer"
                     }}
                     onClick={onClickSearchByName}
                 >
