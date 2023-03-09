@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import TextField from "@mui/material/TextField";
 import List from "./List";
 import axios from "axios";
+import Product from "../Product";
 
 function SearchBar() {
     const [drinkName, setDrinkName] = useState("");
@@ -62,12 +63,20 @@ function SearchBar() {
                         borderRadius: "15px",
                         margin: "10px",
                     }}
-                    onClick={onClickSearchByName()}
+                    onClick={onClickSearchByName}
                 >
                     Search
                 </button>
             </div>
-            {/* <List input={drinkName} /> */}
+            {data.map((item) => {
+                        return (
+                            <Product
+                                key={"product-base-" + item.title}
+                                productInfo={item}
+                                // setItem={props.setItem}
+                            />
+                        );
+                    })}
         </div>
     );
 }

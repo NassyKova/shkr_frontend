@@ -27,6 +27,7 @@ import Contact from "./components/Contact";
 
 import globalReducer from "./components/reducers/globalReducer";
 import AdminOptions from "./components/admin/AdminOptions";
+import UpdateOrDelete from "./components/admin/UpdateOrDelete";
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
@@ -42,6 +43,8 @@ function App() {
         createRoutesFromElements(
             <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
                 <Route path="login" element={<Login />}>
+                <Route path="upordel" element={<UpdateOrDelete />}></Route>
+
                     <Route path="addproduct" element={<AddProduct />}></Route>
                 </Route>
 

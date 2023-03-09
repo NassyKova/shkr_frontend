@@ -3,6 +3,8 @@ import { Wrapper } from "./AdminOptions.styles";
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import { Link } from "react-router-dom";
+
 
 const UpdateOrDelete = () => {
     return (
@@ -10,18 +12,19 @@ const UpdateOrDelete = () => {
             <Title>Update or delete cocktail</Title>
             <Wrapper>
                 <Stack direction="row" spacing={2}>
-                    <Button
+                    <Link><Button
                         style={{
                             backgroundColor: "green",
                             color: "black",
                             textTransform: "none",
                         }}
                         variant="outlined"
-                        href="#outlined-buttons"
+ 
                     >
                         {" "}
                         Search
                     </Button>
+                    </Link>
 
                 </Stack>
                 <Button style={{ backgroundColor: "green" }}>Update</Button>
