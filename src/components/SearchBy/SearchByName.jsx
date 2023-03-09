@@ -67,7 +67,17 @@ function SearchBar() {
                     Search
                 </button>
             </div>
-            {/* <List input={drinkName} /> */}
+            <div>
+                    {data.map((item) => {
+                        return (
+                            <Product
+                                key={"product-base-" + item.strDrink}
+                                productInfo={item}
+                                // setItem={props.setItem}
+                            />
+                        );
+                    })}
+                </div>
         </div>
     );
 }
