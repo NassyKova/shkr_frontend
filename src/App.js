@@ -25,6 +25,7 @@ import NotFound from "./components/NotFound";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
+import SearchBar from "./SearchBar"
 import globalReducer from "./components/reducers/globalReducer";
 import AdminOptions from "./components/admin/AdminOptions";
 
@@ -181,6 +182,7 @@ function MainPage() {
         <>
             <GlobalStyle />
             <Header />
+            <SearchBar />
 
             {/* <Product setItem={setItem} />
             <ProductInfo item={selectedItem} /> */}
