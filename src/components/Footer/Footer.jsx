@@ -45,7 +45,7 @@ const Footer = () => {
                             Logout
                         </button>
                     ) : (
-                        <Link to="/login" relative="login" element={<Login/>} color="#43d9f0">
+                        <Link to="/admin" relative="login"  color="#43d9f0">
                         admin login
                     </Link>
                     )}
