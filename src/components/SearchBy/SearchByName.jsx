@@ -36,6 +36,7 @@ function SearchBar() {
                 alignItems: "center",
                 flexDirection: "column",
                 rowGap: "20px",
+                borderRadius: "10px",
             }}
         >
             <div style={{ width: "30%" }}>
