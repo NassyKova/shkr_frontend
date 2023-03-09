@@ -1,4 +1,5 @@
 ## 3 T3A2-B Full Stack App
+# Shkr! app <img align="right" src="./docs/Shkr!_logo.png" alt="App logo" height="50" ><br/><br/>
 
 A MERN Application built by Patrick Hamer and Anastasia Dyakova(aka Nassy Kova)
 <br>
@@ -7,21 +8,28 @@ A MERN Application built by Patrick Hamer and Anastasia Dyakova(aka Nassy Kova)
 <img src="./docs/icons8-github-30.png" height="20"> [Nassy Kova](https://github.com/NassyKova/)
 
 
-App description
+## App description
 
+### Purpose
+
+### Functionality / Features
+
+### Target audience
+
+?????
 #
 
 ## Links
 
-🌏 Deployed Application: [https://link](https://link)
+Deployed Application: [https://link](https://link)
 
-⚙️ Staging Environment: [https://link](https://link)
+Staging Environment: [https://link](https://link)
 
-💾 Server Repo: [https://github.com/Patrick655321/Shakr--Backend](https://github.com/Patrick655321/Shakr--Backend)
+Server Repo: [https://github.com/Patrick655321/Shakr--Backend](https://github.com/Patrick655321/Shakr--Backend)
 
-💻 Client Repo: [https://github.com/NassyKova/shkr_frontend](https://github.com/NassyKova/shkr_frontend)
+Client Repo: [https://github.com/NassyKova/shkr_frontend](https://github.com/NassyKova/shkr_frontend)
 
-📄 Part A Documentation: [https://github.com/NassyKova/Cocktail]https://github.com/NassyKova/Cocktail)
+Part A Documentation: [https://github.com/NassyKova/Cocktail](https://github.com/NassyKova/Cocktail)
 
 
 ### System requirements
@@ -58,7 +66,9 @@ The API can now be accessed using Postman and `localhost:3000/`
 
 ## API Endpoints
 
-API Endpoint documentation can be found [here](docs/apiendpoints.md)!!!!!
+API Endpoint documentation can be found [here](docs/apiendpoints.md)???????????
+
+
 
 ## Server Libraries and Dependencies
 
@@ -92,15 +102,14 @@ API Endpoint documentation can be found [here](docs/apiendpoints.md)!!!!!
 
 `react-router-dom: ^6.8.1` - React-router is the core package containing standard components and functionalities to implement routing in React applications.
 
-`react-bootstrap: "^2.7.2`
+`react-bootstrap: "^2.7.2`- React-Bootstrap replaces the Bootstrap JavaScript. Each component has been built from scratch as a true React component, without unneeded dependencies like jQuery
 
-`axios: "^1.3.4`
+`axios: "^1.3.4` - Axios is used to communicate with the backend and it also supports the Promise API that is native to JS ES6.
 
-`react-bootstrap: "^2.7.2"`
 
-`react-scripts: "5.0.1"`
+`react-scripts: "5.0.1"` - React-scripts are simply scripts to run the build tools required to transform React JSX syntax into plain JavaScript programmatically.
 
-`styled-components: "^5.3.6"`
+`styled-components: "^5.3.6"` - Using tagged template literals and arrow functions in ES6+ and CSS, styled-components is a React-specific CSS-in-JS styling solution that creates a platform for developers to write actual CSS code to style React components, as well as in React Native.
 
 
 Component libraries:
@@ -117,10 +126,6 @@ Component libraries:
 
 `@testing-library/react: ^13.4.0`
 
-`@testing-library/react-hooks: ^8.0.1`
-
-`@testing-library/user-event: ^14.4.3`
-
 `@types/react: ^18.0.26`
 
 `@types/react-dom: ^18.0.9`
@@ -131,6 +136,17 @@ Component libraries:
 
 `vitest: ^0.28.3`
 
+## Frontend testing 
+?????????????????
+
+## Backend testing 
+?????????????????
+
+## Application Screenshots
+???????????
+
+## Trello
+?????
 
 CMP1043-1.1 Demonstrate separation of concerns in the App.
 
