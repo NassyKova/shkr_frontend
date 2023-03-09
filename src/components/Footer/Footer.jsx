@@ -46,7 +46,7 @@ const Footer = () => {
                         </button>
                     ) : (
                         <Link to="/admin" relative="login"  color="#43d9f0">
-                        admin login
+                        admin
                     </Link>
                     )}
                     
