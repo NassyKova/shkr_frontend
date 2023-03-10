@@ -1,38 +1,22 @@
-/* * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  background-color: rgb(40, 39, 39)
+.main {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  row-gap: 20px;
 }
 
-  width: 300px;
-  height: 300px;
-  border: 1px solid black;
+h1 {
+  margin: 10px;
+  font-size: 40px;
+  color: rgb(1, 1, 59);
+}
 
-.App{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100vh;
-  }
+.search {
+  width: 30%;
+}
 
-  .cocktail-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100vh;
-    color: rgb(34, 141, 143)
-  }
-
-  button {
-    background-color: rgb(56, 131, 43);
-    color: white;
-    font-size: 22px;
-    outline: none;
-    border: none;
-    margin: 20px 0;
-    padding: 10px;
-    border-radius: 20px;
-  } */
+ul li {
+  font-size: 20px;
+} 

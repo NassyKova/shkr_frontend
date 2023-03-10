@@ -1,81 +1,87 @@
-import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
+import { React, useState } from "react";
+import TextField from "@mui/material/TextField";
+import axios from "axios";
+import Product from "../Product";
+function SearchBar() {
+    const [drinkName, setDrinkName] = useState("");
+    let inputHandler = (e) => {
+        //convert input text to lower case
+        var lowerCase = e.target.value.toLowerCase();
+        setDrinkName(lowerCase);
+    };
 
-const Search = styled("div")(({ theme }) => ({
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    "&:hover": {
-        backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-        marginLeft: theme.spacing(1),
-        width: "auto",
-    },
-}));
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-}));
+    function onClickSearchByName() {
+        axios
+            .get(`/drinks/name/${drinkName}`)
+            .then((res) => res.data)
+            .then((json) => {
+                const newItems = json.drinks.map((product) => {
+                    return product;
+                });
+                console.log(newItems);
 
-const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: "inherit",
-    "& .MuiInputBase-input": {
-        padding: theme.spacing(1, 1, 1, 0),
-        // vertical padding + font size from searchIcon
-        paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-        transition: theme.transitions.create("width"),
-        width: "100%",
-        [theme.breakpoints.up("sm")]: {
-            width: "12ch",
-            "&:focus": {
-                width: "20ch",
-            },
-        },
-    },
-}));
+                setData(newItems.slice(0, 5));
+                setIsLoading(false);
+            });
+    }
 
-export default function SearchAppBar() {
     return (
-        <Box sx={{ flexGrow: 1 }} style={{
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            justifyContent: "center",
-            margin: "20px",
-            
-            }}>
-
-                    <IconButton 
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2 }}
-                    >
-                    </IconButton>
-                    <Search style={{color: "#00a18e"}}>
-                        <SearchIconWrapper >
-                            <SearchIcon  />
-                        </SearchIconWrapper>
-                        <StyledInputBase  
-                            placeholder="Search…"
-                            inputProps={{ "aria-label": "search" }}
-                        />
-                    </Search>
-
-        </Box>
+        <div
+            style={{
+                display: "flex",
+                width: "100%",
+                alignItems: "center",
+                flexDirection: "column",
+                rowGap: "20px",
+                borderRadius: "10px",
+            }}
+        >
+            <div style={{ width: "30%" }}>
+                <TextField
+                    style={{
+                        backgroundColor: "white",
+                        color: "#00a18e",
+                        borderRadius: "15px",
+                    }}
+                    id="outlined-basic"
+                    onChange={inputHandler}
+                    variant="outlined"
+                    fullWidth
+                    label="Search"
+                />
+                <button
+                    style={{
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor: "#37a01b",
+                        borderRadius: "15px",
+                        height: "50px",
+                        width: "100px",
+                        margin: "20px",
+                        cursor: "pointer"
+                    }}
+                    onClick={onClickSearchByName}
+                >
+                    Search
+                </button>
+            </div>
+            <div>
+                    {data.map((item) => {
+                        return (
+                            <Product
+                                key={"product-base-" + item.strDrink}
+                                productInfo={item}
+                                // setItem={props.setItem}
+                            />
+                        );
+                    })}
+                </div>
+        </div>
     );
 }
+
+export default SearchBar;
