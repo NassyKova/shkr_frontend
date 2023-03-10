@@ -66,7 +66,7 @@ The API can now be accessed using Postman and `localhost:3000/`
 
 ## API Endpoints
 
-drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);
+- drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);
 
     Request Verb: GET
     Function: Retrieves 5 random cocktails by name entered by user (eg Margarita will return all drinks with that string in their name)
@@ -84,6 +84,7 @@ drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);
       "strIngredient2": "New tequila brand",
       "strIngredient3": "Cream of coconut",
       "strIngredient4": "Lime juice",
+```
       
 - drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);
 
@@ -154,12 +155,12 @@ drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);
     },
   ```
 - drinkRouter.get("/drinks/fruity", getDrinkByFruity);
-     
-     Request Verb: GET
-      Function: Retrieves all the cocktails with fruity ingridients
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
+
+        Request Verb: GET
+        Function: Retrieves all the cocktails with fruity ingridients
+        Authentication: N/A
+        Authorization: N/A
+        Example Response:
   ```JavaScript
       {
       "strDrink": "Planter’s Punch",
@@ -197,41 +198,41 @@ drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);
       "strMeasure1": "1 shot ",
       "strMeasure2": "2 shots ",
       "strMeasure3": "Top up with"
-    },
- ```
+      },
+ 
 
-drinkRouter.get("/drinks/base/:drinkBase", getDrinkByBase);
-    Request Verb: GET
-    Function: Retrieves 5 random cocktails by selected base ingredient (buttons on client side)
-    Authentication: N/A
-    Authorization: N/A
-    Example Response:
-    ```Javascript
-    {
-    "drinks": [
-        {
-            "strDrink": "Barracuda",
-            "strInstructions": "Shake pour ingredients with ice. Strain into glass, top with Sparkling wine.",
-            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/jwmr1x1504372337.jpg",
-            "strIngredient1": "Mount Gay Eclipse",
-            "strIngredient2": "Galliano",
-            "strIngredient3": "Pineapple Juice",
-            "strIngredient4": "Lime Juice",
-            "strIngredient5": "Prosecco",
-            "strMeasure1": "4.5 cl",
-            "strMeasure2": "1.5 cl",
-            "strMeasure3": "6 cl",
-            "strMeasure4": " 1 dash",
-            "strMeasure5": "top up "
-        },```
+- drinkRouter.get("/drinks/base/:drinkBase", getDrinkByBase);
 
+      Request Verb: GET
+      Function: Retrieves 5 random cocktails by selected base ingredient (buttons on client side)
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
+```JavaScript
+      {
+      "strDrink": "Barracuda",
+      "strInstructions": "Shake pour ingredients with ice. Strain into glass, top with Sparkling wine.",
+      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/jwmr1x1504372337.jpg",
+      "strIngredient1": "Mount Gay Eclipse",
+      "strIngredient2": "Galliano",
+      "strIngredient3": "Pineapple Juice",
+      "strIngredient4": "Lime Juice",
+      "strIngredient5": "Prosecco",
+      "strMeasure1": "4.5 cl",
+      "strMeasure2": "1.5 cl",
+      "strMeasure3": "6 cl",
+      "strMeasure4": " 1 dash",
+      "strMeasure5": "top up "
+      },
+```
 
-drinkRouter.get("/drinks/non-alc", getDrinkByNonAlc);
-Request Verb: GET
-    Function: Retrieves 5 random cocktails from the non-alcoholic list in the external API
-    Authentication: N/A
-    Authorization: N/A
-    Example Response:
+- drinkRouter.get("/drinks/non-alc", getDrinkByNonAlc);
+      
+      Request Verb: GET
+      Function: Retrieves 5 random cocktails from the non-alcoholic list in the external API
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
 
 ```Javascript
 {
@@ -249,12 +250,13 @@ Request Verb: GET
         },
 ```
 
-drinkRouter.get("/drinks/fruity", getDrinkByFruity);
-Request Verb: GET
-    Function: Retrieves 5 random cocktails that contain an ingredient that is included in the fruityList in utils/arrayInfo
-    Authentication: N/A
-    Authorization: N/A
-    Example Response:
+- drinkRouter.get("/drinks/fruity", getDrinkByFruity);
+
+      Request Verb: GET
+      Function: Retrieves 5 random cocktails that contain an ingredient that is included in the fruityList in utils/arrayInfo
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
 ```Javascript
 {
     "drinks": [
@@ -274,12 +276,13 @@ Request Verb: GET
 ```
 
 
-drinkRouter.get("/drinks/fizzy", getDrinkByFizzy);
-Request Verb: GET
-    Function: Retrieves 5 random cocktails that contain an ingredient that is included in the fizzyList in utils/arrayInfo
-    Authentication: N/A
-    Authorization: N/A
-    Example Response:
+- drinkRouter.get("/drinks/fizzy", getDrinkByFizzy);
+
+      Request Verb: GET
+      Function: Retrieves 5 random cocktails that contain an ingredient that is included in the fizzyList in utils/arrayInfo
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
 ```Javascript
 {
     "drinks": [
@@ -296,12 +299,13 @@ Request Verb: GET
         },
 ```
 
-drinkRouter.get("/drinks/heavy", getDrinkByHeavy);
-Request Verb: GET
-    Function: Retrieves 5 random cocktails that contain an at least one alcoholic ingredient and no more than 3 ingredients.
-    Authentication: N/A
-    Authorization: N/A
-    Example Response:
+- drinkRouter.get("/drinks/heavy", getDrinkByHeavy);
+
+      Request Verb: GET
+      Function: Retrieves 5 random cocktails that contain an at least one alcoholic ingredient and no more than 3 ingredients.
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
 ```Javascript
 {
     "drinks": [
@@ -318,12 +322,14 @@ Request Verb: GET
         },
 ```
 
-returnModRouter.put("/products/brand/:id", rebrandSpirit)
-Request Verb: PUT
-    Function: Assigns new value (req.body.newBrand) to appropriate key (req.body.spiritName)
-    Authentication: N/A
-    Authorization: N/A
-    Example Response:
+- returnModRouter.put("/products/brand/:id", rebrandSpirit)
+
+      Request Verb: PUT
+      Function: Assigns new value (req.body.newBrand) to appropriate key (req.body.spiritName)
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
+
     ```Javascript
     {
     "_id": "6408199ef6eeb96704d4269b",
@@ -337,9 +343,7 @@ Request Verb: PUT
         "Martini",
         "margarita",
         "Dirty Martini"
-    ]
-}
-```
+    ]},
 
 - drinkRouter.get("/drinks/heavy", getDrinkByHeavy);
 
@@ -348,6 +352,7 @@ Request Verb: PUT
       Authentication: N/A
       Authorization: N/A
       Example Response:
+  
   ```JavaScript
       {
       "strDrink": "Addison",
@@ -358,23 +363,27 @@ Request Verb: PUT
       "strMeasure1": "1 1/2 shot ",
       "strMeasure2": "1 1/2 shot "
     },
+
+
+- returnModRouter.put("/products/brand/:id", rebrandSpirit)
+          Request Verb: GET
+          Function: Retrieves all the cocktails by name
+          Authentication: N/A
+          Authorization: N/A
+          Example Response:
+
+  ```JavaScript
   ```
 
-returnModRouter.put("/products/brand/:id", rebrandSpirit)
-      Request Verb: GET
-      Function: Retrieves all the cocktails by name
+- returnModRouter.post("/products/forbidden/add", addToForbidden)
+
+      Request Verb: POST
+      Function: Adds item (req.body.drink) to forbidden list
       Authentication: N/A
       Authorization: N/A
       Example Response:
-  ```JavaScript
 
-returnModRouter.post("/products/forbidden/add", addToForbidden)
-Request Verb: POST
-    Function: Adds item (req.body.drink) to forbidden list
-    Authentication: N/A
-    Authorization: N/A
-    Example Response:
-        ```Javascript
+    ```Javascript
     {
     "_id": "6408199ef6eeb96704d4269b",
     "vodka": "Grey Goose",
@@ -388,16 +397,16 @@ Request Verb: POST
         "margarita",
         "Dirty Martini"
         "${req.body.drink}"
-    ]
-}
-```
+    ]}
 
-returnModRouter.patch("/products/forbidden/remove", removeForbiddenItem)
-Request Verb: PATCH
-    Function: removes item (req.body.drink) from forbidden list
-    Authentication: N/A
-    Authorization: N/A
-    Example Response:
+
+- returnModRouter.patch("/products/forbidden/remove", removeForbiddenItem)
+
+      Request Verb: PATCH
+      Function: removes item (req.body.drink) from forbidden list
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
     ```Javascript
     {
     "_id": "6408199ef6eeb96704d4269b",
