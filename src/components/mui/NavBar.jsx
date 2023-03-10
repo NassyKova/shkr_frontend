@@ -4,8 +4,8 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import { useGlobalContext } from "../utils/globalStateContext";
+import { Link, Outlet } from "react-router-dom";
+// import { useGlobalContext } from "../utils/globalStateContext";
 
 function NavBar() {
     const navBarItems = [
@@ -31,9 +31,9 @@ function NavBar() {
         },
     ];
 
-    const { store, dispatch } = useGlobalContext();
+    // const { store, dispatch } = useGlobalContext();
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     return (
         <AppBar position="static" style={{ background: "#252c27" }}>
@@ -63,7 +63,7 @@ function NavBar() {
                             }}
                         >
                             <div
-                                className="hover-item"
+                                className="hover-menu"
                                 style={{ color: "black" }}
                             >
                                 Base
@@ -91,7 +91,7 @@ function NavBar() {
                                         }}
                                     >
                                         <div
-                                            className="hover-item"
+                                            className="hover-menu"
                                             style={{ color: "black" }}
                                         >
                                             {item.title}
@@ -118,7 +118,7 @@ function NavBar() {
                             }}
                         >
                             <div
-                                className="hover-item"
+                                className="hover-menu"
                                 style={{ color: "black" }}
                             >
                                 Search By Name

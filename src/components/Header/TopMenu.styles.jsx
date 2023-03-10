@@ -5,6 +5,11 @@ export const Wrapper = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    font-size: var(--fontMed);
+        @media screen and (max-width: 500px) {
+            font-size: var(--fontSmall);
+
+    }
 `;
 
 export const Button = styled.div`

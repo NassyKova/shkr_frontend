@@ -1,7 +1,7 @@
-import Product from "../Product";
+import Product from "./Product";
 import { Box } from "@mui/system";
-import SpinnerBlue from "../Spinner";
-import useApi from "../utils/useApi";
+import SpinnerBlue from "./Spinner";
+import useApi from "./utils/useApi";
 
 function ProductByBase(props) {
     const [isLoading, items] = useApi(props.specificUrl);
