@@ -114,7 +114,9 @@ returnModRouter.patch("/products/forbidden/remove", removeForbiddenItem)
 
 `cors ^2.8.5"` - CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 
-????
+`axios ^1.3.4` - Axios is promise-based HTTP client for javascript. It is a simpler way to modify request/response before they have started as well as being able to transform the data (eg. automatically stringifies data when sending objects to API).
+
+`moment ^2.29.4` - Moment is a library that simplifies the handling, manipulation and presentation of date/time in a human-readable form.
 
 ### Server Development Dependencies
 
