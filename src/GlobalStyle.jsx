@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
   --white: #fff;
   --black: black;
 
-  --fontSuperBig: 3rem;
+  --fontSuperBig: 4rem;
   --fontBig: 2.5rem;
   --fontMed: 1.2rem;
   --fontSmall: 1rem;
@@ -30,7 +30,11 @@ export const GlobalStyle = createGlobalStyle`
 } */
 
 .hover-item:hover {
-    background-color: var(--pink);
+    color: var(--pink);
+}
+
+.hover-menu:hover {
+  box-shadow: 0px 0px 20px 1px #00a18e
 }
 
 

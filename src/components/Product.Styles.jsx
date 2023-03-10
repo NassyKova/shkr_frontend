@@ -22,6 +22,12 @@ export const Wrapper = styled.div`
     :hover {
         box-shadow: 0px 0px 20px 1px rgba(4, 4, 4, 1);
     }
+
+    
+    @media screen and (max-width: 768px) {
+        width: 70%;;
+
+    }
 `;
 
 export const Img = styled.div`
@@ -33,6 +39,11 @@ export const Img = styled.div`
     width: 300px;
     border: 1px solid black;
     color: var(--blueGreen);
+
+    @media screen and (max-width: 768px) {
+      /* width: 50px; */
+
+    }
 `;
 
 export const Title = styled.div`

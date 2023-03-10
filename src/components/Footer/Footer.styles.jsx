@@ -12,6 +12,7 @@ export const Admin = styled.div`
     text-align: end;
 
     font-family: "Libre Baskerville", serif;
+    margin-bottom: 20px;
     a:link {
         color: var(--blueGreen);
         font-family: "Libre Baskerville", serif;

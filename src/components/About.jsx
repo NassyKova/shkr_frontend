@@ -1,7 +1,12 @@
-
-const About  = () => {
+const About = () => {
     return (
-<>About Us</>
+        <div style={{ 
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "2rem" }}>
+            <>About Us</>
+        </div>
     );
 };
 

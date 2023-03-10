@@ -9,7 +9,7 @@ import {
 import { GlobalContext } from "./components/utils/globalStateContext";
 
 import { GlobalStyle } from "./GlobalStyle";
-import { ProductByBase } from "./components/ReturnProductByBase/ProductBase";
+import { ProductByBase } from "./components/ProductByBase";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import SpinnerBlue from "./components/Spinner";

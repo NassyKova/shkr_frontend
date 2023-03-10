@@ -63,7 +63,7 @@ function NavBar() {
                             }}
                         >
                             <div
-                                className="hover-item"
+                                className="hover-menu"
                                 style={{ color: "black" }}
                             >
                                 Base
@@ -91,7 +91,7 @@ function NavBar() {
                                         }}
                                     >
                                         <div
-                                            className="hover-item"
+                                            className="hover-menu"
                                             style={{ color: "black" }}
                                         >
                                             {item.title}
@@ -118,7 +118,7 @@ function NavBar() {
                             }}
                         >
                             <div
-                                className="hover-item"
+                                className="hover-menu"
                                 style={{ color: "black" }}
                             >
                                 Search By Name
