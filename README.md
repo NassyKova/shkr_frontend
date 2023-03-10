@@ -366,6 +366,7 @@ The API can now be accessed using Postman and `localhost:3000/`
 
 
 - returnModRouter.put("/products/brand/:id", rebrandSpirit)
+
           Request Verb: GET
           Function: Retrieves all the cocktails by name
           Authentication: N/A
