@@ -69,11 +69,11 @@ The API can now be accessed using Postman and `localhost:3000/`
 drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);
 
     Request Verb: GET
-    Function: Retrieves all the cocktails by name
+    Function: Retrieves 5 random cocktails by name entered by user (eg Margarita will return all drinks with that string in their name)
     Authentication: N/A
     Authorization: N/A
     Example Response:
-```JavaScript
+```Javascript
 {
   "drinks": [
     {
@@ -92,14 +92,192 @@ drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);
  ```
 
 drinkRouter.get("/drinks/base/:drinkBase", getDrinkByBase);
+    Request Verb: GET
+    Function: Retrieves 5 random cocktails by selected base ingredient (buttons on client side)
+    Authentication: N/A
+    Authorization: N/A
+    Example Response:
+    ```Javascript
+    {
+    "drinks": [
+        {
+            "strDrink": "Barracuda",
+            "strInstructions": "Shake pour ingredients with ice. Strain into glass, top with Sparkling wine.",
+            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/jwmr1x1504372337.jpg",
+            "strIngredient1": "Mount Gay Eclipse",
+            "strIngredient2": "Galliano",
+            "strIngredient3": "Pineapple Juice",
+            "strIngredient4": "Lime Juice",
+            "strIngredient5": "Prosecco",
+            "strMeasure1": "4.5 cl",
+            "strMeasure2": "1.5 cl",
+            "strMeasure3": "6 cl",
+            "strMeasure4": " 1 dash",
+            "strMeasure5": "top up "
+        },```
+
+
 drinkRouter.get("/drinks/non-alc", getDrinkByNonAlc);
+Request Verb: GET
+    Function: Retrieves 5 random cocktails from the non-alcoholic list in the external API
+    Authentication: N/A
+    Authorization: N/A
+    Example Response:
+
+```Javascript
+{
+    "drinks": [
+        {
+            "strDrink": "Grape lemon pineapple Smoothie",
+            "strInstructions": "Throw everything into a blender and liquify.",
+            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/54z5h71487603583.jpg",
+            "strIngredient1": "Grapes",
+            "strIngredient2": "Lemon",
+            "strIngredient3": "Pineapple",
+            "strMeasure1": "1 cup ",
+            "strMeasure2": "1/4 ",
+            "strMeasure3": "1/2 "
+        },
+```
+
 drinkRouter.get("/drinks/fruity", getDrinkByFruity);
-drinkRouter.get("/drinks/fizzy", getDrinkByFruity);
+Request Verb: GET
+    Function: Retrieves 5 random cocktails that contain an ingredient that is included in the fruityList in utils/arrayInfo
+    Authentication: N/A
+    Authorization: N/A
+    Example Response:
+```Javascript
+{
+    "drinks": [
+        {
+            "strDrink": "Lassi - Mango",
+            "strInstructions": "Put it all in a blender and pour over crushed ice. You can also use other fruits like strawberries and bananas.",
+            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/1bw6sd1487603816.jpg",
+            "strIngredient1": "Mango",
+            "strIngredient2": "Yoghurt",
+            "strIngredient3": "Sugar",
+            "strIngredient4": "Water",
+            "strMeasure1": "2 ",
+            "strMeasure2": "2 cups ",
+            "strMeasure3": "1/2 cup ",
+            "strMeasure4": "1 cup iced "
+        },
+```
+
+
+drinkRouter.get("/drinks/fizzy", getDrinkByFizzy);
+Request Verb: GET
+    Function: Retrieves 5 random cocktails that contain an ingredient that is included in the fizzyList in utils/arrayInfo
+    Authentication: N/A
+    Authorization: N/A
+    Example Response:
+```Javascript
+{
+    "drinks": [
+        {
+            "strDrink": "Brandon and Will's Coke Float",
+            "strInstructions": "Scoop two large scoops of vanilla ice-cream into frosted beer mug. Next, add 2 ounces Maker's Mark. Then, pour in coke. Gently stir and enjoy.",
+            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/xspxyr1472719185.jpg",
+            "strIngredient1": "Vanilla ice-cream",
+            "strIngredient2": "Coca-Cola",
+            "strIngredient3": "Woodford Reserve",
+            "strMeasure1": "2 scoops ",
+            "strMeasure2": "1 can ",
+            "strMeasure3": "2 oz "
+        },
+```
 drinkRouter.get("/drinks/heavy", getDrinkByHeavy);
-returnModRouter.get("/products", getProducts)
+Request Verb: GET
+    Function: Retrieves 5 random cocktails that contain an at least one alcoholic ingredient and no more than 3 ingredients.
+    Authentication: N/A
+    Authorization: N/A
+    Example Response:
+```Javascript
+{
+    "drinks": [
+        {
+            "strDrink": "Addison Special",
+            "strInstructions": "Combine ingredients in the order listed into a shaker. Fill half full with ice and shake well. Strain into glass with ice and garnish with a cherry and orange wedge.",
+            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/4vo5651493068493.jpg",
+            "strIngredient1": "Grey Goose",
+            "strIngredient2": "Grenadine",
+            "strIngredient3": "Orange juice",
+            "strMeasure1": "1 shot ",
+            "strMeasure2": "1 tblsp ",
+            "strMeasure3": "Fill with "
+        },
+```
+
+<!-- returnModRouter.get("/products", getProducts) -->
 returnModRouter.put("/products/brand/:id", rebrandSpirit)
+Request Verb: PUT
+    Function: Assigns new value (req.body.newBrand) to appropriate key (req.body.spiritName)
+    Authentication: N/A
+    Authorization: N/A
+    Example Response:
+    ```Javascript
+    {
+    "_id": "6408199ef6eeb96704d4269b",
+    "vodka": "Belvedere",
+    "rum": "Mount Gay",
+    "scotch": "Ballentine's",
+    "bourbon": "Woodford Reserve",
+    "tequila": "El Jimador",
+    "gin": "Beefeater",
+    "forbidden": [
+        "Martini",
+        "margarita",
+        "Dirty Martini"
+    ]
+}
+```
+    
 returnModRouter.post("/products/forbidden/add", addToForbidden)
+Request Verb: POST
+    Function: Adds item (req.body.drink) to forbidden list
+    Authentication: N/A
+    Authorization: N/A
+    Example Response:
+        ```Javascript
+    {
+    "_id": "6408199ef6eeb96704d4269b",
+    "vodka": "Grey Goose",
+    "rum": "Mount Gay",
+    "scotch": "Ballentine's",
+    "bourbon": "Woodford Reserve",
+    "tequila": "El Jimador",
+    "gin": "Beefeater",
+    "forbidden": [
+        "Martini",
+        "margarita",
+        "Dirty Martini"
+        "${req.body.drink}"
+    ]
+}
+```
+
 returnModRouter.patch("/products/forbidden/remove", removeForbiddenItem)
+Request Verb: PATCH
+    Function: removes item (req.body.drink) from forbidden list
+    Authentication: N/A
+    Authorization: N/A
+    Example Response:
+    ```Javascript
+    {
+    "_id": "6408199ef6eeb96704d4269b",
+    "vodka": "Grey Goose",
+    "rum": "Mount Gay",
+    "scotch": "Ballentine's",
+    "bourbon": "Woodford Reserve",
+    "tequila": "El Jimador",
+    "gin": "Beefeater",
+    "forbidden": [
+        "Martini",
+        "margarita",
+        "Dirty Martini"
+    ]
+}
+```
 
 
 ## Server Libraries and Dependencies
