@@ -21,7 +21,7 @@ const Footer = () => {
             <DividerLine />
             <Socials />
             <Admin>
-                            {store.loggedInUserName }
+                            {/* {store.loggedInUserName }
                     {store.loggedInUserName ? (
                         <button style={{
                             backgroundColor: "#d585b2",
@@ -43,12 +43,13 @@ const Footer = () => {
                             }}
                         >
                             Logout
-                        </button>
-                    ) : (
-                        <Link to="/login" relative="login" element={<Login/>} color="#43d9f0">
-                        admin login
+                        </button> */}
+                    {/* ) : ( */}
+                        <Link to="/admin" relative="login"  color="#43d9f0">
+                        admin
                     </Link>
-                    )}
+                    {/* ) */}
+                    {/* } */}
                     
             </Admin>
         </Wrapper>

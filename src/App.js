@@ -19,7 +19,7 @@ import SearchAppBar from "./components/SearchBy/SearchByName";
 
 import Box from "@mui/material/Box";
 import ProductInfo from "./components/ProductInfo";
-import AddProduct from "./components/AddProduct";
+import AddProduct from "./components/admin/Update";
 import Login from "./components/Login";
 import NotFound from "./components/NotFound";
 import About from "./components/About";
@@ -27,7 +27,9 @@ import Contact from "./components/Contact";
 
 import SearchBar from "./SearchBar"
 import globalReducer from "./components/reducers/globalReducer";
+import RebrandSpirit from "./components/admin/RebrandSpirit";
 import AdminOptions from "./components/admin/AdminOptions";
+import DeletedCocktails from "./components/admin/Deleted Cocktails";
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
@@ -42,12 +44,20 @@ function App() {
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
-                <Route path="login" element={<Login />}>
-                    <Route path="addproduct" element={<AddProduct />}></Route>
-                </Route>
+                {/* <Route path="login" element={<Login />}> */}
+                <Route
+                    index={true}
+                    path="/admin"
+                    element={<AdminOptions />}
+                ></Route>
+                <Route path="ingr" element={<RebrandSpirit />}></Route>
+                <Route path="deleted" element={<DeletedCocktails />}></Route>
+                {/* </Route> */}
 
-                {/* <Route path="/about" element={<About />} /> */}
-                <Route path="/about" element={<AdminOptions />} />
+                <Route path="addproduct" element={<AddProduct />}></Route>
+
+                <Route path="/about" element={<About />} />
+                {/* <Route path="/about" element={<RebrandSpirits />} /> */}
                 <Route path="/drinks" element={<NavBar />}>
                     <Route path="base">
                         <Route index={true} element={<SearchByBase />}></Route>
@@ -118,10 +128,7 @@ function App() {
                             <ProductByBase specificUrl="/drinks/non-alc" />
                         }
                     ></Route>
-                    <Route
-                        path="name"
-                        element={<SearchAppBar />}
-                    ></Route>
+                    <Route path="name" element={<SearchAppBar />}></Route>
                 </Route>
                 <Route path="/contact" element={<Contact />} />
             </Route>

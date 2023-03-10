@@ -1,8 +1,7 @@
 import { React, useState } from "react";
 import TextField from "@mui/material/TextField";
-import List from "./List";
 import axios from "axios";
-
+import Product from "../Product";
 function SearchBar() {
     const [drinkName, setDrinkName] = useState("");
     let inputHandler = (e) => {
@@ -33,11 +32,11 @@ function SearchBar() {
         <div
             style={{
                 display: "flex",
-                height: "100vh",
                 width: "100%",
                 alignItems: "center",
                 flexDirection: "column",
                 rowGap: "20px",
+                borderRadius: "10px",
             }}
         >
             <div style={{ width: "30%" }}>
@@ -58,16 +57,29 @@ function SearchBar() {
                         display: "flex",
                         justifyContent: "center",
                         alignItems: "center",
-                        backgroundColor: "green",
+                        backgroundColor: "#37a01b",
                         borderRadius: "15px",
-                        margin: "10px",
+                        height: "50px",
+                        width: "100px",
+                        margin: "20px",
+                        cursor: "pointer"
                     }}
-                    onClick={onClickSearchByName()}
+                    onClick={onClickSearchByName}
                 >
                     Search
                 </button>
             </div>
-            {/* <List input={drinkName} /> */}
+            <div>
+                    {data.map((item) => {
+                        return (
+                            <Product
+                                key={"product-base-" + item.strDrink}
+                                productInfo={item}
+                                // setItem={props.setItem}
+                            />
+                        );
+                    })}
+                </div>
         </div>
     );
 }
