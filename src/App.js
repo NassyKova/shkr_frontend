@@ -20,12 +20,12 @@ import SearchAppBar from "./components/SearchBy/SearchByName";
 import Box from "@mui/material/Box";
 import ProductInfo from "./components/ProductInfo";
 import AddProduct from "./components/admin/Update";
-import Login from "./components/Login";
+// import Login from "./components/Login";
 import NotFound from "./components/NotFound";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
-import SearchBar from "./SearchBar"
+
 import globalReducer from "./components/reducers/globalReducer";
 import RebrandSpirit from "./components/admin/RebrandSpirit";
 import AdminOptions from "./components/admin/AdminOptions";
@@ -189,7 +189,7 @@ function MainPage() {
         <>
             <GlobalStyle />
             <Header />
-            <SearchBar />
+
 
             {/* <Product setItem={setItem} />
             <ProductInfo item={selectedItem} /> */}
