@@ -260,7 +260,7 @@ Request Verb: PUT
     Authentication: N/A  
     Authorization: N/A  
     Example Response: 
-    ```Javascript
+```Javascript
     {
     "_id": "6408199ef6eeb96704d4269b",
     "vodka": "Belvedere",
@@ -283,7 +283,7 @@ Request Verb: POST
     Authentication: N/A  
     Authorization: N/A  
     Example Response:  
-        ```Javascript
+```Javascript
     {
     "_id": "6408199ef6eeb96704d4269b",
     "vodka": "Grey Goose",

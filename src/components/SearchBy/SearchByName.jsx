@@ -2,6 +2,10 @@ import { React, useState } from "react";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import Product from "../Product";
+import SpinnerBlue from "../Spinner";
+import Box from "@mui/material/Box";
+
+
 function SearchBar() {
     const [drinkName, setDrinkName] = useState("");
     let inputHandler = (e) => {
@@ -62,7 +66,7 @@ function SearchBar() {
                         height: "50px",
                         width: "100px",
                         margin: "20px",
-                        cursor: "pointer"
+                        cursor: "pointer",
                     }}
                     onClick={onClickSearchByName}
                 >
@@ -70,16 +74,31 @@ function SearchBar() {
                 </button>
             </div>
             <div>
-                    {data.map((item) => {
-                        return (
-                            <Product
-                                key={"product-base-" + item.strDrink}
-                                productInfo={item}
-                                // setItem={props.setItem}
-                            />
-                        );
-                    })}
-                </div>
+                {data.map((item) => {
+                    return (
+                        <>
+                            {isLoading ? (
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        height: "100vh",
+                                    }}
+                                >
+                                    <SpinnerBlue />
+                                </Box>
+                            ) : (
+                                <Product
+                                    key={"product-base-" + item.strDrink}
+                                    productInfo={item}
+                                    // setItem={props.setItem}
+                                />
+                            )}
+                        </>
+                    );
+                })}
+            </div>
         </div>
     );
 }

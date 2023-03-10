@@ -10,14 +10,19 @@ import { useState } from "react";
 const InputWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 2 fr;
-    width: 400px;
+    width: auto;
+    margin-bottom: 5px;
+    @media screen and (max-width: 768px) {
+        width: 90%;
+        margin-bottom: 20px;
+    }
 `;
 
 const WrapperGeneral = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    max-width: var(--maxWidth);
+    justify-content: space-evenly;
+    max-width: 90%;
     padding: 20px 20px;
     margin: 0 auto;
 
@@ -25,6 +30,10 @@ const WrapperGeneral = styled.div`
     border-radius: 10px;
     transition: 0.3s;
     box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.75);
+    @media screen and (max-width: 1280px) {
+        display: block;
+        margin-bottom: 20px;
+    }
 `;
 const WrapperOriginalIngridients = styled.div`
     margin: 10px;
@@ -63,9 +72,7 @@ const RebrandSpirit = () => {
 
             <WrapperGeneral>
                 <WrapperOriginalIngridients>
-                    <Title style={{ color: "#00a18e" }}>
-                        Original names
-                    </Title>
+                    <Title style={{ color: "#00a18e" }}>Original names</Title>
                     <InputWrapper>
                         <label htmlFor="ingridient">Ingridient One: </label>
                         <input
@@ -193,7 +200,7 @@ const RebrandSpirit = () => {
                     </InputWrapper>
                 </WrapperReplacedIngridients>
             </WrapperGeneral>
-            <Wrapper>
+            <Wrapper style={{margin: "20px"}}>
                 <Stack direction="row" spacing={2}>
                     <Link to="/update" style={{ textDecoration: "none" }}>
                         <Button
