@@ -18,13 +18,13 @@ import SearchByBase from "./components/SearchBy/SearchByBase";
 import SearchAppBar from "./components/SearchBy/SearchByName";
 
 import Box from "@mui/material/Box";
-import ProductInfo from "./components/ProductInfo";
+// import ProductInfo from "./components/ProductInfo";
 import AddProduct from "./components/admin/Update";
 // import Login from "./components/Login";
 import NotFound from "./components/NotFound";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Product from "./components/Product";
+
 
 import globalReducer from "./components/reducers/globalReducer";
 import RebrandSpirit from "./components/admin/RebrandSpirit";
@@ -179,11 +179,11 @@ function App() {
 }
 
 function MainPage() {
-    const [selectedItem, setSelectedItem] = useState(null);
+    // const [selectedItem, setSelectedItem] = useState(null);
 
-    function setItem(item) {
-        setSelectedItem(item);
-    }
+    // function setItem(item) {
+    //     setSelectedItem(item);
+    // }
 
     return (
         <>
@@ -191,8 +191,8 @@ function MainPage() {
             <Header />
 
 
-            <Product setItem={setItem} />
-            <ProductInfo item={selectedItem} />
+            {/* <Product setItem={setItem} />
+            <ProductInfo item={selectedItem} /> */}
 
             <Outlet />
             <Footer />
