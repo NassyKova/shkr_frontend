@@ -24,7 +24,7 @@ export const LogoImg = styled.img`
     width:150px;
     /* @media screen and (max-width: 500px) {
         width: 150px; */
-    }
+    /* } */
 `;
 
 /* export const TMDBLogoImg = styled.img`

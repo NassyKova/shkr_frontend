@@ -66,38 +66,147 @@ The API can now be accessed using Postman and `localhost:3000/`
 
 ## API Endpoints
 
-drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);
+- drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);
 
-    Request Verb: GET
-    Function: Retrieves all the cocktails by name
-    Authentication: N/A
-    Authorization: N/A
-    Example Response:
-```JavaScript
-{
-  "drinks": [
-    {
-      "strDrink": "Whitecap Margarita",
-      "strInstructions": "Place all ingredients in a blender and blend until smooth. This makes one drink.",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/srpxxp1441209622.jpg",
-      "strIngredient1": "Ice",
-      "strIngredient2": "New tequila brand",
-      "strIngredient3": "Cream of coconut",
-      "strIngredient4": "Lime juice",
-      "strMeasure1": "1 cup ",
-      "strMeasure2": "2 oz ",
-      "strMeasure3": "1/4 cup ",
-      "strMeasure4": "3 tblsp fresh "
+      Request Verb: GET
+      Function: Retrieves all the cocktails by name
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
+  ```JavaScript
+  {
+    "drinks": [
+      {
+        "strDrink": "Whitecap Margarita",
+        "strInstructions": "Place all ingredients in a blender and blend until smooth. This makes one drink.",
+        "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/srpxxp1441209622.jpg",
+        "strIngredient1": "Ice",
+        "strIngredient2": "New tequila brand",
+        "strIngredient3": "Cream of coconut",
+        "strIngredient4": "Lime juice",
+        "strMeasure1": "1 cup ",
+        "strMeasure2": "2 oz ",
+        "strMeasure3": "1/4 cup ",
+        "strMeasure4": "3 tblsp fresh "
+      },
+  ```
+
+- drinkRouter.get("/drinks/base/:drinkBase", getDrinkByBase);
+
+      Request Verb: GET
+      Function: Retrieves all the cocktails by base
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
+  ```JavaScript
+      {
+      "strDrink": "Oreo Mudslide",
+      "strInstructions": "Blend Vodka, Kahlua, Bailey's, ice-cream and the Oreo well in a blender. Pour into a large frosted glass. Garnish with whipped cream and a cherry.",
+      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/tpwwut1468925017.jpg",
+      "strIngredient1": "Grey Goose",
+      "strIngredient2": "Kahlua",
+      "strIngredient3": "Baileys irish cream",
+      "strIngredient4": "Vanilla ice-cream",
+      "strIngredient5": "Oreo cookie",
+      "strMeasure1": "1 oz ",
+      "strMeasure2": "1 oz ",
+      "strMeasure3": "1 oz ",
+      "strMeasure4": "2 scoops ",
+      "strMeasure5": "1 "
     },
- ```
+  ```
+- drinkRouter.get("/drinks/non-alc", getDrinkByNonAlc);
 
-drinkRouter.get("/drinks/base/:drinkBase", getDrinkByBase);
-drinkRouter.get("/drinks/non-alc", getDrinkByNonAlc);
-drinkRouter.get("/drinks/fruity", getDrinkByFruity);
-drinkRouter.get("/drinks/fizzy", getDrinkByFruity);
-drinkRouter.get("/drinks/heavy", getDrinkByHeavy);
-returnModRouter.get("/products", getProducts)
+      Request Verb: GET
+      Function: Retrieves all the non alcohol cocktails 
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
+  ```JavaScript
+      {
+      "strDrink": "Apple Berry Smoothie",
+      "strInstructions": "Throw everything into a blender and liquify.",
+      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/xwqvur1468876473.jpg",
+      "strIngredient1": "Berries",
+      "strIngredient2": "Apple",
+      "strMeasure1": "1 cup ",
+      "strMeasure2": "2 "
+    },
+  ```
+- drinkRouter.get("/drinks/fruity", getDrinkByFruity);
+
+      Request Verb: GET
+      Function: Retrieves all the cocktails with fruity ingridients
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
+  ```JavaScript
+      {
+      "strDrink": "Planter’s Punch",
+      "strInstructions": "Squeeze an orange and strain the juice. Put all the ingredients in a shaker filled with ice and shake for at least 12 seconds. Strain into a highball glass and decorate with a pineapple wedge or fruit of your choice.",
+      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/jn6o251643844541.jpg",
+      "strIngredient1": "Dark Rum",
+      "strIngredient2": "Orange Juice",
+      "strIngredient3": "Pineapple Juice",
+      "strIngredient4": "Grenadine",
+      "strIngredient5": "Sugar Syrup",
+      "strIngredient6": "Angostura Bitters",
+      "strMeasure1": "4.5 cL",
+      "strMeasure2": "3 cl",
+      "strMeasure3": "3.5 cl",
+      "strMeasure4": "1 cl",
+      "strMeasure5": "1 cl",
+      "strMeasure6": "4 drops"
+    },
+  ```
+- drinkRouter.get("/drinks/fizzy", getDrinkByFruity);
+
+      Request Verb: GET
+      Function: Retrieves all the cocktails with bubbly ingridients
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
+  ```JavaScript
+      {
+      "strDrink": "Absolutely Fabulous",
+      "strInstructions": "Mix the Vodka and Cranberry juice together in a shaker and strain into a glass. Top up with Champagne.",
+      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/abcpwr1504817734.jpg",
+      "strIngredient1": "Grey Goose",
+      "strIngredient2": "Cranberry Juice",
+      "strIngredient3": "Champagne",
+      "strMeasure1": "1 shot ",
+      "strMeasure2": "2 shots ",
+      "strMeasure3": "Top up with"
+    },
+  ```
+- drinkRouter.get("/drinks/heavy", getDrinkByHeavy);
+
+      Request Verb: GET
+      Function: Retrieves all the cocktails with strong ingridients
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
+  ```JavaScript
+      {
+      "strDrink": "Addison",
+      "strInstructions": "Shake together all the ingredients and strain into a cold glass.",
+      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/yzva7x1504820300.jpg",
+      "strIngredient1": "New gin brand",
+      "strIngredient2": "Vermouth",
+      "strMeasure1": "1 1/2 shot ",
+      "strMeasure2": "1 1/2 shot "
+    },
+  ```
+
 returnModRouter.put("/products/brand/:id", rebrandSpirit)
+?????????????
+
+      Request Verb: GET
+      Function: Retrieves all the cocktails by name
+      Authentication: N/A
+      Authorization: N/A
+      Example Response:
+  ```JavaScript
 returnModRouter.post("/products/forbidden/add", addToForbidden)
 returnModRouter.patch("/products/forbidden/remove", removeForbiddenItem)
 
