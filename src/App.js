@@ -24,7 +24,7 @@ import AddProduct from "./components/admin/Update";
 import NotFound from "./components/NotFound";
 import About from "./components/About";
 import Contact from "./components/Contact";
-
+import Product from "./components/Product";
 
 import globalReducer from "./components/reducers/globalReducer";
 import RebrandSpirit from "./components/admin/RebrandSpirit";
@@ -191,8 +191,8 @@ function MainPage() {
             <Header />
 
 
-            {/* <Product setItem={setItem} />
-            <ProductInfo item={selectedItem} /> */}
+            <Product setItem={setItem} />
+            <ProductInfo item={selectedItem} />
 
             <Outlet />
             <Footer />
