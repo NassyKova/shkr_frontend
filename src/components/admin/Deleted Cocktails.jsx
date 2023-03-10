@@ -4,10 +4,9 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import { Link } from "react-router-dom";
-import SearchBar from "../SearchBy/SearchByName";
 
 const DeletedCocktails = () => {
-    function deleteCocktail() {
+    function RemoveDeletedCocktail() {
         return;
     }
     return (
@@ -15,7 +14,21 @@ const DeletedCocktails = () => {
             <Title>Deleted cocktails:</Title>
 
             <Wrapper>
-                List deleted cocktails and option to remove??
+                List deleted cocktails and option to remove??{" "}
+                <Link style={{ textDecoration: "none", textTransform: "none" }}>
+                    <Button
+                        onClick={RemoveDeletedCocktail}
+                        style={{
+                            backgroundColor: "white",
+                            color: "black",
+                            textTransform: "none",
+                            backgroundColor: "#d585b2",
+                        }}
+                        variant="outlined"
+                    >
+                        Remove from the removed cocktails
+                    </Button>
+                </Link>
             </Wrapper>
         </div>
     );
