@@ -66,8 +66,40 @@ The API can now be accessed using Postman and `localhost:3000/`
 
 ## API Endpoints
 
-API Endpoint documentation can be found [here](docs/apiendpoints.md)???????????
+drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);
 
+    Request Verb: GET
+    Function: Retrieves all the cocktails by name
+    Authentication: N/A
+    Authorization: N/A
+    Example Response:
+```JavaScript
+{
+  "drinks": [
+    {
+      "strDrink": "Whitecap Margarita",
+      "strInstructions": "Place all ingredients in a blender and blend until smooth. This makes one drink.",
+      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/srpxxp1441209622.jpg",
+      "strIngredient1": "Ice",
+      "strIngredient2": "New tequila brand",
+      "strIngredient3": "Cream of coconut",
+      "strIngredient4": "Lime juice",
+      "strMeasure1": "1 cup ",
+      "strMeasure2": "2 oz ",
+      "strMeasure3": "1/4 cup ",
+      "strMeasure4": "3 tblsp fresh "
+    },
+ ```
+
+drinkRouter.get("/drinks/base/:drinkBase", getDrinkByBase);
+drinkRouter.get("/drinks/non-alc", getDrinkByNonAlc);
+drinkRouter.get("/drinks/fruity", getDrinkByFruity);
+drinkRouter.get("/drinks/fizzy", getDrinkByFruity);
+drinkRouter.get("/drinks/heavy", getDrinkByHeavy);
+returnModRouter.get("/products", getProducts)
+returnModRouter.put("/products/brand/:id", rebrandSpirit)
+returnModRouter.post("/products/forbidden/add", addToForbidden)
+returnModRouter.patch("/products/forbidden/remove", removeForbiddenItem)
 
 
 ## Server Libraries and Dependencies
@@ -138,7 +170,7 @@ Component libraries:
 
 ## Frontend testing 
 ?????????????????
-
+<img src="docs/tests/User_test.png" alt="1st DFD attempt">
 ## Backend testing 
 ?????????????????
 
