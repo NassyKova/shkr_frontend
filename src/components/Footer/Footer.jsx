@@ -3,16 +3,16 @@ import { Admin, Wrapper } from "../Footer/Footer.styles";
 import Socials from "../Socials/Socials";
 // import { Link } from "@chakra-ui/react";
 import DividerLine from "../Divider/Divider";
-import { Link, useNavigate } from "react-router-dom";
-import Login from "../Login";
+import { Link} from "react-router-dom";
+// import Login from "../Login";
 
-import { useGlobalContext } from "../utils/globalStateContext"
+// import { useGlobalContext } from "../utils/globalStateContext"
 
 const Footer = () => {
 
-    const { store, dispatch } = useGlobalContext()
+    // const { store, dispatch } = useGlobalContext()
 
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
 
 
 
