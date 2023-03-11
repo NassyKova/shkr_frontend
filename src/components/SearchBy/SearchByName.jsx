@@ -5,7 +5,6 @@ import Product from "../Product";
 import SpinnerBlue from "../Spinner";
 import Box from "@mui/material/Box";
 
-
 function SearchBar() {
     const [drinkName, setDrinkName] = useState("");
     let inputHandler = (e) => {
@@ -26,7 +25,6 @@ function SearchBar() {
                     return product;
                 });
                 console.log(newItems);
-
                 setData(newItems.slice(0, 5));
                 setIsLoading(false);
             });
@@ -56,7 +54,8 @@ function SearchBar() {
                     fullWidth
                     label="Search"
                 />
-                <button className="menu"
+                <button
+                    className="menu"
                     style={{
                         display: "flex",
                         justifyContent: "center",
@@ -92,7 +91,6 @@ function SearchBar() {
                                 <Product
                                     key={"product-base-" + item.strDrink}
                                     productInfo={item}
-                                    // setItem={props.setItem}
                                 />
                             )}
                         </>

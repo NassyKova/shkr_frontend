@@ -10,22 +10,6 @@ const AdminOptions = () => {
         <div>
             <Title>Manage cocktails</Title>
             <MainWrapper>
-                {/* <RebrandWrapper>
-                    <Link to="/ingr" style={{ textDecoration: "none" }}>
-                        <Button
-                            className="menu"
-                            style={{
-                                backgroundColor: "white",
-                                color: "black",
-                                textTransform: "none",
-                            }}
-                            variant="outlined"
-                        >
-                            {" "}
-                            Rebrand Spirit
-                        </Button>
-                    </Link>
-                </RebrandWrapper> */}
                 <RebrandWrapper>
                     <Link to="/deleted" style={{ textDecoration: "none" }}>
                         <Button

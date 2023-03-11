@@ -92,8 +92,7 @@ function SearchBarAdmin() {
                                 <ProductAdmin
                                     key={"product-base-" + item.strDrink}
                                     productInfo={item}
-                                    // setItem={props.setItem}
-                                />
+                                    />
                             )}
                         </>
                     );

@@ -4,9 +4,7 @@ import {
     TwitterOutlined,
     InstagramOutlined,
 } from "@ant-design/icons";
-
 import { Space } from "antd";
-
 import { Wrapper, Hover1 } from "./Socials.Styles";
 
 const Socials = () => {
@@ -28,7 +26,7 @@ const Socials = () => {
                         target="_blank"
                         rel="noreferrer"
                     >
-                        <TwitterOutlined/>
+                        <TwitterOutlined />
                     </a>
                 </Hover1>
                 <Hover1>

@@ -1,9 +1,6 @@
 import Title from "../styled/Title";
-// import { Wrapper } from "./AdminOptions.styles";
 import { React, useEffect, useState } from "react";
 import Button from "@mui/material/Button";
-// import Stack from "@mui/material/Stack";
-// import { Link } from "react-router-dom";
 import axios from "axios";
 import SpinnerBlue from "../Spinner";
 import Box from "@mui/material/Box";
@@ -16,9 +13,6 @@ const InputWrapper = styled.div`
     align-items: center;
     justify-items: center;
     margin-bottom: 20px;
-    @media screen and (max-width: 800px) {
-        /* width: auto; */
-    }
 `;
 
 const ForbiddenCocktails = () => {

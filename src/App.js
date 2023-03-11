@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from "react";
+import { useState } from "react";
 import {
     createBrowserRouter,
     createRoutesFromElements,
@@ -7,54 +7,35 @@ import {
     RouterProvider,
 } from "react-router-dom";
 import { GlobalContext } from "./components/utils/globalStateContext";
-
 import { GlobalStyle } from "./GlobalStyle";
-import { ProductByBase } from "./components/ProductByBase";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import SpinnerBlue from "./components/Spinner";
-import NavBar from "./components/mui/NavBar";
-import SearchByBase from "./components/SearchBy/SearchByBase";
-import SearchAppBar from "./components/SearchBy/SearchByName";
 
+//Components
 import Box from "@mui/material/Box";
-// import ProductInfo from "./components/ProductInfo";
-import AddProduct from "./components/admin/Update";
-// import Login from "./components/Login";
 import NotFound from "./components/NotFound";
 import About from "./components/About/About";
 import Contact from "./components/Contact";
-
-import globalReducer from "./components/reducers/globalReducer";
-// import RebrandSpirit from "./components/admin/RebrandSpirit";
+import { ProductByBase } from "./components/ProductByBase";
+import Footer from "./components/Footer/Footer";
+import SpinnerBlue from "./components/Spinner";
+import Header from "./components/Header/Header";
+import NavBar from "./components/mui/NavBar";
+import SearchByBase from "./components/SearchBy/SearchByBase";
+import SearchAppBar from "./components/SearchBy/SearchByName";
 import AdminOptions from "./components/admin/AdminOptions";
 import DeletedCocktails from "./components/admin/Deleted Cocktails";
 
 function App() {
     const [isLoading, setIsLoading] = useState(true);
-
-    const initialState = {
-        loggedInUserName: "",
-        token: "",
-    };
-
-    const [store, dispatch] = useReducer(globalReducer, initialState);
-
+    
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
-                {/* <Route path="login" element={<Login />}> */}
                 <Route
                     index={true}
                     path="/admin"
                     element={<AdminOptions />}
                 ></Route>
-                {/* <Route path="ingr" element={<RebrandSpirit />}></Route> */}
                 <Route path="deleted" element={<DeletedCocktails />}></Route>
-                {/* </Route> */}
-
-                <Route path="addproduct" element={<AddProduct />}></Route>
-
                 <Route path="/" element={<About />} />
                 <Route path="/drinks" element={<NavBar />}>
                     <Route path="base">
@@ -137,21 +118,6 @@ function App() {
         setIsLoading(false);
     }, 2000);
 
-    useEffect(() => {
-        const username = localStorage.getItem("username");
-        const token = localStorage.getItem("token");
-        if (username && token) {
-            dispatch({
-                type: "setLoggedInUserName",
-                data: username,
-            });
-            dispatch({
-                type: "setToken",
-                data: token,
-            });
-        }
-    }, []);
-
     return (
         <>
             {isLoading ? (
@@ -167,7 +133,7 @@ function App() {
                 </Box>
             ) : (
                 <div className="App">
-                    <GlobalContext.Provider value={{ store, dispatch }}>
+                    <GlobalContext.Provider>
                         <RouterProvider router={router} />
                     </GlobalContext.Provider>
                 </div>
@@ -177,20 +143,10 @@ function App() {
 }
 
 function MainPage() {
-    // const [selectedItem, setSelectedItem] = useState(null);
-
-    // function setItem(item) {
-    //     setSelectedItem(item);
-    // }
-
     return (
         <>
             <GlobalStyle />
             <Header />
-
-            {/* <Product setItem={setItem} />
-            <ProductInfo item={selectedItem} /> */}
-
             <Outlet />
             <Footer />
         </>

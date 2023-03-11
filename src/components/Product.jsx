@@ -1,8 +1,5 @@
 import { Wrapper, Img, Title, Ingridients, Grid } from "./Product.Styles";
-import axios from "axios";
-import { React, useState } from "react";
-import { Button } from "antd";
-import { useNavigate } from "react-router-dom";
+import { React } from "react";
 
 function Product(props) {
     const item = props.productInfo;
@@ -34,18 +31,6 @@ function Product(props) {
                     {item.strMeasure5} {item.strIngredient5}
                 </Ingridients>
                 <div>{item.strInstructions}</div>
-                {/* <Button
-                    className="menu"
-                    onClick={AddToForbidden}
-                    style={{
-                        backgroundColor: "#d585b2",
-                        color: "black",
-                        textTransform: "none",
-                        margin: "5px",
-                    }}
-                >
-                    Delete cocktail
-                </Button> */}
             </Wrapper>
         </Grid>
     );

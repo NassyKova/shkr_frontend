@@ -5,7 +5,6 @@ import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { Link, Outlet } from "react-router-dom";
-// import { useGlobalContext } from "../utils/globalStateContext";
 
 function NavBar() {
     const navBarItems = [
@@ -31,10 +30,6 @@ function NavBar() {
         },
     ];
 
-    // const { store, dispatch } = useGlobalContext();
-
-    // const navigate = useNavigate();
-
     return (
         <AppBar position="static" style={{ background: "#252c27" }}>
             <Container maxWidth="xl"></Container>
@@ -46,10 +41,7 @@ function NavBar() {
                         justifyContent: "center",
                     }}
                 >
-                    <Link
-                        to="/drinks/base"
-                        style={{ textDecoration: "none" }}
-                    >
+                    <Link to="/drinks/base" style={{ textDecoration: "none" }}>
                         <Button
                             style={{
                                 background: "#43d9f0",
@@ -62,10 +54,7 @@ function NavBar() {
                                 display: "block",
                             }}
                         >
-                            <div
-                                className="menu"
-                                style={{ color: "black" }}
-                            >
+                            <div className="menu" style={{ color: "black" }}>
                                 Base
                             </div>
                         </Button>
@@ -101,10 +90,7 @@ function NavBar() {
                             </div>
                         );
                     })}
-                    <Link
-                        to="/drinks/name"
-                        style={{ textDecoration: "none" }}
-                    >
+                    <Link to="/drinks/name" style={{ textDecoration: "none" }}>
                         <Button
                             style={{
                                 background: "#43d9f0",
@@ -117,10 +103,7 @@ function NavBar() {
                                 display: "block",
                             }}
                         >
-                            <div
-                                className="menu"
-                                style={{ color: "black" }}
-                            >
+                            <div className="menu" style={{ color: "black" }}>
                                 Search By Name
                             </div>
                         </Button>
