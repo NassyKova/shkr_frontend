@@ -56,7 +56,7 @@ function SearchBar() {
                     fullWidth
                     label="Search"
                 />
-                <button
+                <button className="menu"
                     style={{
                         display: "flex",
                         justifyContent: "center",

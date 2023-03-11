@@ -30,11 +30,18 @@ export const GlobalStyle = createGlobalStyle`
 } */
 
 .hover-item:hover {
-    color: var(--pink);
+    color: var(--blueGreen);
 }
 
-.hover-menu:hover {
+.menu{
+
+:hover {
   box-shadow: 0px 0px 20px 1px #00a18e
+}
+
+:active {
+  box-shadow: 0px 0px 20px 1px #d585b2
+}
 }
 
 

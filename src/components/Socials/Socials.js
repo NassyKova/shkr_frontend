@@ -28,7 +28,7 @@ const Socials = () => {
                         target="_blank"
                         rel="noreferrer"
                     >
-                        <TwitterOutlined style={{width: "100px"}}/>
+                        <TwitterOutlined/>
                     </a>
                 </Hover1>
                 <Hover1>

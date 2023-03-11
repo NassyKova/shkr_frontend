@@ -9,6 +9,6 @@ export const Wrapper = styled.div`
 `
 export const Hover1 = styled.div`
     :hover {
-        background-color: var(--pink);
+        background-color: var(--blueGreen);
     }
 `;

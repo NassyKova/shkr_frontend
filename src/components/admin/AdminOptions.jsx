@@ -1,17 +1,11 @@
 import Title from "../styled/Title";
-import { Wrapper, MainWrapper, RebrandWrapper } from "./AdminOptions.styles";
+import { MainWrapper, RebrandWrapper } from "./AdminOptions.styles";
 import * as React from "react";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import SearchBar from "../SearchBy/SearchByName";
-
+import SearchBarAdmin from "../SearchBy/SearchByName";
 
 const AdminOptions = () => {
-    function deleteCocktail() {
-        return(
-            <div> ???</div>
-        );
-    }
     return (
         <div>
             <Title>What would you like to do?</Title>
@@ -19,6 +13,7 @@ const AdminOptions = () => {
                 <RebrandWrapper>
                     <Link to="/ingr" style={{ textDecoration: "none" }}>
                         <Button
+                            className="menu"
                             style={{
                                 backgroundColor: "white",
                                 color: "black",
@@ -34,6 +29,7 @@ const AdminOptions = () => {
                 <RebrandWrapper>
                     <Link to="/deleted" style={{ textDecoration: "none" }}>
                         <Button
+                            className="menu"
                             style={{
                                 backgroundColor: "#d585b2",
                                 color: "black",
@@ -46,22 +42,7 @@ const AdminOptions = () => {
                         </Button>
                     </Link>
                 </RebrandWrapper>
-
-                <SearchBar />
-                <Wrapper>
-                    <Link to="/deleted" style={{ textDecoration: "none" }}>
-                        <Button
-                            onClick={deleteCocktail}
-                            style={{
-                                backgroundColor: "#d585b2",
-                                color: "black",
-                                textTransform: "none",
-                            }}
-                        >
-                            Delete cocktail
-                        </Button>
-                    </Link>
-                </Wrapper>
+                <SearchBarAdmin />
             </MainWrapper>
         </div>
     );

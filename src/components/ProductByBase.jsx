@@ -25,7 +25,7 @@ function ProductByBase(props) {
                             <Product
                                 key={"product-base-" + item.strDrink}
                                 productInfo={item}
-                                setItem={props.setItem}
+                                // setItem={props.setItem}
                             />
                         );
                     })}

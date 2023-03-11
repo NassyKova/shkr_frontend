@@ -55,7 +55,7 @@ function App() {
 
                 <Route path="addproduct" element={<AddProduct />}></Route>
 
-                <Route path="/about" element={<About />} />
+                <Route path="/" element={<About />} />
                 <Route path="/drinks" element={<NavBar />}>
                     <Route path="base">
                         <Route index={true} element={<SearchByBase />}></Route>

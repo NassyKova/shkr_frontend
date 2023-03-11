@@ -1,24 +1,22 @@
 import { Wrapper, Img, Title, Ingridients, Grid } from "./Product.Styles";
 import axios from "axios";
-// import { React, useState } from "react";
-import { React} from "react";
+import { React, useState } from "react";
 import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 function Product(props) {
-    // const [isLoading, setIsLoading] = useState(true);
+    const [cocktail, setCocktail] = useState(true);
     const item = props.productInfo;
+    const navigate = useNavigate();
 
-    function handleDelete() {
-        return axios
-            .post("/products/forbidden/add")
-            .then((res) => console.log(res))
-            .then((json) => {
-                const deletedItems = json.drinks.map((product) => {
-                    return product;
-                });
-                console.log(deletedItems);
-                // setIsLoading(false);
+    function AddToForbidden() {
+        setCocktail(item.strDrink);
+        axios
+            .post("/products/forbidden/add", { drink: cocktail })
+            .then((res) => {
+                console.log("Succesfully removed");
             });
+        navigate("/deleted");
     }
     return (
         <Grid>
@@ -37,18 +35,20 @@ function Product(props) {
                 </Img>
                 <Title>{item.strDrink}</Title>
                 <Ingridients key={"ingrindient-item-" + item.strDrink}>
-                {item.strMeasure1}{" "}{item.strIngredient1}{", "}
-                {item.strMeasure2}{" "}{item.strIngredient2}
+                    {item.strMeasure1} {item.strIngredient1}
                     {", "}
-                    {item.strMeasure3}{" "}{item.strIngredient3}
+                    {item.strMeasure2} {item.strIngredient2}
                     {", "}
-                    {item.strMeasure4}{" "}{item.strIngredient4}
+                    {item.strMeasure3} {item.strIngredient3}
                     {", "}
-                    {item.strMeasure5}{" "}{item.strIngredient5}
+                    {item.strMeasure4} {item.strIngredient4}
+                    {", "}
+                    {item.strMeasure5} {item.strIngredient5}
                 </Ingridients>
                 <div>{item.strInstructions}</div>
                 <Button
-                    onclick={handleDelete}
+                    className="menu"
+                    onClick={AddToForbidden}
                     style={{
                         backgroundColor: "#d585b2",
                         color: "black",

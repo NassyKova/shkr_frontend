@@ -203,7 +203,7 @@ const RebrandSpirit = () => {
             <Wrapper style={{margin: "20px"}}>
                 <Stack direction="row" spacing={2}>
                     <Link to="/update" style={{ textDecoration: "none" }}>
-                        <Button
+                        <Button className="menu"
                             style={{
                                 backgroundColor: "green",
                                 color: "black",
@@ -216,7 +216,7 @@ const RebrandSpirit = () => {
                         </Button>
                     </Link>
                     <Link to="/admin" style={{ textDecoration: "none" }}>
-                        <Button
+                        <Button className="menu"
                             style={{
                                 backgroundColor: "#d585b2",
                                 color: "black",
