@@ -6,7 +6,7 @@ const TopMenu = () => {
         <Wrapper>
             {" "}
             <Link to="/" style={{ textDecoration: "none" }}>
-                <Button>About us</Button>
+                <Button>About</Button>
             </Link>
             <Link to="/drinks" style={{ textDecoration: "none" }}>
                 <Button>Drinks</Button>

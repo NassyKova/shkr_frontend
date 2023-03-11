@@ -22,7 +22,7 @@ import Box from "@mui/material/Box";
 import AddProduct from "./components/admin/Update";
 // import Login from "./components/Login";
 import NotFound from "./components/NotFound";
-import About from "./components/About";
+import About from "./components/About/About";
 import Contact from "./components/Contact";
 
 import globalReducer from "./components/reducers/globalReducer";
