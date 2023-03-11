@@ -616,7 +616,33 @@ The removeForbidden test simply sent the drink to be removed and then ensured th
       expect(response.body.forbidden.includes("Martini")).toBe(false)
     })}) 
 ```
+One of the happiest moments of this whole project was definitely when I received and I knew I had a running app that was conforming to what I had asked it to do.:  
 
+<img src="./docs/screenshots/JEST100.png" >
+
+While Jest and supertest were incredibly useful for the final product, along the way to figure out what kind of data I was receiving or to debug I used postman. A lot.
+For the admin functions it was as simple as making sure they were doing as they were told in real time:
+<img src="./docs/screenshots/PMbrandswap.png">
+Such as here when I was wanting to ensure teh branding had swapped as planned, or  
+
+<img src="./docs/screenshots/PMforbiddenadd.png" >  
+
+here to make sure that items were being added to the forbidden array, as well as being removed:  
+
+<img src="./docs/screenshots/PMremoveforbid.png" >  
+
+I also used postman just to keep an eye one which brands I had in my DB and also how it was structured while I worked out how to manipualte that information:  
+<img src="./docs/screenshots/PMgetproducts.png" >
+
+This real time testing afforded me the opportunity to see where problems were using both Postman and the console.log function and remedy them, seeing results immediately. The peripheral benefit was picking up on things like capitalization and punctuation throughout search results ad adjsuting my code to accommodate.
+
+Postman was also great to see _what kind_ of data I was getting back. If we take a look at the initial return on a single drink:  
+<img src="./docs/screenshots/allinfo.png" >  
+We can see that I was getting _way_ too much back, and in german and italian to boot. This let me know the keys I needed to keep and also how teh returns were structured so as I filtered them I could strip away layers of redundancy. Also, when searching by broad thingsl ike ingredients or glassware, information returned was limited:
+<img src="./docs/screenshots/CDBgin.png" >    
+so using postman (although this is clearly a chrome shot, the initial work was done with postman) I was able to see what exactly was being returned and then manipulate these results to return more data, and specifically, the data we required.
+<img src="./docs/screenshots/PMKbybasegin.png" >
+<img src="./docs/screenshots/PMgetheavy.png" >
 
 
 
