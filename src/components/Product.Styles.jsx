@@ -4,11 +4,10 @@ export const Grid = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
-    align-items: center; 
+    align-items: center;
     justify-items: center;
 `;
 export const Wrapper = styled.div`
-
     margin: 10px;
     padding: 20px;
     display: flex;
@@ -23,32 +22,22 @@ export const Wrapper = styled.div`
         box-shadow: 0px 0px 20px 1px rgba(4, 4, 4, 1);
     }
 
-    
     @media screen and (max-width: 768px) {
-        width: 70%;;
-
+        width: 70%;
     }
 `;
 
 export const Img = styled.div`
     display: flex;
     align-items: center;
-    /* object-fit: contain; */
-    /* width: 100%;
-    height: auto; */
     width: 300px;
     border: 1px solid black;
     color: var(--blueGreen);
-
-    @media screen and (max-width: 768px) {
-      /* width: 50px; */
-
-    }
 `;
 
 export const Title = styled.div`
     display: flex;
-    /* justify-content: center; */
+
     font-size: var(--fontBig);
     color: var(--blueGreen);
 `;
@@ -56,5 +45,4 @@ export const Title = styled.div`
 export const Ingridients = styled.div`
     color: var(--pink);
     margin-bottom: 10px;
-    align-items: left;
 `;
