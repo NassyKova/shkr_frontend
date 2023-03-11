@@ -1,10 +1,11 @@
 import { Wrapper, Img, Title, Ingridients, Grid } from "./Product.Styles";
 import axios from "axios";
-import { React, useState } from "react";
+// import { React, useState } from "react";
+import { React} from "react";
 import { Button } from "antd";
 
 function Product(props) {
-    const [isLoading, setIsLoading] = useState(true);
+    // const [isLoading, setIsLoading] = useState(true);
     const item = props.productInfo;
 
     function handleDelete() {
@@ -16,7 +17,7 @@ function Product(props) {
                     return product;
                 });
                 console.log(deletedItems);
-                setIsLoading(false);
+                // setIsLoading(false);
             });
     }
     return (
