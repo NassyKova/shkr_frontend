@@ -1,19 +1,12 @@
 import Title from "./styled/Title";
+import Text from "./styled/Text.style";
 const About = () => {
     return (
         <div>
             <Title>About Us</Title>
-            <div
-                style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "2rem",
-                    color: "#00a18e ",
-                    margin: "5rem 20rem",
-                }}
-            >
-                {" "}
+            <Text>
+
+
                 The purpose of this website is to create an easy-to-use cocktail
                 recipe book for liquor distributors to provide to bartenders as
                 a means of promoting their product. Arming bartenders with easy
@@ -28,7 +21,8 @@ const About = () => {
                 the randomizing function so that specific drinks can be excluded
                 from the search results, as well as manipulating the database to
                 maintain brands across different recipes.
-            </div>
+
+            </Text>
         </div>
     );
 };

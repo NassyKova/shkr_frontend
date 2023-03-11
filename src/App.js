@@ -25,7 +25,6 @@ import NotFound from "./components/NotFound";
 import About from "./components/About";
 import Contact from "./components/Contact";
 
-
 import globalReducer from "./components/reducers/globalReducer";
 import RebrandSpirit from "./components/admin/RebrandSpirit";
 import AdminOptions from "./components/admin/AdminOptions";
@@ -57,7 +56,6 @@ function App() {
                 <Route path="addproduct" element={<AddProduct />}></Route>
 
                 <Route path="/about" element={<About />} />
-                {/* <Route path="/about" element={<RebrandSpirits />} /> */}
                 <Route path="/drinks" element={<NavBar />}>
                     <Route path="base">
                         <Route index={true} element={<SearchByBase />}></Route>
@@ -189,7 +187,6 @@ function MainPage() {
         <>
             <GlobalStyle />
             <Header />
-
 
             {/* <Product setItem={setItem} />
             <ProductInfo item={selectedItem} /> */}
