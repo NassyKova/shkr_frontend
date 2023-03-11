@@ -1,4 +1,3 @@
-import Title from "../styled/Title";
 import Text from "../styled/Text.style";
 import "./About.styles.css";
 import axios from "axios";
