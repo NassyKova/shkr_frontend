@@ -18,13 +18,12 @@ import SearchByBase from "./components/SearchBy/SearchByBase";
 import SearchAppBar from "./components/SearchBy/SearchByName";
 
 import Box from "@mui/material/Box";
-import ProductInfo from "./components/ProductInfo";
+// import ProductInfo from "./components/ProductInfo";
 import AddProduct from "./components/admin/Update";
 // import Login from "./components/Login";
 import NotFound from "./components/NotFound";
 import About from "./components/About";
 import Contact from "./components/Contact";
-
 
 import globalReducer from "./components/reducers/globalReducer";
 import RebrandSpirit from "./components/admin/RebrandSpirit";
@@ -57,7 +56,6 @@ function App() {
                 <Route path="addproduct" element={<AddProduct />}></Route>
 
                 <Route path="/about" element={<About />} />
-                {/* <Route path="/about" element={<RebrandSpirits />} /> */}
                 <Route path="/drinks" element={<NavBar />}>
                     <Route path="base">
                         <Route index={true} element={<SearchByBase />}></Route>
@@ -179,17 +177,16 @@ function App() {
 }
 
 function MainPage() {
-    const [selectedItem, setSelectedItem] = useState(null);
+    // const [selectedItem, setSelectedItem] = useState(null);
 
-    function setItem(item) {
-        setSelectedItem(item);
-    }
+    // function setItem(item) {
+    //     setSelectedItem(item);
+    // }
 
     return (
         <>
             <GlobalStyle />
             <Header />
-
 
             {/* <Product setItem={setItem} />
             <ProductInfo item={selectedItem} /> */}

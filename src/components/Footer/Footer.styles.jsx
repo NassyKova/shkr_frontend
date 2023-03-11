@@ -10,7 +10,6 @@ export const Admin = styled.div`
     position: relative;
     margin: 0px 20px 0px 0px;
     text-align: end;
-
     font-family: "Libre Baskerville", serif;
     margin-bottom: 20px;
     a:link {

@@ -54,7 +54,7 @@ const RebrandSpirit = () => {
         recipe: "",
     });
 
-    const [errorMessage, setErrorMessage] = useState(null);
+    // const [errorMessage, setErrorMessage] = useState(null);
 
     const handleOnChange = (event) => {
         // console.log(event.target.name);
