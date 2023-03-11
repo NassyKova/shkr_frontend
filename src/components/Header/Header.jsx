@@ -16,7 +16,7 @@ const Header = () => {
                 </Link>
                 <TopMenu />
             </Content>
-            <Slogan>The cocktail drinks for you!</Slogan>
+            <Slogan>Cocktails for you!</Slogan>
         </Wrapper>
     );
 };

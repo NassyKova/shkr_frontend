@@ -5,9 +5,12 @@ const Text = styled.h3`
     font-size: 2rem;
     color: #00a18e;
     margin: 5rem 20rem;
-    @media screen and (max-width: 800px) {
+    font-weight: 300;
+    @media screen and (max-width: 1200px) {
         width: auto;
         margin: 1rem;
+        font-size: 1.5rem;
+        font-weight: 200;
     }
 `;
 
