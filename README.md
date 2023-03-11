@@ -11,13 +11,58 @@ A MERN Application built by Patrick Hamer and Anastasia Dyakova(aka Nassy Kova)
 ## App description
 
 ### Purpose
+The Shkr app is a simple, intuitive app designed to help people learn new cocktail recipes or look up old favourites. It also has the functionality to allow brands to manipulate data that the client sees so that they can maintain prominent placement of their brands as well as remove specific cocktails that may not comply with their portfolio.
 
 ### Functionality / Features
+There are two main sections of functionality within the app which are the library for the end user as well as the admin functionality for the spirits rep/brand ambassador.
+#### **The Library _(drinkControllers)_**
+The library consists of a simple interface linking the user to an existing cocktail library. Due to time constraints we did not have the ability to create our own library of drinks so we opted for using an external API. The big difference here is the data that is retrieved. The user can search for dirnks in the following ways. It is worth noting that all of the search functions are passed through filtering functions that will be discussed at the end of the list.
+- By name: Will retrieve an array of objects that all have the requested title somewhere in their name (strDrink). This will actually retrieve _too much_ in that it retrieves the entire entry in the external API for each drink which includes both italian and french versions of the alread excessive information we get back.
+- By Base: Will retrieve an array of objects that all share a common ingredient eg. base. Information initially returned is name (strDrink), id (str) and the link to the picture (strDrinkThumb). This is far from enough info for our needs.
+- By Fruity: In the app there is a discreet list of ingredients that would produce a fruity drink. This function loops through each item on that list and compiles a new list of all the drinks that contain one or more of the ingredients. Again only returning name, id and picture.
+- By Fizzy: Lemonade, soda water, champagne. You know, bubbles. Fizz! This works the same as the fruity list however iterates through a list of infredients that contain fizz to create a list of effervescent bevvies, also lacking any information beyond name, id and photo.
+- By Heavy: This is for when you want a stiff drink or have a premium product to savor. This has a list of spirits to compare to and only returns drinks that _have_ alcohol and have 3 ingredients or less. Limited info applies to this one too, but we'll get to that.
+- By Non-Alc: I don't drink and ride my motorbike, which means when I'm out, I don't drink. This simply returns an array of alcohol-free drinks, again with the limited info.
+
+**Library functions _(utils)_**
+This was both the most challenging and the most fun part of the assignment for me. Negotioating an external API, my own code and a local database... What a ride. Each of the search results needs top be passed through various filters for various reasons. They are as follows:
+- ModifyResponse: This takes the returned information and compares the ingredients with a database containing brand substitutions. If an ingredient is, for example "Rum" and the database hass rum's brand listed as "Plantation" then Plantation will be substituted for all listed ingredients. 
+- extrapDetails: This function takes the list returned by the external API, pulls the ID for each drink returned and creates a new array with them in it. It then proceeds fetch all the data for each ID but only returning the specific information required for this app, in this instance Name, Picture, Ingredients, Measures and instructions. It then passes this information through modifiedResponse to make appropriate brand adjustments.
+- randomizer: This function picks a random number between one and the length of the array it is given.
+- takeForbidden: This function filters our any drink that's name (strDrink) matches one of the items in the forbidden array in the database.
+- getRandomFive: This function recieves an arraay and first runs the forbidden function on it, then checks to see if the array is 5 or less. If so, the array is returned. If not it hten employs the randomizer function to indexes from the array and adds the corresponding object to a new array. If the new array already contains the object it will not be added. It proceeds to do this until the new array reaches 5([4]) and then returns it.
+
+**Admin functions**
+Admin functionality is fairly simple for this app. The database is compared ot the search results for each search and given we don't actually want to change the data in the database (nor can we, as we learned _after_ paying our subscription to their Patreon) every time we want to do a rebranding we decided filters would be the best option. The filters have been described above, however here is how they can be manipulated:
+- rebrandSpirit: allows the user to enter a new name for the spirit. The spiritName is preset whereas the newBrand is a text field for the user to input their desired string. The body of the request is structured like so:
+```
+{ 
+  spiritName: "Name of key to spirit we want to change."
+  newBrand: "New brand we want replacing this spirit when searched"
+}
+```
+
+- addToForbidden: This takes a string and adds it to the forbidden array using a text input. It's body is structured:
+```
+{
+  drink: "Cocktail to be forbidden"
+}
+```
+- removeForbiddenItem: This again accepts a string but this time removes the item from the forbidden array. It's body is structured:
+```
+{
+  drink: "Cocktail to be removed from forbiddenList
+}
+```
+It is worth noting that in the interests of this assignment all of these functions actually retrieve the id for the single document in the database and autmatically put it in. This was an issue we ran into when I was reinstalling mongo and realised that I had hard-coded the ID in, thus making it an instant-crash scenario as soon as it left my local environment. To do this the function calls the ReturnMod model and pulls the object id and places it in a variable which it then uses throughout the rest of the function.
+
 
 ### Target audience
 
-?????
-#
+There are three main demographics we are aiming this app at. The first was cocktail enthusiasts. This provides an easy way to find new recipes with the randomization of the generalized searches and the ability to search by base.
+The next group were bartenders. Having a phone-accessible cocktail library on you at all times makes the job a whole lot easier, as well as allowing you to explore new ideas. This group was particularly considered for the search by name functionality as there is always someone in your bar from overseas who wants a drink you ahve never heard of before and all they can tell you is it was 'nice'.
+The last demographic, and possibly the most important as these would be the people we would be expecting to pay for our app, are the big brands. Brands like Hennessy-Moet-Chandon or Pernod-Ricard or Diageo. These guys would reap two benefits from this app. Firstly they would get more consistent quality products across all venues they rolled this app out to, but more importantly the brand replacement/forbidden list would allow them to not only keep the brands in their stable front and center when bartenders and booze-nerds are looking up recipes, but more importantly _change_ that branding at a moments notice. Imagine rolling out a nationwide promotion for a new liquor and instantly being able to change the recipe book to include that new brand wherever possible, only to change it back to a house brand again once the promotion is over.
+
 
 ## Links
 
@@ -70,9 +115,9 @@ The API can now be accessed using Postman and `localhost:3000/`
 
     Request Verb: GET
     Function: Retrieves 5 random cocktails by name entered by user (eg Margarita will return all drinks with that string in their name)
-    Authentication: N/A
-    Authorization: N/A
-    Example Response:
+    Authentication: N/A  
+    Authorization: N/A  
+    Example Response:  
 ```Javascript
 {
   "drinks": [
@@ -84,57 +129,39 @@ The API can now be accessed using Postman and `localhost:3000/`
       "strIngredient2": "New tequila brand",
       "strIngredient3": "Cream of coconut",
       "strIngredient4": "Lime juice",
+      "strMeasure1": "1 cup ",
+      "strMeasure2": "2 oz ",
+      "strMeasure3": "1/4 cup ",
+      "strMeasure4": "3 tblsp fresh "
+    },
+ ```
+
+- drinkRouter.get("/drinks/base/:drinkBase", getDrinkByBase);  
+    Request Verb: GET  
+    Function: Retrieves 5 random cocktails by selected base ingredient (buttons on client side)  
+    Authentication: N/A  
+    Authorization: N/A  
+    Example Response:  
+```Javascript
+    {
+    "drinks": [
+        {
+            "strDrink": "Barracuda",
+            "strInstructions": "Shake pour ingredients with ice. Strain into glass, top with Sparkling wine.",
+            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/jwmr1x1504372337.jpg",
+            "strIngredient1": "Mount Gay Eclipse",
+            "strIngredient2": "Galliano",
+            "strIngredient3": "Pineapple Juice",
+            "strIngredient4": "Lime Juice",
+            "strIngredient5": "Prosecco",
+            "strMeasure1": "4.5 cl",
+            "strMeasure2": "1.5 cl",
+            "strMeasure3": "6 cl",
+            "strMeasure4": " 1 dash",
+            "strMeasure5": "top up "
+        }
 ```
       
-- drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);
-
-      Request Verb: GET
-      Function: Retrieves all the cocktails by name
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
-  ```JavaScript
-  {
-    "drinks": [
-      {
-        "strDrink": "Whitecap Margarita",
-        "strInstructions": "Place all ingredients in a blender and blend until smooth. This makes one drink.",
-        "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/srpxxp1441209622.jpg",
-        "strIngredient1": "Ice",
-        "strIngredient2": "New tequila brand",
-        "strIngredient3": "Cream of coconut",
-        "strIngredient4": "Lime juice",
-        "strMeasure1": "1 cup ",
-        "strMeasure2": "2 oz ",
-        "strMeasure3": "1/4 cup ",
-        "strMeasure4": "3 tblsp fresh "
-      },
-  ```
-
-- drinkRouter.get("/drinks/base/:drinkBase", getDrinkByBase);
-
-      Request Verb: GET
-      Function: Retrieves all the cocktails by base
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
-  ```JavaScript
-      {
-      "strDrink": "Oreo Mudslide",
-      "strInstructions": "Blend Vodka, Kahlua, Bailey's, ice-cream and the Oreo well in a blender. Pour into a large frosted glass. Garnish with whipped cream and a cherry.",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/tpwwut1468925017.jpg",
-      "strIngredient1": "Grey Goose",
-      "strIngredient2": "Kahlua",
-      "strIngredient3": "Baileys irish cream",
-      "strIngredient4": "Vanilla ice-cream",
-      "strIngredient5": "Oreo cookie",
-      "strMeasure1": "1 oz ",
-      "strMeasure2": "1 oz ",
-      "strMeasure3": "1 oz ",
-      "strMeasure4": "2 scoops ",
-      "strMeasure5": "1 "
-    },
-  ```
   
 - drinkRouter.get("/drinks/non-alc", getDrinkByNonAlc);
       
@@ -154,6 +181,7 @@ The API can now be accessed using Postman and `localhost:3000/`
       "strMeasure2": "2 "
     },
   ```
+  
 - drinkRouter.get("/drinks/fruity", getDrinkByFruity);
 
         Request Verb: GET
@@ -199,105 +227,6 @@ The API can now be accessed using Postman and `localhost:3000/`
       "strMeasure2": "2 shots ",
       "strMeasure3": "Top up with"
       },
- 
-
-- drinkRouter.get("/drinks/base/:drinkBase", getDrinkByBase);
-
-      Request Verb: GET
-      Function: Retrieves 5 random cocktails by selected base ingredient (buttons on client side)
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
-```JavaScript
-      {
-      "strDrink": "Barracuda",
-      "strInstructions": "Shake pour ingredients with ice. Strain into glass, top with Sparkling wine.",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/jwmr1x1504372337.jpg",
-      "strIngredient1": "Mount Gay Eclipse",
-      "strIngredient2": "Galliano",
-      "strIngredient3": "Pineapple Juice",
-      "strIngredient4": "Lime Juice",
-      "strIngredient5": "Prosecco",
-      "strMeasure1": "4.5 cl",
-      "strMeasure2": "1.5 cl",
-      "strMeasure3": "6 cl",
-      "strMeasure4": " 1 dash",
-      "strMeasure5": "top up "
-      },
-```
-
-- drinkRouter.get("/drinks/non-alc", getDrinkByNonAlc);
-      
-      Request Verb: GET
-      Function: Retrieves 5 random cocktails from the non-alcoholic list in the external API
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
-
-```Javascript
-{
-    "drinks": [
-        {
-            "strDrink": "Grape lemon pineapple Smoothie",
-            "strInstructions": "Throw everything into a blender and liquify.",
-            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/54z5h71487603583.jpg",
-            "strIngredient1": "Grapes",
-            "strIngredient2": "Lemon",
-            "strIngredient3": "Pineapple",
-            "strMeasure1": "1 cup ",
-            "strMeasure2": "1/4 ",
-            "strMeasure3": "1/2 "
-        },
-```
-
-- drinkRouter.get("/drinks/fruity", getDrinkByFruity);
-
-      Request Verb: GET
-      Function: Retrieves 5 random cocktails that contain an ingredient that is included in the fruityList in utils/arrayInfo
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
-```Javascript
-{
-    "drinks": [
-        {
-            "strDrink": "Lassi - Mango",
-            "strInstructions": "Put it all in a blender and pour over crushed ice. You can also use other fruits like strawberries and bananas.",
-            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/1bw6sd1487603816.jpg",
-            "strIngredient1": "Mango",
-            "strIngredient2": "Yoghurt",
-            "strIngredient3": "Sugar",
-            "strIngredient4": "Water",
-            "strMeasure1": "2 ",
-            "strMeasure2": "2 cups ",
-            "strMeasure3": "1/2 cup ",
-            "strMeasure4": "1 cup iced "
-        },
-```
-
-
-- drinkRouter.get("/drinks/fizzy", getDrinkByFizzy);
-
-      Request Verb: GET
-      Function: Retrieves 5 random cocktails that contain an ingredient that is included in the fizzyList in utils/arrayInfo
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
-```Javascript
-{
-    "drinks": [
-        {
-            "strDrink": "Brandon and Will's Coke Float",
-            "strInstructions": "Scoop two large scoops of vanilla ice-cream into frosted beer mug. Next, add 2 ounces Maker's Mark. Then, pour in coke. Gently stir and enjoy.",
-            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/xspxyr1472719185.jpg",
-            "strIngredient1": "Vanilla ice-cream",
-            "strIngredient2": "Coca-Cola",
-            "strIngredient3": "Woodford Reserve",
-            "strMeasure1": "2 scoops ",
-            "strMeasure2": "1 can ",
-            "strMeasure3": "2 oz "
-        },
-```
 
 - drinkRouter.get("/drinks/heavy", getDrinkByHeavy);
 
@@ -322,14 +251,14 @@ The API can now be accessed using Postman and `localhost:3000/`
         },
 ```
 
-- returnModRouter.put("/products/brand/:id", rebrandSpirit)
+
+- returnModRouter.put("/products/brand/swap", rebrandSpirit)
 
       Request Verb: PUT
       Function: Assigns new value (req.body.newBrand) to appropriate key (req.body.spiritName)
       Authentication: N/A
       Authorization: N/A
       Example Response:
-
     ```Javascript
     {
     "_id": "6408199ef6eeb96704d4269b",
@@ -343,38 +272,9 @@ The API can now be accessed using Postman and `localhost:3000/`
         "Martini",
         "margarita",
         "Dirty Martini"
-    ]},
-
-- drinkRouter.get("/drinks/heavy", getDrinkByHeavy);
-
-      Request Verb: GET
-      Function: Retrieves all the cocktails with strong ingridients
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
-  
-  ```JavaScript
-      {
-      "strDrink": "Addison",
-      "strInstructions": "Shake together all the ingredients and strain into a cold glass.",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/yzva7x1504820300.jpg",
-      "strIngredient1": "New gin brand",
-      "strIngredient2": "Vermouth",
-      "strMeasure1": "1 1/2 shot ",
-      "strMeasure2": "1 1/2 shot "
-    },
-
-
-- returnModRouter.put("/products/brand/:id", rebrandSpirit)
-
-          Request Verb: GET
-          Function: Retrieves all the cocktails by name
-          Authentication: N/A
-          Authorization: N/A
-          Example Response:
-
-  ```JavaScript
-  ```
+    ]
+}
+```
 
 - returnModRouter.post("/products/forbidden/add", addToForbidden)
 
@@ -400,7 +300,6 @@ The API can now be accessed using Postman and `localhost:3000/`
         "${req.body.drink}"
     ]}
 
-
 - returnModRouter.patch("/products/forbidden/remove", removeForbiddenItem)
 
       Request Verb: PATCH
@@ -424,7 +323,7 @@ The API can now be accessed using Postman and `localhost:3000/`
     ]
 }
 ```
-```
+
 
 
 ## Server Libraries and Dependencies
