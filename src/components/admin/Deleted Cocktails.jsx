@@ -9,13 +9,16 @@ import SpinnerBlue from "../Spinner";
 import Box from "@mui/material/Box";
 import styled from "styled-components";
 
-
 const InputWrapper = styled.div`
-    display: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
     align-items: center;
-    justify-content: center;
+    justify-items: center;
+    margin-bottom: 20px;
     @media screen and (max-width: 800px) {
-        width: auto;
+        /* width: auto; */
+    }
 `;
 
 const ForbiddenCocktails = () => {
@@ -51,43 +54,42 @@ const ForbiddenCocktails = () => {
     }
     return (
         <div>
-            <Title>Forbidden cocktails:</Title>
-            <InputWrapper>
-            {forbiddenCocktailsData.map((item, key) => {
-                return (
-                    <>
-                        {isLoading ? (
-                            <Box
-                                sx={{
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    height: "100vh",
+            <Title>Removed cocktails:</Title><br/><br/>
+
+                {forbiddenCocktailsData.map((item, key) => {
+                    return (
+                        <InputWrapper>
+                            {isLoading ? (
+                                <Box
+                                    sx={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        alignItems: "center",
+                                        height: "100vh",
+                                    }}
+                                >
+                                    <SpinnerBlue />
+                                </Box>
+                            ) : (
+                                <h1 key={"forbidden-" + item}>{item}</h1>
+                            )}
+                            <Button
+                                key={"button-" + item}
+                                className="menu"
+                                onClick={DeleteFromForbiddenCocktails}
+                                style={{
+                                    color: "black",
+                                    textTransform: "none",
+                                    backgroundColor: "#d585b2",
                                 }}
+                                variant="outlined"
                             >
-                                <SpinnerBlue />
-                            </Box>
-                        ) : (
-                            
-                            <h1 key={"forbidden-" + item}>{item}</h1>
-                        )}
-                        <Button
-                        key={"button-" + item}
-                            className="menu"
-                            onClick={DeleteFromForbiddenCocktails}
-                            style={{
-                                color: "black",
-                                textTransform: "none",
-                                backgroundColor: "#d585b2",
-                            }}
-                            variant="outlined"
-                        >
-                            Remove from the removed cocktails
-                        </Button>
-                    </>
-                );
-            })}
-</InputWrapper>
+                                Remove from the removed cocktails
+                            </Button>
+                        </InputWrapper>
+                    );
+                })}
+
         </div>
     );
 };

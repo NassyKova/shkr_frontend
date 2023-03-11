@@ -3,14 +3,14 @@ import { MainWrapper, RebrandWrapper } from "./AdminOptions.styles";
 import * as React from "react";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
-import SearchBarAdmin from "../SearchBy/SearchByName";
+import SearchBarAdmin from "../SearchBy/SearchByNameAdmin";
 
 const AdminOptions = () => {
     return (
         <div>
-            <Title>What would you like to do?</Title>
+            <Title>Manage cocktails</Title>
             <MainWrapper>
-                <RebrandWrapper>
+                {/* <RebrandWrapper>
                     <Link to="/ingr" style={{ textDecoration: "none" }}>
                         <Button
                             className="menu"
@@ -25,7 +25,7 @@ const AdminOptions = () => {
                             Rebrand Spirit
                         </Button>
                     </Link>
-                </RebrandWrapper>
+                </RebrandWrapper> */}
                 <RebrandWrapper>
                     <Link to="/deleted" style={{ textDecoration: "none" }}>
                         <Button
@@ -38,7 +38,7 @@ const AdminOptions = () => {
                             variant="outlined"
                         >
                             {" "}
-                            Deleted cocktails
+                            See all deleted cocktails
                         </Button>
                     </Link>
                 </RebrandWrapper>

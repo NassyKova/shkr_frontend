@@ -26,7 +26,7 @@ import About from "./components/About/About";
 import Contact from "./components/Contact";
 
 import globalReducer from "./components/reducers/globalReducer";
-import RebrandSpirit from "./components/admin/RebrandSpirit";
+// import RebrandSpirit from "./components/admin/RebrandSpirit";
 import AdminOptions from "./components/admin/AdminOptions";
 import DeletedCocktails from "./components/admin/Deleted Cocktails";
 
@@ -49,7 +49,7 @@ function App() {
                     path="/admin"
                     element={<AdminOptions />}
                 ></Route>
-                <Route path="ingr" element={<RebrandSpirit />}></Route>
+                {/* <Route path="ingr" element={<RebrandSpirit />}></Route> */}
                 <Route path="deleted" element={<DeletedCocktails />}></Route>
                 {/* </Route> */}
 

@@ -4,8 +4,20 @@ import { React, useState } from "react";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 
-function Product(props) {
+function ProductAdmin(props) {
+    const [cocktail, setCocktail] = useState(true);
     const item = props.productInfo;
+    const navigate = useNavigate();
+
+    function AddToForbidden() {
+        setCocktail(item.strDrink);
+        axios
+            .post("/products/forbidden/add", { drink: cocktail })
+            .then((res) => {
+                console.log("Succesfully removed");
+            });
+        navigate("/deleted");
+    }
     return (
         <Grid>
             <Wrapper
@@ -34,7 +46,7 @@ function Product(props) {
                     {item.strMeasure5} {item.strIngredient5}
                 </Ingridients>
                 <div>{item.strInstructions}</div>
-                {/* <Button
+                <Button
                     className="menu"
                     onClick={AddToForbidden}
                     style={{
@@ -45,10 +57,10 @@ function Product(props) {
                     }}
                 >
                     Delete cocktail
-                </Button> */}
+                </Button>
             </Wrapper>
         </Grid>
     );
 }
 
-export default Product;
+export default ProductAdmin;
