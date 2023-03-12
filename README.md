@@ -425,7 +425,8 @@ Component libraries:
 
 ## Frontend testing 
 
-<img src="docs/tests/User_test.png" alt="1st DFD attempt">
+<img src="docs/tests/User_test.png" alt="user test">
+<img src="docs/tests/Admin_test.png" alt="admin test">
 
 ## Backend testing 
 ### JEST
@@ -698,37 +699,3 @@ That had a list all of ourt tasks, we gradually developed our knowledge and unde
 <img src="./docs/screenshots/TrelloJEST.png" >  
 
 adding screenshots to cards was useful to let each other know what was happening, especially as we kept slightly different hours and one of us may be working at 6AM or the other working at midnight depending.  Assigning tasks was useful too especially as a lot of the tasks overlapped, for example search functionality. Knowing that we could skip over each others cards in the pursuit oof ticking off our own checklist was very helpful. Labels were just awesome too. As cliche as it sounds, when you're in the zone coding and just having a good day of it it's great to just knock tasks out one after another.
-
-
-
-CMP1043-1.1 Demonstrate separation of concerns in the App.
-
-CMP1043-1.2 Demonstrate DRY (Don’t Repeat Yourself) principles in all code.
-
-CMP1043-1.3 Appropriate use of libraries used in the app
-
-PRG1006-1.1 Demonstrate code flow control
-
-PRG1006-1.2 Demonstrate use of functions
-
-PRG1006-1.3 Apply Object oriented principles/patterns
-
-PRG1006-2.1 Employ and utilise proper source control methodology
-
-PRG1006-2.2 Employ and utilise project management methodology
-
-PRG1006-2.3 Employ and utilise task delegation methodology
-
-PRG1006-4.3 Utilises functions, ranges and classes
-
-PRG1006-6.1 App functionality
-
-PRG1006-6.2 Deployment
-
-PRG1006-6.3 User interface
-
-PRG1006-7.1 Development testing
-
-PRG1006-7.2 Production testing
-
-PRG1006-7.3 Formal testing framework
