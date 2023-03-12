@@ -60,7 +60,6 @@ const ForbiddenCocktails = () => {
     }
     return (
         // Return JSX with the components and data
-
         <div>
             <Title>Removed cocktails:</Title>
             <br />
@@ -70,7 +69,6 @@ const ForbiddenCocktails = () => {
                 return (
                     <InputWrapper>
                         {/* // Check if isLoading is true, if so render a spinner component */}
-
                         {isLoading ? (
                             // Add a Box component for better styling
                             <Box
@@ -85,7 +83,6 @@ const ForbiddenCocktails = () => {
                             </Box>
                         ) : (
                             // If not, map through the data and render it
-
                             <h1 key={"forbidden-" + item}>{item}</h1>
                         )}
                         <Button

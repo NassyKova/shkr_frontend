@@ -66,9 +66,9 @@ The last demographic, and possibly the most important as these would be the peop
 
 ## Links
 
-Deployed Application: [https://link](https://link)
+Deployed Application: [https://shkrapp.netlify.app](https://shkrapp.netlify.app)
 
-Staging Environment: [https://link](https://link)
+Staging Environment: [https://shakr-backend-production.up.railway.app/](https://shakr-backend-production.up.railway.app/)
 
 Server Repo: [https://github.com/Patrick655321/Shakr--Backend](https://github.com/Patrick655321/Shakr--Backend)
 
@@ -403,6 +403,13 @@ Component libraries:
 
 ## Application Screenshots
 ???????????
+
+## Difference with original plan
+### Wireframes at the planning stage
+ <img src="docs/1024.png" alt="Plan A">
+ 
+ ### Wireframes at the deployed stage
+ <img src="docs/1024_updated.png" alt="Plan B">
 
 ## Trello
 Trello Board: [https://trello.com/b/mkjckRkJ/shakr-backend](https://trello.com/b/mkjckRkJ/shakr-backend)
