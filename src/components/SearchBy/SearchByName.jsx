@@ -5,22 +5,29 @@ import Product from "../Product";
 import SpinnerBlue from "../Spinner";
 import Box from "@mui/material/Box";
 
+// define a functional component for the search bar
 function SearchBar() {
+    // define states for the input and the data received from the API
     const [drinkName, setDrinkName] = useState("");
+    // define a function to handle input changes
     let inputHandler = (e) => {
         //convert input text to lower case
         var lowerCase = e.target.value.toLowerCase();
+        // convert input text to lowercase
         setDrinkName(lowerCase);
     };
 
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    // define a function to handle search button click
     function onClickSearchByName() {
+        // send a GET request to the API with the search query
         axios
             .get(`/drinks/name/${drinkName}`)
             .then((res) => res.data)
             .then((json) => {
+                // map the returned data and set it as the new state
                 const newItems = json.drinks.map((product) => {
                     return product;
                 });
@@ -29,7 +36,7 @@ function SearchBar() {
                 setIsLoading(false);
             });
     }
-
+    // return the UI for the search bar component
     return (
         <div
             style={{
@@ -42,6 +49,7 @@ function SearchBar() {
             }}
         >
             <div style={{ width: "30%" }}>
+                {/* input field to enter the search query */}
                 <TextField
                     style={{
                         backgroundColor: "white",
@@ -54,6 +62,7 @@ function SearchBar() {
                     fullWidth
                     label="Search"
                 />
+                {/* search button */}
                 <button
                     className="menu"
                     style={{
@@ -73,9 +82,11 @@ function SearchBar() {
                 </button>
             </div>
             <div>
+                {/* display the products returned by the API */}
                 {data.map((item) => {
                     return (
                         <>
+                            {/* if data is still loading, show a spinner */}
                             {isLoading ? (
                                 <Box
                                     sx={{
@@ -88,6 +99,7 @@ function SearchBar() {
                                     <SpinnerBlue />
                                 </Box>
                             ) : (
+                                // otherwise, show the product component
                                 <Product
                                     key={"product-base-" + item.strDrink}
                                     productInfo={item}

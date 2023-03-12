@@ -27,9 +27,7 @@ export const Slogan = styled.div`
 
 export const LogoImg = styled.img`
     width: 150px;
-        @media screen and (max-width: 768px) {
+    @media screen and (max-width: 768px) {
         width: 100px;
     }
 `;
-
-

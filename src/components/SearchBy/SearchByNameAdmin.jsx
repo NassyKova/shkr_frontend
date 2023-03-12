@@ -5,9 +5,10 @@ import ProductAdmin from "../ProductAdmin";
 import SpinnerBlue from "../Spinner";
 import Box from "@mui/material/Box";
 
-
 function SearchBarAdmin() {
+    // Declare state variables using useState hook.
     const [drinkName, setDrinkName] = useState("");
+    // Declare function to handle input changes and update drinkName state with the input value in lower case.
     let inputHandler = (e) => {
         //convert input text to lower case
         var lowerCase = e.target.value.toLowerCase();
@@ -17,6 +18,7 @@ function SearchBarAdmin() {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    // Declare function to handle the search by name button click. It makes a GET request to the server, retrieves data, updates the data state, and sets isLoading to false.
     function onClickSearchByName() {
         axios
             .get(`/drinks/name/${drinkName}`)
@@ -31,7 +33,7 @@ function SearchBarAdmin() {
                 setIsLoading(false);
             });
     }
-
+    // Return the search bar and the results. The search bar consists of a TextField component and a button. The results are displayed using the ProductAdmin component and the SpinnerBlue component.
     return (
         <div
             style={{
@@ -44,6 +46,7 @@ function SearchBarAdmin() {
             }}
         >
             <div style={{ width: "30%" }}>
+                {/* Render the TextField component with styles and the inputHandler function as onChange event handler */}
                 <TextField
                     style={{
                         backgroundColor: "white",
@@ -56,7 +59,9 @@ function SearchBarAdmin() {
                     fullWidth
                     label="Search"
                 />
-                <button className="menu"
+                {/* Render the search button with styles and the onClickSearchByName function as onClick event handler */}
+                <button
+                    className="menu"
                     style={{
                         display: "flex",
                         justifyContent: "center",
@@ -73,6 +78,8 @@ function SearchBarAdmin() {
                     Search
                 </button>
             </div>
+            {/* Render the results using the ProductAdmin and SpinnerBlue components. If isLoading is true, render the SpinnerBlue component. Otherwise, render the ProductAdmin component. */}
+
             <div>
                 {data.map((item) => {
                     return (
@@ -92,7 +99,7 @@ function SearchBarAdmin() {
                                 <ProductAdmin
                                     key={"product-base-" + item.strDrink}
                                     productInfo={item}
-                                    />
+                                />
                             )}
                         </>
                     );

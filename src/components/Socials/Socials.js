@@ -7,8 +7,10 @@ import {
 import { Space } from "antd";
 import { Wrapper, Hover1 } from "./Socials.Styles";
 
+// This is a functional component called Socials
 const Socials = () => {
     return (
+        // The component returns a wrapper that contains links to social media pages
         <Wrapper>
             <Space>
                 <Hover1>

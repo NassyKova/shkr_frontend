@@ -24,12 +24,16 @@ import SearchAppBar from "./components/SearchBy/SearchByName";
 import AdminOptions from "./components/admin/AdminOptions";
 import DeletedCocktails from "./components/admin/Deleted Cocktails";
 
+// This is a React component that renders the main application
 function App() {
+    // Set the initial state for isLoading to true
+
     const [isLoading, setIsLoading] = useState(true);
-    
-    
+
+    // Create a router using createBrowserRouter and createRoutesFromElements functions
     const router = createBrowserRouter(
         createRoutesFromElements(
+            // Define the routes for the application
             <Route path="/" element={<MainPage />} errorElement={<NotFound />}>
                 <Route
                     index={true}
@@ -39,6 +43,7 @@ function App() {
                 <Route path="deleted" element={<DeletedCocktails />}></Route>
                 <Route path="/" element={<About />} />
                 <Route path="/drinks" element={<NavBar />}>
+                    {/* // Define routes for different base drinks */}
                     <Route path="base">
                         <Route index={true} element={<SearchByBase />}></Route>
                         <Route
@@ -90,6 +95,7 @@ function App() {
                             }
                         ></Route>
                     </Route>
+                    {/* // Define routes for different types of drinks */}
                     <Route
                         path="fruity"
                         element={<ProductByBase specificUrl="/drinks/fruity" />}
@@ -114,14 +120,15 @@ function App() {
             </Route>
         )
     );
-
+    // Set isLoading to false after 2 seconds using setTimeout
     setTimeout(() => {
         setIsLoading(false);
     }, 2000);
 
+    // Return either a loading spinner or the main application
     return (
         <>
-            {isLoading ? (
+            {isLoading ? ( // If isLoading is true, show the spinner
                 <Box
                     sx={{
                         display: "flex",
@@ -133,6 +140,7 @@ function App() {
                     <SpinnerBlue />
                 </Box>
             ) : (
+                // If isLoading is false, show the main content
                 <div className="App">
                     <GlobalContext.Provider>
                         <RouterProvider router={router} />
@@ -143,10 +151,11 @@ function App() {
     );
 }
 
+// This component defines the main layout of the application
 function MainPage() {
     return (
         <>
-            <GlobalStyle />
+            <GlobalStyle />{/* Apply the global styles */}
             <Header />
             <Outlet />
             <Footer />

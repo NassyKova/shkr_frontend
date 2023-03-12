@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+// This code defines a styled component called Text, which is an h3 element with specific styling properties.
 const Text = styled.h3`
     text-align: center;
     font-size: 2rem;

@@ -6,6 +6,7 @@ import SpinnerBlue from "../Spinner";
 import Box from "@mui/material/Box";
 import styled from "styled-components";
 
+// Create a styled component for the input wrapper
 const InputWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr;
@@ -15,20 +16,31 @@ const InputWrapper = styled.div`
     margin-bottom: 20px;
 `;
 
+// Define a functional component called ForbiddenCocktails
 const ForbiddenCocktails = () => {
     const [isLoading, setIsLoading] = useState(true);
 
+    // Define state variables using the useState hook
     const [forbiddenCocktailsData, setForbiddenCocktailsData] = useState([]);
+    // Use the useEffect hook to fetch data from an API endpoint on mount
     useEffect(() => {
         axios
             .get("products/forbidden/all")
             .then((res) => {
+                // Log the response object to the console
                 // console.log(res);
+
+                // Update the state variable with the fetched data
                 setForbiddenCocktailsData(res.data);
+
+                // Log the updated state variable to the console
                 // console.log(forbiddenCocktailsData);
+
+                // Update the isLoading state variable to false
                 setIsLoading(false);
             })
             .catch((error) => {
+                // Log any errors to the console
                 console.log(error.message);
             });
     }, []);
@@ -47,43 +59,51 @@ const ForbiddenCocktails = () => {
             });
     }
     return (
+        // Return JSX with the components and data
+
         <div>
-            <Title>Removed cocktails:</Title><br/><br/>
+            <Title>Removed cocktails:</Title>
+            <br />
+            <br />
 
-                {forbiddenCocktailsData.map((item, key) => {
-                    return (
-                        <InputWrapper>
-                            {isLoading ? (
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        height: "100vh",
-                                    }}
-                                >
-                                    <SpinnerBlue />
-                                </Box>
-                            ) : (
-                                <h1 key={"forbidden-" + item}>{item}</h1>
-                            )}
-                            <Button
-                                key={"button-" + item}
-                                className="menu"
-                                onClick={DeleteFromForbiddenCocktails}
-                                style={{
-                                    color: "black",
-                                    textTransform: "none",
-                                    backgroundColor: "#d585b2",
+            {forbiddenCocktailsData.map((item, key) => {
+                return (
+                    <InputWrapper>
+                        {/* // Check if isLoading is true, if so render a spinner component */}
+
+                        {isLoading ? (
+                            // Add a Box component for better styling
+                            <Box
+                                sx={{
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    height: "100vh",
                                 }}
-                                variant="outlined"
                             >
-                                Remove from the removed cocktails
-                            </Button>
-                        </InputWrapper>
-                    );
-                })}
+                                <SpinnerBlue />
+                            </Box>
+                        ) : (
+                            // If not, map through the data and render it
 
+                            <h1 key={"forbidden-" + item}>{item}</h1>
+                        )}
+                        <Button
+                            key={"button-" + item}
+                            className="menu"
+                            onClick={DeleteFromForbiddenCocktails}
+                            style={{
+                                color: "black",
+                                textTransform: "none",
+                                backgroundColor: "#d585b2",
+                            }}
+                            variant="outlined"
+                        >
+                            Remove from the removed cocktails
+                        </Button>
+                    </InputWrapper>
+                );
+            })}
         </div>
     );
 };
