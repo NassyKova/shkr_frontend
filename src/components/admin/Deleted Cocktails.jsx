@@ -5,7 +5,6 @@ import axios from "axios";
 import SpinnerBlue from "../Spinner";
 import Box from "@mui/material/Box";
 import styled from "styled-components";
-import SearchAndDelete from "../SearchBy/SearchAndDelete";
 
 // Create a styled component for the input wrapper
 const InputWrapper = styled.div`
@@ -25,7 +24,8 @@ const ForbiddenCocktails = () => {
     const [forbiddenCocktailsData, setForbiddenCocktailsData] = useState([]);
     // Use the useEffect hook to fetch data from an API endpoint on mount
     useEffect(() => {
-        console.log("use effect working!!!");
+        console.log("Page reloading");
+        console.log("Sending request to get forbidden all products");
         axios
             .get("products/forbidden/all")
             .then((res) => {
@@ -49,25 +49,75 @@ const ForbiddenCocktails = () => {
                 // Log any errors to the console
                 console.log(error.message);
             });
+            // eslint-disable-next-line
     }, []);
 
     function DeleteFromForbiddenCocktails(drink) {
+        console.log(
+            "accesing state from DeleteFromForbiddenCocktails: " +
+                forbiddenCocktailsData
+        );
+        if (!drink) {
+            console.log("Search input is empty");
+            return;
+        }
+        console.log(`deleting ${drink} from forbidden cocktails`);
         axios
             .patch("/products/forbidden/remove", { drink: drink })
             .then((res) => {
                 console.log("Cocktail is back in the database");
                 console.log(res);
+                console.log("Before setForbiddenCocktailsData([])");
+                setForbiddenCocktailsData([]);
                 // forbiddenCocktailsData.indexOf(name??)
-                // setForbiddenCocktailsData([])
+                console.log("after setForbiddenCocktailsData");
             })
             .catch((error) => {
                 console.log(error.message);
             });
     }
+
+    const [searchInput, setSearchInput] = useState("");
+    console.log("Search input: " + searchInput);
+
+    const HandleSearchToDelete = (e) => {
+        e.preventDefault();
+        setSearchInput(e.target.value);
+    };
+
     return (
         // Return JSX with the components and data
         <div>
-            <SearchAndDelete />
+            <input
+                type="search"
+                placeholder="Copy cocktail name here"
+                onChange={HandleSearchToDelete}
+                value={searchInput}
+                style={{
+                    color: "black",
+                    borderRadius: "15px",
+                    height: "50px",
+                    width: "300px",
+                    cursor: "pointer",
+                    padding: "20px",
+                }}
+            />
+
+            <Button
+                className="menu"
+                onSubmit={DeleteFromForbiddenCocktails(searchInput)}
+                style={{
+                    color: "black",
+                    textTransform: "none",
+                    backgroundColor: "#d585b2",
+                    borderRadius: "10px",
+                    marginBottom: "20px",
+                }}
+                variant="outlined"
+            >
+                Remove from the removed cocktails
+            </Button>
+
             <div
                 style={{
                     display: "flex",
@@ -75,22 +125,7 @@ const ForbiddenCocktails = () => {
                     alignItems: "center",
                     marginTop: "20px",
                 }}
-            >
-                <Button
-                    className="menu"
-                    onClick={DeleteFromForbiddenCocktails}
-                    style={{
-                        color: "black",
-                        textTransform: "none",
-                        backgroundColor: "#d585b2",
-                        borderRadius: "10px",
-                        marginBottom: "20px",
-                    }}
-                    variant="outlined"
-                >
-                    Remove from the removed cocktails
-                </Button>
-            </div>
+            ></div>
             <Title>Removed cocktails:</Title>
             <br />
             <br />
