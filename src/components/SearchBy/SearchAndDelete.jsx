@@ -17,7 +17,7 @@ const SearchAndDelete = () => {
         >
             <input
                 type="search"
-                placeholder="Search here"
+                placeholder="Copy cocktail name here"
                 onChange={HandleChange}
                 value={searchInput}
                 style={{
@@ -26,7 +26,7 @@ const SearchAndDelete = () => {
                     height: "50px",
                     width: "300px",
                     cursor: "pointer",
-                    padding: "20px"
+                    padding: "20px",
                 }}
             />
         </div>

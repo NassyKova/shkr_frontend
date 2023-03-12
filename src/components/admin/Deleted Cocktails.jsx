@@ -67,6 +67,30 @@ const ForbiddenCocktails = () => {
     return (
         // Return JSX with the components and data
         <div>
+            <SearchAndDelete />
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: "20px",
+                }}
+            >
+                <Button
+                    className="menu"
+                    onClick={DeleteFromForbiddenCocktails}
+                    style={{
+                        color: "black",
+                        textTransform: "none",
+                        backgroundColor: "#d585b2",
+                        borderRadius: "10px",
+                        marginBottom: "20px",
+                    }}
+                    variant="outlined"
+                >
+                    Remove from the removed cocktails
+                </Button>
+            </div>
             <Title>Removed cocktails:</Title>
             <br />
             <br />
@@ -94,29 +118,6 @@ const ForbiddenCocktails = () => {
                     </InputWrapper>
                 );
             })}
-            <SearchAndDelete />
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    marginTop: "20px",
-                }}
-            >
-                <Button
-                    className="menu"
-                    onClick={DeleteFromForbiddenCocktails}
-                    style={{
-                        color: "black",
-                        textTransform: "none",
-                        backgroundColor: "#d585b2",
-                        borderRadius: "15px",
-                    }}
-                    variant="outlined"
-                >
-                    Remove from the removed cocktails
-                </Button>
-            </div>
         </div>
     );
 };
