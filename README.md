@@ -9,6 +9,12 @@ A MERN Application built by Patrick Hamer and Anastasia Dyakova(aka Nassy Kova)
 
 
 ## App description
+A big thanks is owed to [TheCocktailDB](https://www.thecocktaildb.com/api.php) for providing us with the cocktail database we used as a 3rd party resource. Not only did it save us from creating a whole new database which would have cost us considerable time, but also gave us real world experience of dealing with data that is not necessarily what you need for your particular app, thus leading to greater understanding of functions, classes, modular coding and DRY coding. Retrieving the data we wanted was sometimes complex due to the structure of the database which really enriched the learning experience.
+
+It is worth noting before we begin that the entirety of the page was not deployed in the frontend. Certain features were created for the backend, tested and deployed but code was never created for the front end due to time constraints. All andpoints are available through postman for the purposes of tyesting and marking, however not all of these features are available on the live app.
+The rebranding endpoint, the user login and the age verification are the main culprits.
+The use of authorization has been removed from the app but the backend remains in the source code should educators wish to test it.
+If it is unclear how to use any of these functions please refer to the testing section, particularly the POSTMAN section on how req.body should be structured and sent.
 
 ### Purpose
 The Shkr app is a simple, intuitive app designed to help people learn new cocktail recipes or look up old favourites. It also has the functionality to allow brands to manipulate data that the client sees so that they can maintain prominent placement of their brands as well as remove specific cocktails that may not comply with their portfolio.
@@ -564,7 +570,7 @@ Also worth noting in here is the cleanString function:
 ```Javascript
 const cleanString = (str) => str.toLowerCase().replace(/_/g, ' ').replace(/[^a-z0-9]+/g, '').trim();
 ```
-This was used to ensure that all comparisons were made with matching strings. Due to inconsistencies in the external database's use of whtespace, underscores capitalization etc, this function used some regex to ensure that the all _ were being replaced with " ", taht only alphanumeric characters were being read, and that any extra whitespace was trimmed from the front and back of all strings. This function was then incorporated in other areas throughout the project. I will probably keep a copy of it stuck to my computer until it is committed to memory if I'm being honest as it was extremely useful.
+This was used to ensure that all comparisons were made with matching strings. Due to inconsistencies in the external database's use of whtespace, underscores capitalization etc, this function used some regex to ensure that the all _ were being replaced with " ", that only alphanumeric characters were being read, and that any extra whitespace was trimmed from the front and back of all strings. This function was then incorporated in other areas throughout the project. I will probably keep a copy of it stuck to my computer until it is committed to memory if I'm being honest as it was extremely useful.
 
 **ADMIN TESTING**
 Admin testing with Jest required a little more dash to achieve as it required sending information. I used a local db to do this, however given the redundancy at this stage of some of the backend I have left it connected to the standard database for educator inspection.
@@ -623,7 +629,7 @@ One of the happiest moments of this whole project was definitely when I received
 While Jest and supertest were incredibly useful for the final product, along the way to figure out what kind of data I was receiving or to debug I used postman. A lot.
 For the admin functions it was as simple as making sure they were doing as they were told in real time:
 <img src="./docs/screenshots/PMbrandswap.png">
-Such as here when I was wanting to ensure teh branding had swapped as planned, or  
+Such as here when I was wanting to ensure the branding had swapped as planned, or  
 
 <img src="./docs/screenshots/PMforbiddenadd.png" >  
 
@@ -638,25 +644,30 @@ This real time testing afforded me the opportunity to see where problems were us
 
 Postman was also great to see _what kind_ of data I was getting back. If we take a look at the initial return on a single drink:  
 <img src="./docs/screenshots/allinfo.png" >  
-We can see that I was getting _way_ too much back, and in german and italian to boot. This let me know the keys I needed to keep and also how teh returns were structured so as I filtered them I could strip away layers of redundancy. Also, when searching by broad thingsl ike ingredients or glassware, information returned was limited:
+We can see that I was getting _way_ too much back, and in german and italian to boot. This let me know the keys I needed to keep and also how the returns were structured so as I filtered them I could strip away layers of redundancy. Also, when searching by broad thingsl ike ingredients or glassware, information returned was limited:
 <img src="./docs/screenshots/CDBgin.png" >    
 so using postman (although this is clearly a chrome shot, the initial work was done with postman) I was able to see what exactly was being returned and then manipulate these results to return more data, and specifically, the data we required.
 <img src="./docs/screenshots/PMKbybasegin.png" >
 <img src="./docs/screenshots/PMgetheavy.png" >
 
-
-
-
-
-
-
-
+Beyond these examples testing of other redundant code was performed using POSTMAN to ensure it worked, however once it was ascertained that we would not be using it in the final prooduct Jest testing was omitted in the interests of time and efficiency.
 
 ## Application Screenshots
 ???????????
 
 ## Trello
 Trello Board: [https://trello.com/b/mkjckRkJ/shakr-backend](https://trello.com/b/mkjckRkJ/shakr-backend)
+
+From an initial Trelloboard:
+<img src="./docs/screenshots/Trello1.png" >  
+
+That had a list all of ourt tasks, we gradually developed our knowledge and understanding of how to use trello and created task assignment board that was much more informative at just a quick glance:  
+
+<img src="./docs/screenshots/TrelloJEST.png" >  
+
+adding screenshots to cards was useful to let each other know what was happening, especially as we kept slightly different hours and one of us may be working at 6AM or the other working at midnight depending.  Assigning tasks was useful too especially as a lot of the tasks overlapped, for example search functionality. Knowing that we could skip over each others cards in the pursuit oof ticking off our own checklist was very helpful. Labels were just awesome too. As cliche as it sounds, when you're in the zone coding and just having a good day of it it's great to just knock tasks out one after another.
+
+
 
 CMP1043-1.1 Demonstrate separation of concerns in the App.
 
