@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 // This is a React component called "ProductAdmin"
 function ProductAdmin(props) {
     // Define a state variable "cocktail" using useState() hook
-    const [cocktail, setCocktail] = useState(true);
+    const [cocktail, setCocktail] = useState("");
 
     // Retrieve "productInfo" from props
     const item = props.productInfo;
@@ -19,13 +19,17 @@ function ProductAdmin(props) {
     function AddToForbidden() {
         // Update the "cocktail" state with the name of the current cocktail
         setCocktail(item.strDrink);
+        console.log(item.strDrink)
+        console.log(cocktail+"cocktail!!!!!")
+        
 
         // Send a POST request to the server to add the cocktail to the forbidden list using Axios library
         axios
-            .post("/products/forbidden/add", { drink: cocktail })
-            .then((res) => {
-                console.log("Successfully removed");
-            });
+        .post("/products/forbidden/add", { "drink": item.strDrink })
+        .then((res) => {
+            // console.log(res)
+            console.log("Successfully removed")})
+        // .catch((error) => console.log(error)) // Catch any errors that occur during the request
 
         // Navigate to the "deleted" page
         navigate("/deleted");
@@ -40,7 +44,7 @@ function ProductAdmin(props) {
                 style={{ cursor: "pointer" }}
                 onClick={() => {
                     // When the Wrapper component is clicked, set the "item" in props to be the current cocktail
-                    props.setItem(item);
+                    props.setCocktail(item.strDrink);
                 }}
             >
                 {/* Render an Img component to display the cocktail image */}

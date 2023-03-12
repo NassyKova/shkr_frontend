@@ -1,6 +1,5 @@
 import Title from "../styled/Title";
 import { React, useEffect, useState } from "react";
-import Button from "@mui/material/Button";
 import axios from "axios";
 import SpinnerBlue from "../Spinner";
 import Box from "@mui/material/Box";
@@ -25,8 +24,6 @@ const ForbiddenCocktails = () => {
     const [forbiddenCocktailsData, setForbiddenCocktailsData] = useState([]);
     // Use the useEffect hook to fetch data from an API endpoint on mount
     useEffect(() => {
-        console.log("Page reloading");
-        console.log("Sending request to get forbidden all products");
         axios
             .get("products/forbidden/all")
             .then((res) => {
@@ -54,7 +51,7 @@ const ForbiddenCocktails = () => {
     }, [reloadPage]);
 
     function DeleteFromForbiddenCocktails() {
-        const drink = searchInput
+        const drink = searchInput;
         if (!forbiddenCocktailsData.includes(drink)) {
             return;
         }
@@ -62,11 +59,9 @@ const ForbiddenCocktails = () => {
         axios
             .patch("/products/forbidden/remove", { drink: drink })
             .then((res) => {
-
                 setForbiddenCocktailsData(res.data.forbidden);
                 setReloadPage(true);
                 // forbiddenCocktailsData.indexOf(name??)
-
             })
             .catch((error) => {
                 console.log(error.message);
@@ -79,17 +74,25 @@ const ForbiddenCocktails = () => {
     const HandleSearchToDelete = (e) => {
         e.preventDefault();
         setSearchInput(e.target.value);
-        console.log(searchInput)
+        console.log(searchInput);
     };
 
     return (
         // Return JSX with the components and data
-        <div>
+        <div
+            style={{
+                display: "flex",
+                width: "100%",
+                alignItems: "center",
+                flexDirection: "column",
+                rowGap: "20px",
+                borderRadius: "10px",
+            }}
+        >
             <form onSubmit={DeleteFromForbiddenCocktails}>
                 <label>
-                    Copy cocktail name here:
                     <input
-                    onChange={HandleSearchToDelete}
+                        onChange={HandleSearchToDelete}
                         style={{
                             color: "black",
                             borderRadius: "15px",
@@ -97,8 +100,10 @@ const ForbiddenCocktails = () => {
                             width: "300px",
                             cursor: "pointer",
                             padding: "20px",
+                            margin: "10px",
                         }}
                         type="text"
+                        placeholder="Copy cocktail name here"
                         value={searchInput}
                     />
                 </label>
@@ -110,9 +115,11 @@ const ForbiddenCocktails = () => {
                         borderRadius: "10px",
                         marginBottom: "20px",
                         cursor: "pointer",
+                        width: "200px",
+                        height: "30px",
                     }}
                     type="submit"
-                    value="Submit"
+                    value="Delete from the removed"
                 />
             </form>
 
@@ -136,7 +143,6 @@ const ForbiddenCocktails = () => {
                             // Add a Box component for better styling
                             <Box
                                 sx={{
-                                    
                                     display: "flex",
                                     justifyContent: "center",
                                     alignItems: "center",
