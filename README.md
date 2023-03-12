@@ -682,6 +682,10 @@ Beyond these examples testing of other redundant code was performed using POSTMA
 ???????????
 
 ## Difference with original plan
+
+During the building stage we decided to prioritise the main function and move the rest to "Nice to have". 
+- Replace spirits function implemented in the back end only
+- Age verification, admin login with password, product opened in separate window were not implemented
 ### Wireframes at the planning stage
  <img src="docs/1024.png" alt="Plan A">
  
