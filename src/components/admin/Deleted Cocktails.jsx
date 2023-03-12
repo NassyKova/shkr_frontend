@@ -1,5 +1,6 @@
 import Title from "../styled/Title";
 import { React, useEffect, useState } from "react";
+import Button from "@mui/material/Button";
 import axios from "axios";
 import SpinnerBlue from "../Spinner";
 import Box from "@mui/material/Box";
@@ -18,7 +19,7 @@ const InputWrapper = styled.div`
 // Define a functional component called ForbiddenCocktails
 const ForbiddenCocktails = () => {
     const [isLoading, setIsLoading] = useState(true);
-    const [setReloadPage] = useState(false);
+    const [reloadPage, setReloadPage] = useState(false);
 
     // Define state variables using the useState hook
     const [forbiddenCocktailsData, setForbiddenCocktailsData] = useState([]);
@@ -40,7 +41,6 @@ const ForbiddenCocktails = () => {
                 // Update the state variable with the fetched data
                 setForbiddenCocktailsData(res.data);
 
-                console.log("set forbidden cocktails data to ");
                 console.log(forbiddenCocktailsData);
                 setReloadPage(false);
                 // Update the isLoading state variable to false
@@ -51,20 +51,22 @@ const ForbiddenCocktails = () => {
                 console.log(error.message);
             });
         // eslint-disable-next-line
-    }, [setReloadPage]);
+    }, [reloadPage]);
 
     function DeleteFromForbiddenCocktails() {
         const drink = searchInput
         if (!forbiddenCocktailsData.includes(drink)) {
             return;
         }
+        console.log(`deleting ${drink} from forbidden cocktails`);
         axios
             .patch("/products/forbidden/remove", { drink: drink })
             .then((res) => {
+
                 setForbiddenCocktailsData(res.data.forbidden);
                 setReloadPage(true);
                 // forbiddenCocktailsData.indexOf(name??)
-                console.log("after setForbiddenCocktailsData");
+
             })
             .catch((error) => {
                 console.log(error.message);
@@ -83,7 +85,7 @@ const ForbiddenCocktails = () => {
     return (
         // Return JSX with the components and data
         <div>
-            <form onSubmit={DeleteFromForbiddenCocktails()}>
+            <form onSubmit={DeleteFromForbiddenCocktails}>
                 <label>
                     Copy cocktail name here:
                     <input
@@ -128,7 +130,7 @@ const ForbiddenCocktails = () => {
 
             {forbiddenCocktailsData.map((item, key) => {
                 return (
-                    <InputWrapper key={"forbidden-" + item}>
+                    <InputWrapper>
                         {/* // Check if isLoading is true, if so render a spinner component */}
                         {isLoading ? (
                             // Add a Box component for better styling
