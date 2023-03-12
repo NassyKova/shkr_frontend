@@ -23,7 +23,7 @@ export const Wrapper = styled.div`
     }
 
     @media screen and (max-width: 768px) {
-        width: 70%;
+        width: 90%;
     }
 `;
 
@@ -33,6 +33,10 @@ export const Img = styled.div`
     width: 300px;
     border: 1px solid black;
     color: var(--blueGreen);
+    @media screen and (max-width: 768px) {
+        height: auto;
+        width: auto;
+    }
 `;
 
 export const Title = styled.div`

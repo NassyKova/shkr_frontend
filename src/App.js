@@ -27,6 +27,7 @@ import DeletedCocktails from "./components/admin/Deleted Cocktails";
 function App() {
     const [isLoading, setIsLoading] = useState(true);
     
+    
     const router = createBrowserRouter(
         createRoutesFromElements(
             <Route path="/" element={<MainPage />} errorElement={<NotFound />}>

@@ -10,6 +10,15 @@
     border: 1px solid black;
   }
 
+@media screen and (max-width: 800px)  {
+    .Image{
+    width:200px;
+    height: 200px;
+  }
+  .About{
+    height:100px;
+  }
+}
     .About{
     display: flex;
     align-items: center;

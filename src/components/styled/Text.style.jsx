@@ -12,6 +12,11 @@ const Text = styled.h3`
         font-size: 1.5rem;
         font-weight: 200;
     }
+    @media screen and (max-width: 800px) {
+        margin: 0 10px;
+        font-size: 1.2rem;
+        font-weight: 100;
+    }
 `;
 
 export default Text;
