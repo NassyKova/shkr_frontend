@@ -36,7 +36,7 @@ A MERN Application built by Patrick Hamer and Anastasia Dyakova(aka Nassy Kova)
 ## App description
 A big thanks is owed to [TheCocktailDB](https://www.thecocktaildb.com/api.php) for providing us with the cocktail database we used as a 3rd party resource. Not only did it save us from creating a whole new database which would have cost us considerable time, but also gave us real world experience of dealing with data that is not necessarily what you need for your particular app, thus leading to greater understanding of functions, classes, modular coding and DRY coding. Retrieving the data we wanted was sometimes complex due to the structure of the database which really enriched the learning experience.
 
-It is worth noting before we begin that the entirety of the page was not deployed in the frontend. Certain features were created for the backend, tested and deployed but code was never created for the front end due to time constraints. All andpoints are available through postman for the purposes of tyesting and marking, however not all of these features are available on the live app.
+It is worth noting before we begin that the entirety of the page was not deployed in the frontend. Certain features were created for the backend, tested and deployed but code was never created for the front end due to time constraints. All endpoints are available through postman for the purposes of testing and marking, however not all of these features are available on the live app.
 The rebranding endpoint, the user login and the age verification are the main culprits.
 The use of authorization has been removed from the app but the backend remains in the source code should educators wish to test it.
 If it is unclear how to use any of these functions please refer to the testing section, particularly the POSTMAN section on how req.body should be structured and sent.
@@ -672,7 +672,8 @@ Postman was also great to see _what kind_ of data I was getting back. If we take
 We can see that I was getting _way_ too much back, and in german and italian to boot. This let me know the keys I needed to keep and also how the returns were structured so as I filtered them I could strip away layers of redundancy. Also, when searching by broad thingsl ike ingredients or glassware, information returned was limited:
 <img src="./docs/screenshots/CDBgin.png" >    
 so using postman (although this is clearly a chrome shot, the initial work was done with postman) I was able to see what exactly was being returned and then manipulate these results to return more data, and specifically, the data we required.
-<img src="./docs/screenshots/PMKbybasegin.png" >
+<img src="./docs/screenshots/PMKbybasegin.png" >  
+
 <img src="./docs/screenshots/PMgetheavy.png" >
 
 Beyond these examples testing of other redundant code was performed using POSTMAN to ensure it worked, however once it was ascertained that we would not be using it in the final prooduct Jest testing was omitted in the interests of time and efficiency.
