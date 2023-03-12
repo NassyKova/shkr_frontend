@@ -37,7 +37,7 @@ A MERN Application built by Patrick Hamer and Anastasia Dyakova(aka Nassy Kova)
 A big thanks is owed to [TheCocktailDB](https://www.thecocktaildb.com/api.php) for providing us with the cocktail database we used as a 3rd party resource. Not only did it save us from creating a whole new database which would have cost us considerable time, but also gave us real world experience of dealing with data that is not necessarily what you need for your particular app, thus leading to greater understanding of functions, classes, modular coding and DRY coding. Retrieving the data we wanted was sometimes complex due to the structure of the database which really enriched the learning experience.
 
 It is worth noting before we begin that the entirety of the page was not deployed in the frontend. Certain features were created for the backend, tested and deployed but code was never created for the front end due to time constraints. All endpoints are available through postman for the purposes of testing and marking, however not all of these features are available on the live app.
-The rebranding endpoint, the user login and the age verification are the main culprits.
+The rebranding endpoint, the user login and the age verification are the main culprits, as well as the forbiddenItems array functionality. Essentially all admin functionality has not yet made it to the end point, however remains in the backend should our educators wish to test it out and have a look.
 The use of authorization has been removed from the app but the backend remains in the source code should educators wish to test it.
 If it is unclear how to use any of these functions please refer to the testing section, particularly the POSTMAN section on how req.body should be structured and sent.
 
@@ -689,7 +689,7 @@ The 'about us' section redirects the user to a simple explanation of what the ww
 
 The site is also repsonsive to different devices as can be seen with the view from a samsung phone here:  
 
-<img src="./docs/screenshots/AboutPhone.png" >  
+<img src="./docs/screenshots/AboutPhone.jpg" height="300px">  
 
 The search by name function allows the user to input text that will then be converted to the appropriate format in the backend, and used as a search param. This text is _not_ case sensitive as can be seen below:  
 
@@ -697,7 +697,7 @@ The search by name function allows the user to input text that will then be conv
 
 Seaarch results are aligned vertically and again, all rendering is dynamic allowing it to be viewed across different devices without distortion of images:  
 
-<img src="./docs/screenshots/SearchResultsPhone.png" >  
+<img src="./docs/screenshots/SearchResultsPhone.jpg" height="300px">   
 
 Searches can be conducted by base ingredient, which brings up a seperate menu, or can be as simple as searching for fizzy, fruity, non alcoholic or heavy drinks: 
 
@@ -720,7 +720,7 @@ That had a list all of ourt tasks, we gradually developed our knowledge and unde
 
 <img src="./docs/screenshots/TrelloJEST.png" >  
 
-adding screenshots to cards was useful to let each other know what was happening, especially as we kept slightly different hours and one of us may be working at 6AM or the other working at midnight depending.  Assigning tasks was useful too especially as a lot of the tasks overlapped, for example search functionality. Knowing that we could skip over each others cards in the pursuit oof ticking off our own checklist was very helpful. Labels were just awesome too. As cliche as it sounds, when you're in the zone coding and just having a good day of it it's great to just knock tasks out one after another.
+Adding screenshots to cards was useful to let each other know what was happening, especially as we kept slightly different hours and one of us may be working at 6AM or the other working at midnight depending.  Assigning tasks was useful too especially as a lot of the tasks overlapped, for example search functionality. Knowing that we could skip over each others cards in the pursuit oof ticking off our own checklist was very helpful. Labels were just awesome too. As cliche as it sounds, when you're in the zone coding and just having a good day of it it's great to just knock tasks out one after another.
 
 
 
