@@ -6,9 +6,8 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     font-size: var(--fontMed);
-        @media screen and (max-width: 500px) {
-            font-size: var(--fontSmall);
-
+    @media screen and (max-width: 500px) {
+        font-size: var(--fontSmall);
     }
 `;
 
@@ -19,7 +18,9 @@ export const Button = styled.div`
     cursor: pointer;
 
     text-decoration: none;
-    a:link { text-decoration: none; }
+    a:link {
+        text-decoration: none;
+    }
     transition: ease background-color 250ms;
     &:hover {
         box-shadow: 0px 2px 2px black;

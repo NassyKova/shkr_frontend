@@ -5,9 +5,10 @@ import Toolbar from "@mui/material/Toolbar";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { Link, Outlet } from "react-router-dom";
-// import { useGlobalContext } from "../utils/globalStateContext";
 
+// This function creates an array of objects representing the navigation bar items.
 function NavBar() {
+    // An array of objects representing each navigation bar item. Each object has a title, id, and specificUrl.
     const navBarItems = [
         {
             title: "Fruity",
@@ -31,14 +32,15 @@ function NavBar() {
         },
     ];
 
-    // const { store, dispatch } = useGlobalContext();
-
-    // const navigate = useNavigate();
-
+    // This code returns a navigation bar component
     return (
+        // This creates a fixed navigation bar on top of the screen with a background color
         <AppBar position="static" style={{ background: "#252c27" }}>
+            {/* // This defines a container for the navigation bar with extra large size */}
             <Container maxWidth="xl"></Container>
+            {/* // This removes gutters from the toolbar */}
             <Toolbar disableGutters>
+                {/* // This creates a box to hold navigation bar items */}
                 <Box
                     sx={{
                         flexGrow: 1,
@@ -46,10 +48,8 @@ function NavBar() {
                         justifyContent: "center",
                     }}
                 >
-                    <Link
-                        to="/drinks/base"
-                        style={{ textDecoration: "none" }}
-                    >
+                    {/* // This creates a button to navigate to a specific page */}
+                    <Link to="/drinks/base" style={{ textDecoration: "none" }}>
                         <Button
                             style={{
                                 background: "#43d9f0",
@@ -62,14 +62,13 @@ function NavBar() {
                                 display: "block",
                             }}
                         >
-                            <div
-                                className="menu"
-                                style={{ color: "black" }}
-                            >
+                            {/* // This creates a menu item with the title "Base" */}
+                            <div className="menu" style={{ color: "black" }}>
                                 Base
                             </div>
                         </Button>
                     </Link>
+                    {/* // This loops through an array of navigation bar items to create buttons */}
                     {navBarItems.map((item) => {
                         return (
                             <div key={"navbar-item-" + item.id}>
@@ -91,6 +90,7 @@ function NavBar() {
                                         }}
                                     >
                                         <div
+                                            // This creates a menu item with the title of the current navigation bar item
                                             className="menu"
                                             style={{ color: "black" }}
                                         >
@@ -101,10 +101,8 @@ function NavBar() {
                             </div>
                         );
                     })}
-                    <Link
-                        to="/drinks/name"
-                        style={{ textDecoration: "none" }}
-                    >
+                    {/* // This creates a menu item with the title "Search By Name" */}
+                    <Link to="/drinks/name" style={{ textDecoration: "none" }}>
                         <Button
                             style={{
                                 background: "#43d9f0",
@@ -117,16 +115,14 @@ function NavBar() {
                                 display: "block",
                             }}
                         >
-                            <div
-                                className="menu"
-                                style={{ color: "black" }}
-                            >
+                            <div className="menu" style={{ color: "black" }}>
                                 Search By Name
                             </div>
                         </Button>
                     </Link>
                 </Box>
             </Toolbar>
+            {/* // This component renders the current page content */}
             <Outlet />
         </AppBar>
     );

@@ -14,23 +14,20 @@ export const Content = styled.div`
 `;
 
 export const Slogan = styled.div`
-color: var(--green);
-font-size: var(--fontSuperBig);
-font-weight: 500;
-text-align: center;
-margin: 10px 10px 30px 10px;
-`
-export const LogoImg = styled.img`
-    width:150px;
-    /* @media screen and (max-width: 500px) {
-        width: 150px; */
-    /* } */
+    color: var(--green);
+    font-size: var(--fontSuperBig);
+    font-weight: 500;
+    text-align: center;
+    margin: 10px 10px 30px 10px;
+    @media screen and (max-width: 800px) {
+        font-size: var(--fontBig);
+        font-weight: 800;
+    }
 `;
 
-/* export const TMDBLogoImg = styled.img`
-    width: 100px;
-    @media screen and (max-width: 500px) {
-        width: 80px;
+export const LogoImg = styled.img`
+    width: 150px;
+    @media screen and (max-width: 768px) {
+        width: 100px;
     }
-`; */
-
+`;
