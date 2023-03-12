@@ -679,7 +679,29 @@ so using postman (although this is clearly a chrome shot, the initial work was d
 Beyond these examples testing of other redundant code was performed using POSTMAN to ensure it worked, however once it was ascertained that we would not be using it in the final prooduct Jest testing was omitted in the interests of time and efficiency.
 
 ## Application Screenshots
-???????????
+Upon entering the app the user is greeted with a splash page with a simple title and options for search, as well as furhter information about the site in the top right corner.  
+
+<img src="./docs/screenshots/Title.png" >  
+
+The 'about us' section redirects the user to a simple explanation of what the wwebsite is and what it is for.
+
+<img src="./docs/screenshots/aboutUs.png" >  
+
+The site is also repsonsive to different devices as can be seen with the view from a samsung phone here:  
+
+<img src="./docs/screenshots/AboutPhone.png" >  
+
+The search by name function allows the user to input text that will then be converted to the appropriate format in the backend, and used as a search param. This text is _not_ case sensitive as can be seen below:  
+
+<img src="./docs/screenshots/caseSense.png" >  
+
+Seaarch results are aligned vertically and again, all rendering is dynamic allowing it to be viewed across different devices without distortion of images:  
+
+<img src="./docs/screenshots/SearchResultsPhone.png" >  
+
+Searches can be conducted by base ingredient, which brings up a seperate menu, or can be as simple as searching for fizzy, fruity, non alcoholic or heavy drinks: 
+
+<img src="./docs/screenshots/byBase.png" >  
 
 ## Difference with original plan
 ### Wireframes at the planning stage
