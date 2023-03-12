@@ -5,6 +5,7 @@ import axios from "axios";
 import SpinnerBlue from "../Spinner";
 import Box from "@mui/material/Box";
 import styled from "styled-components";
+import SearchAndDelete from "../SearchBy/SearchAndDelete";
 
 // Create a styled component for the input wrapper
 const InputWrapper = styled.div`
@@ -24,17 +25,22 @@ const ForbiddenCocktails = () => {
     const [forbiddenCocktailsData, setForbiddenCocktailsData] = useState([]);
     // Use the useEffect hook to fetch data from an API endpoint on mount
     useEffect(() => {
+        console.log("use effect working!!!");
         axios
             .get("products/forbidden/all")
             .then((res) => {
                 // Log the response object to the console
-                // console.log(res);
+                console.log("all forbidden received from back end");
+                console.log(res.data);
 
+                // const filteredResponse = res.data.filter((i) => typeof i === "string")
+
+                // console.log("Filtered response: " + filteredResponse)
+                // console.log(typeof filteredResponse)
                 // Update the state variable with the fetched data
                 setForbiddenCocktailsData(res.data);
-
-                // Log the updated state variable to the console
-                // console.log(forbiddenCocktailsData);
+                console.log("set forbidden cocktails data to ");
+                console.log(forbiddenCocktailsData);
 
                 // Update the isLoading state variable to false
                 setIsLoading(false);
@@ -45,9 +51,9 @@ const ForbiddenCocktails = () => {
             });
     }, []);
 
-    function DeleteFromForbiddenCocktails() {
+    function DeleteFromForbiddenCocktails(drink) {
         axios
-            .patch("/products/forbidden/remove")
+            .patch("/products/forbidden/remove", { drink: drink })
             .then((res) => {
                 console.log("Cocktail is back in the database");
                 console.log(res);
@@ -61,6 +67,30 @@ const ForbiddenCocktails = () => {
     return (
         // Return JSX with the components and data
         <div>
+            <SearchAndDelete />
+            <div
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: "20px",
+                }}
+            >
+                <Button
+                    className="menu"
+                    onClick={DeleteFromForbiddenCocktails}
+                    style={{
+                        color: "black",
+                        textTransform: "none",
+                        backgroundColor: "#d585b2",
+                        borderRadius: "10px",
+                        marginBottom: "20px",
+                    }}
+                    variant="outlined"
+                >
+                    Remove from the removed cocktails
+                </Button>
+            </div>
             <Title>Removed cocktails:</Title>
             <br />
             <br />
@@ -85,19 +115,6 @@ const ForbiddenCocktails = () => {
                             // If not, map through the data and render it
                             <h1 key={"forbidden-" + item}>{item}</h1>
                         )}
-                        <Button
-                            key={"button-" + item}
-                            className="menu"
-                            onClick={DeleteFromForbiddenCocktails}
-                            style={{
-                                color: "black",
-                                textTransform: "none",
-                                backgroundColor: "#d585b2",
-                            }}
-                            variant="outlined"
-                        >
-                            Remove from the removed cocktails
-                        </Button>
                     </InputWrapper>
                 );
             })}
