@@ -9,6 +9,12 @@ A MERN Application built by Patrick Hamer and Anastasia Dyakova(aka Nassy Kova)
 
 
 ## App description
+A big thanks is owed to [TheCocktailDB](https://www.thecocktaildb.com/api.php) for providing us with the cocktail database we used as a 3rd party resource. Not only did it save us from creating a whole new database which would have cost us considerable time, but also gave us real world experience of dealing with data that is not necessarily what you need for your particular app, thus leading to greater understanding of functions, classes, modular coding and DRY coding. Retrieving the data we wanted was sometimes complex due to the structure of the database which really enriched the learning experience.
+
+It is worth noting before we begin that the entirety of the page was not deployed in the frontend. Certain features were created for the backend, tested and deployed but code was never created for the front end due to time constraints. All andpoints are available through postman for the purposes of tyesting and marking, however not all of these features are available on the live app.
+The rebranding endpoint, the user login and the age verification are the main culprits.
+The use of authorization has been removed from the app but the backend remains in the source code should educators wish to test it.
+If it is unclear how to use any of these functions please refer to the testing section, particularly the POSTMAN section on how req.body should be structured and sent.
 
 ### Purpose
 The Shkr app is a simple, intuitive app designed to help people learn new cocktail recipes or look up old favourites. It also has the functionality to allow brands to manipulate data that the client sees so that they can maintain prominent placement of their brands as well as remove specific cocktails that may not comply with their portfolio.
@@ -111,9 +117,8 @@ The API can now be accessed using Postman and `localhost:3000/`
 
 ## API Endpoints
 
-- drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);
-
-    Request Verb: GET
+drinkRouter.get("/drinks/name/:drinkName", getDrinkByName);  
+    Request Verb: GET  
     Function: Retrieves 5 random cocktails by name entered by user (eg Margarita will return all drinks with that string in their name)
     Authentication: N/A  
     Authorization: N/A  
@@ -136,7 +141,7 @@ The API can now be accessed using Postman and `localhost:3000/`
     },
  ```
 
-- drinkRouter.get("/drinks/base/:drinkBase", getDrinkByBase);  
+drinkRouter.get("/drinks/base/:drinkBase", getDrinkByBase);  
     Request Verb: GET  
     Function: Retrieves 5 random cocktails by selected base ingredient (buttons on client side)  
     Authentication: N/A  
@@ -161,80 +166,83 @@ The API can now be accessed using Postman and `localhost:3000/`
             "strMeasure5": "top up "
         }
 ```
-      
-  
-- drinkRouter.get("/drinks/non-alc", getDrinkByNonAlc);
-      
-      Request Verb: GET
-      Function: Retrieves all the non alcohol cocktails 
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
-  ```JavaScript
-      {
-      "strDrink": "Apple Berry Smoothie",
-      "strInstructions": "Throw everything into a blender and liquify.",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/xwqvur1468876473.jpg",
-      "strIngredient1": "Berries",
-      "strIngredient2": "Apple",
-      "strMeasure1": "1 cup ",
-      "strMeasure2": "2 "
-    },
-  ```
-  
-- drinkRouter.get("/drinks/fruity", getDrinkByFruity);
 
-        Request Verb: GET
-        Function: Retrieves all the cocktails with fruity ingridients
-        Authentication: N/A
-        Authorization: N/A
-        Example Response:
-  ```JavaScript
-      {
-      "strDrink": "Planter’s Punch",
-      "strInstructions": "Squeeze an orange and strain the juice. Put all the ingredients in a shaker filled with ice and shake for at least 12 seconds. Strain into a highball glass and decorate with a pineapple wedge or fruit of your choice.",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/jn6o251643844541.jpg",
-      "strIngredient1": "Dark Rum",
-      "strIngredient2": "Orange Juice",
-      "strIngredient3": "Pineapple Juice",
-      "strIngredient4": "Grenadine",
-      "strIngredient5": "Sugar Syrup",
-      "strIngredient6": "Angostura Bitters",
-      "strMeasure1": "4.5 cL",
-      "strMeasure2": "3 cl",
-      "strMeasure3": "3.5 cl",
-      "strMeasure4": "1 cl",
-      "strMeasure5": "1 cl",
-      "strMeasure6": "4 drops"
-    },
-  ```
-- drinkRouter.get("/drinks/fizzy", getDrinkByFruity);
 
-      Request Verb: GET
-      Function: Retrieves all the cocktails with bubbly ingridients
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
-  ```JavaScript
-      {
-      "strDrink": "Absolutely Fabulous",
-      "strInstructions": "Mix the Vodka and Cranberry juice together in a shaker and strain into a glass. Top up with Champagne.",
-      "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/abcpwr1504817734.jpg",
-      "strIngredient1": "Grey Goose",
-      "strIngredient2": "Cranberry Juice",
-      "strIngredient3": "Champagne",
-      "strMeasure1": "1 shot ",
-      "strMeasure2": "2 shots ",
-      "strMeasure3": "Top up with"
-      },
+drinkRouter.get("/drinks/non-alc", getDrinkByNonAlc);  
+Request Verb: GET  
+    Function: Retrieves 5 random cocktails from the non-alcoholic list in the external API  
+    Authentication: N/A  
+    Authorization: N/A  
+    Example Response:  
 
-- drinkRouter.get("/drinks/heavy", getDrinkByHeavy);
+```Javascript
+{
+    "drinks": [
+        {
+            "strDrink": "Grape lemon pineapple Smoothie",
+            "strInstructions": "Throw everything into a blender and liquify.",
+            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/54z5h71487603583.jpg",
+            "strIngredient1": "Grapes",
+            "strIngredient2": "Lemon",
+            "strIngredient3": "Pineapple",
+            "strMeasure1": "1 cup ",
+            "strMeasure2": "1/4 ",
+            "strMeasure3": "1/2 "
+        },
+```
 
-      Request Verb: GET
-      Function: Retrieves 5 random cocktails that contain an at least one alcoholic ingredient and no more than 3 ingredients.
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
+drinkRouter.get("/drinks/fruity", getDrinkByFruity);  
+Request Verb: GET  
+    Function: Retrieves 5 random cocktails that contain an ingredient that is included in the fruityList in utils/arrayInfo  
+    Authentication: N/A  
+    Authorization: N/A  
+    Example Response:  
+```Javascript
+{
+    "drinks": [
+        {
+            "strDrink": "Lassi - Mango",
+            "strInstructions": "Put it all in a blender and pour over crushed ice. You can also use other fruits like strawberries and bananas.",
+            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/1bw6sd1487603816.jpg",
+            "strIngredient1": "Mango",
+            "strIngredient2": "Yoghurt",
+            "strIngredient3": "Sugar",
+            "strIngredient4": "Water",
+            "strMeasure1": "2 ",
+            "strMeasure2": "2 cups ",
+            "strMeasure3": "1/2 cup ",
+            "strMeasure4": "1 cup iced "
+        },
+```
+
+
+drinkRouter.get("/drinks/fizzy", getDrinkByFizzy);  
+Request Verb: GET  
+    Function: Retrieves 5 random cocktails that contain an ingredient that is included in the fizzyList in utils/arrayInfo  
+    Authentication: N/A  
+    Authorization: N/A  
+    Example Response:  
+```Javascript
+{
+    "drinks": [
+        {
+            "strDrink": "Brandon and Will's Coke Float",
+            "strInstructions": "Scoop two large scoops of vanilla ice-cream into frosted beer mug. Next, add 2 ounces Maker's Mark. Then, pour in coke. Gently stir and enjoy.",
+            "strDrinkThumb": "https://www.thecocktaildb.com/images/media/drink/xspxyr1472719185.jpg",
+            "strIngredient1": "Vanilla ice-cream",
+            "strIngredient2": "Coca-Cola",
+            "strIngredient3": "Woodford Reserve",
+            "strMeasure1": "2 scoops ",
+            "strMeasure2": "1 can ",
+            "strMeasure3": "2 oz "
+        },
+```
+drinkRouter.get("/drinks/heavy", getDrinkByHeavy);  
+Request Verb: GET  
+    Function: Retrieves 5 random cocktails that contain an at least one alcoholic ingredient and no more than 3 ingredients.  
+    Authentication: N/A  
+    Authorization: N/A  
+    Example Response:  
 ```Javascript
 {
     "drinks": [
@@ -251,15 +259,13 @@ The API can now be accessed using Postman and `localhost:3000/`
         },
 ```
 
-
-- returnModRouter.put("/products/brand/swap", rebrandSpirit)
-
-      Request Verb: PUT
-      Function: Assigns new value (req.body.newBrand) to appropriate key (req.body.spiritName)
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
-    ```Javascript
+returnModRouter.put("/products/brand/:id", rebrandSpirit)  
+Request Verb: PUT  
+    Function: Assigns new value (req.body.newBrand) to appropriate key (req.body.spiritName)  
+    Authentication: N/A  
+    Authorization: N/A  
+    Example Response: 
+```Javascript
     {
     "_id": "6408199ef6eeb96704d4269b",
     "vodka": "Belvedere",
@@ -275,16 +281,14 @@ The API can now be accessed using Postman and `localhost:3000/`
     ]
 }
 ```
-
-- returnModRouter.post("/products/forbidden/add", addToForbidden)
-
-      Request Verb: POST
-      Function: Adds item (req.body.drink) to forbidden list
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
-
-    ```Javascript
+    
+returnModRouter.post("/products/forbidden/add", addToForbidden)  
+Request Verb: POST  
+    Function: Adds item (req.body.drink) to forbidden list  
+    Authentication: N/A  
+    Authorization: N/A  
+    Example Response:  
+```Javascript
     {
     "_id": "6408199ef6eeb96704d4269b",
     "vodka": "Grey Goose",
@@ -298,16 +302,17 @@ The API can now be accessed using Postman and `localhost:3000/`
         "margarita",
         "Dirty Martini"
         "${req.body.drink}"
-    ]}
+    ]
+}
+```
 
-- returnModRouter.patch("/products/forbidden/remove", removeForbiddenItem)
-
-      Request Verb: PATCH
-      Function: removes item (req.body.drink) from forbidden list
-      Authentication: N/A
-      Authorization: N/A
-      Example Response:
-    ```Javascript
+returnModRouter.patch("/products/forbidden/remove", removeForbiddenItem)  
+Request Verb: PATCH  
+    Function: removes item (req.body.drink) from forbidden list  
+    Authentication: N/A  
+    Authorization: N/A  
+    Example Response:  
+```Javascript
     {
     "_id": "6408199ef6eeb96704d4269b",
     "vodka": "Grey Goose",
@@ -323,7 +328,6 @@ The API can now be accessed using Postman and `localhost:3000/`
     ]
 }
 ```
-
 
 
 ## Server Libraries and Dependencies
@@ -346,7 +350,7 @@ The API can now be accessed using Postman and `localhost:3000/`
 
 `jest ^29.4.1` - Jest is a JavaScript testing framework that allows developers to run tests on JavaScript and TypeScript code and can be easily integrated with React JS.
 
-<!-- `supertest ^6.3.3` - A Node.js library for testing APIs. Provides high level abstraction for testing. -->
+`supertest ^6.3.3` - A Node.js library for testing APIs. Provides high level abstraction for testing.
 
 `nodemon ^2.0.20` - Nodemon is a popular tool that is used for the development of applications based on node. js. It simply restarts the node application whenever it observes the changes in the file present in the working directory of your project.
 
@@ -399,7 +403,254 @@ Component libraries:
 <img src="docs/tests/User_test.png" alt="1st DFD attempt">
 
 ## Backend testing 
-?????????????????
+### JEST
+Backend testing was performed in two ways for this assignment, with Postman poving to be invaluable and Jest/Supertest being used to make sure everything was tickety-boo before submission or after any minor alterations. 
+Jest Testing comprised of 2 suites, one of admin functionality and one for search functionality.
+
+**SEARCH TESTING**
+
+The initial server connecting test was used to make sure I was actually online and sadly was required more than I would like to admit.
+```Javascript
+describe("GET localhost:5000", () => {
+    it("shows welcome message", async() => {
+        const response = await request(app).get("/") //Connecting to the home page and making sure that it is connecting to server
+        expect(response.statusCode).toBe(200) //connected
+        expect(response.text).toEqual(expect.stringContaining("Welcome")) //Welcome message displayed, ensuring that it was displayed correctly
+    })
+})
+```
+
+After the initial ocnnection each search had to have its own collection of tests. The test for getDrinkByName:
+```Javascript
+describe("GET /drinks/name/:drinkName", () => {
+    it("each object in the array contains a key-value pair where strDrink contains 'margarita'", async() => {
+        const response = await request(app).get("/drinks/name/margarita")
+        const { drinks } = await response.body; 
+        expect(response.statusCode).toBe(200)
+        expect(Array.isArray(drinks)).toBe(true);
+        expect(response.body.drinks.length).toBeLessThanOrEqual(5);
+        drinks.forEach(drink => {
+            expect(drink.strDrink.toLowerCase()).toContain("margarita");
+        });
+      });
+    })
+```
+This test sends a request to the server. After checking that the request gets a status of 200 and returns an array and one that is less than or equal to 5 items long (which all of the search tests check for), this test then proceeds to ensure that the original search params, in this case 'margarita' are being returned
+
+```Javascript
+
+    describe("GET /drinks/name/:drinkName", () => {
+      it("Checking that search params accept whitespace and are NOT case sensitive", async() => {
+        const response = await request(app).get("/drinks/name/OLD fasHIOned ")
+        const { drinks } = await response.body;
+        drinks.forEach(drink => {
+          expect(drink.strDrink.toLowerCase()).toContain("old fashioned");
+      })
+    })
+  })
+  ```
+This was added to ensure that the cleaning of strings was working. I have an inherant distrust of anything that requires user input beyond buttons or radios. This test ensured that search params were not caser sensitive, were being trimmed and were compensating for any whitespace used.
+
+The getDrinksByBase function:
+```Javascript
+describe("GET /drinks/base/:drinkBase", () => {
+    it("Check to see if every object returned contains at least one ingredient that is the equivelant of vodka's brand", async() => {
+        const response = await request(app).get("/drinks/base/vodka")
+        const { drinks } = await response.body;
+        const products = await ReturnMod.find({});
+        expect(response.statusCode).toBe(200)
+        expect(Array.isArray(drinks)).toBe(true);
+        expect(response.body.drinks.length).toBeLessThanOrEqual(5);
+        const hasVodka = drinks.some(drink => Object.values(drink).includes(products[0].vodka));
+        expect(hasVodka).toBe(true);
+    })
+})
+```
+searched for dirnks containing vodka, and ensured that every drink returned did in fact contain that ingredient. The user input in this case was buttons so not as much sanitizing was required.
+
+The next two, getDrinkByFruity and getDrinkByFizzy were very similar:
+```Javascript
+describe("GET /drinks/fruity", () => {
+  it("Ensure every drink in the returned array has an ingredient from the fruitList array", async() => {
+    const response = await request(app).get("/drinks/fruity")
+    const { drinks } = await response.body;
+    const formattedFruitList = fruitList.map((value) => cleanString(value.replace('_', ' ')));
+    const filteredDrinks = drinks.filter((drink) =>
+  Object.values(drink).map((value) => cleanString(value)).some(
+    (value) => formattedFruitList.includes(value)
+  )
+);
+    expect(response.statusCode).toBe(200)
+    expect(Array.isArray(drinks)).toBe(true);
+    expect(response.body.drinks.length).toBeLessThanOrEqual(5)
+    expect(filteredDrinks).toHaveLength(5)
+  })
+})
+
+describe("GET /drinks/fizzy", () => {
+    it("Ensure every drink in the returned array has an ingredient from the fruitList array", async() => {
+      const response = await request(app).get("/drinks/fizzy")
+      const { drinks } = await response.body;
+      const formattedFizzList = fizzList.map((value) => cleanString(value.replace('_', ' ')));
+      const filteredDrinks = drinks.filter((drink) =>
+        Object.values(drink).map((value) => cleanString(value)).some(
+          (value) => formattedFizzList.includes(value)
+        )
+      );
+      expect(response.statusCode).toBe(200)
+      expect(Array.isArray(drinks)).toBe(true);
+      expect(response.body.drinks.length).toBeLessThanOrEqual(5)
+      expect(filteredDrinks).toHaveLength(5)
+  })
+})
+```
+
+In the functions themselves I was using an array of keywords with which to conduct the search. Upon creating these tests I shifted all the arrays into a file in the utils fodler so as to keep the code DRY and imported them to both their functions and these tests. The tests request a list of drinks using the function and then using the same list as the function itself makes sure that every drink contains at least one ingredient from it's respective array. The method here is to filter through and create a new array of drinks that contain that ingredient which must be equal to 5, or the same amount as the returned drinks list was in the beginning.
+
+getDrinkByNonAlc: 
+```Javascript
+describe("GET /drinks/non-alc", () => {
+  it("Ensure every drink in the returned array has an ingredient from the fruitList array", async() => {
+    const response = await request(app).get("/drinks/non-alc")
+    const { drinks } = await response.body;
+    const formattedSpiritList = spiritList.map((value) => cleanString(value.replace('_', ' ')));
+    const filteredDrinks = drinks.filter((drink) =>
+      Object.values(drink).map((value) => cleanString(value)).some(
+        (value) => formattedSpiritList.includes(value)
+      )
+    );
+  expect(response.statusCode).toBe(200)
+  expect(Array.isArray(drinks)).toBe(true);
+  expect(response.body.drinks.length).toBeLessThanOrEqual(5)
+  expect(filteredDrinks).toHaveLength(0)
+})
+})
+```
+used similar functionality in its testing however when creating the array it used the spiritList used in the getDrinkByHeavy search. This was a list of all the basic spirits and the returned results of this call were filtered into a new array of all the drinks that contained a spirit, thus the expected length of the array was 0 instead of 5.
+
+
+getDrinkByHeavy was an extension of the above principle, but this time required pulling information from Mongo as well:
+```Javascript
+describe("GET /drinks/heavy", () => {
+  it("Ensure every drink in the returned array has an ingredient from the spiritList array and that no drink contains more than 3 ingredients", async() => {
+    const response = await request(app).get("/drinks/heavy")
+    const { drinks } = await response.body;
+    const formattedSpiritList = spiritList.map((value) => cleanString(value.replace('_', ' ')));
+    const filteredDrinks = drinks.filter((drink) =>
+      Object.values(drink).map((value) => cleanString(value)).some(
+        (value) => formattedSpiritList.includes(value)
+      )
+    );
+    const products = await ReturnMod.find({});
+    const id = products[0]._id
+    const document = await ReturnMod.findById(id).lean().exec();
+    const values = Object.values(document);
+    const formattedValues = values
+      .filter((val) => val && typeof val === 'string')
+      .map((val) => cleanString(val.replace('_', ' ')));
+    const filtered2 = drinks.filter((d) =>
+    Object.values(d).map((v) => cleanString(v)).some(
+      (v) => formattedValues.includes(v)
+    )
+  );
+    const ingredient4Check = drinks.filter((drink) =>
+  drink.hasOwnProperty('strIngredient4')
+);
+  expect(response.statusCode).toBe(200)
+  expect(Array.isArray(drinks)).toBe(true);
+  expect(response.body.drinks.length).toBeLessThanOrEqual(5)
+  expect(filteredDrinks.length + filtered2.length).toBeGreaterThanOrEqual(5)
+  expect(ingredient4Check).toHaveLength(0)
+})
+})
+```
+In this function the same process is gone through as in the orther searchBy functions, however do to hte rebranding function taking place before the results were returned I was running into a problem that instead of returning what was on the spiritsList, say, vodka, I was getting a return of what the rebrand function had changed vodka too, for example Grey Goose. This time I pulled a list of all the key values from the DB and compared them with the ingtredients of the search results, creating an ew array. I then added the length of the first array to the length of the second array to ensure that the list was > 5 items long. This was to ensure that any double ups didnt throw an error. I did not remove duplicates due to time constraints.
+
+Also worth noting in here is the cleanString function:
+```Javascript
+const cleanString = (str) => str.toLowerCase().replace(/_/g, ' ').replace(/[^a-z0-9]+/g, '').trim();
+```
+This was used to ensure that all comparisons were made with matching strings. Due to inconsistencies in the external database's use of whtespace, underscores capitalization etc, this function used some regex to ensure that the all _ were being replaced with " ", that only alphanumeric characters were being read, and that any extra whitespace was trimmed from the front and back of all strings. This function was then incorporated in other areas throughout the project. I will probably keep a copy of it stuck to my computer until it is committed to memory if I'm being honest as it was extremely useful.
+
+**ADMIN TESTING**
+Admin testing with Jest required a little more dash to achieve as it required sending information. I used a local db to do this, however given the redundancy at this stage of some of the backend I have left it connected to the standard database for educator inspection.
+The rebrand test:
+```Javascript
+describe("PUT /products/swap", () => {
+    it("swaps brands out", async() => {
+      const response = await request(app).put("/products/brand/swap")
+      .send({
+        spiritName: "test_spirit",
+        newBrand: "Old Mate Patty's Mountain Moonshine!"
+      })
+      expect(response.statusCode).toBe(200)
+      expect(response.body.test_spirit).toEqual("Old Mate Patty's Mountain Moonshine!")
+    })
+  })
+```
+simply sent a new brand to "test_spirit" in the db and then checked the return top make sure it had landed.
+
+The addForbidden test:
+```Javascript
+describe("POST /products/forbidden/add", () => {
+    it("add item to forbidden array", async() => {
+      const response = await request(app)
+      .post("/products/forbidden/add")
+      .send({
+        drink: "Rocket fuel"
+      });
+      expect(response.statusCode).toBe(200);
+      expect(response.body.forbidden[response.body.forbidden.length - 1]).toEqual("Rocket fuel")
+      const failResponse = await request(app)
+        .post("/products/forbidden/add")
+        .send({ drink: "Rocket fuel"});
+      expect(failResponse.status).toBe(400)
+    })
+  })
+```
+sent a drink called "Rocket Fuel" to be added to the forbidden list in the DB. After this it checked to make sure that it had been added to the end of the array but most importantly it sent the same request _again_ to ensure that it would be denied, that the same drink could not be added twice to the forbidden array, which would cause unnecessary coding-clutter.
+
+The removeForbidden test simply sent the drink to be removed and then ensured that the forbidden array no longer contained said drink.
+```Javascript
+ describe("PATCH /products/forbidden/remove", () => {
+    it("remove item from forbidden array", async() => {
+      const response = await request(app).patch("/products/forbidden/remove")
+      .send({
+        drink: "Martini"
+      })
+      expect(response.statusCode).toBe(200);
+      expect(response.body.forbidden.includes("Martini")).toBe(false)
+    })}) 
+```
+One of the happiest moments of this whole project was definitely when I received and I knew I had a running app that was conforming to what I had asked it to do.:  
+
+<img src="./docs/screenshots/JEST100.png" >
+
+While Jest and supertest were incredibly useful for the final product, along the way to figure out what kind of data I was receiving or to debug I used postman. A lot.
+For the admin functions it was as simple as making sure they were doing as they were told in real time:
+<img src="./docs/screenshots/PMbrandswap.png">
+Such as here when I was wanting to ensure the branding had swapped as planned, or  
+
+<img src="./docs/screenshots/PMforbiddenadd.png" >  
+
+here to make sure that items were being added to the forbidden array, as well as being removed:  
+
+<img src="./docs/screenshots/PMremoveforbid.png" >  
+
+I also used postman just to keep an eye one which brands I had in my DB and also how it was structured while I worked out how to manipualte that information:  
+<img src="./docs/screenshots/PMgetproducts.png" >
+
+This real time testing afforded me the opportunity to see where problems were using both Postman and the console.log function and remedy them, seeing results immediately. The peripheral benefit was picking up on things like capitalization and punctuation throughout search results ad adjsuting my code to accommodate.
+
+Postman was also great to see _what kind_ of data I was getting back. If we take a look at the initial return on a single drink:  
+<img src="./docs/screenshots/allinfo.png" >  
+We can see that I was getting _way_ too much back, and in german and italian to boot. This let me know the keys I needed to keep and also how the returns were structured so as I filtered them I could strip away layers of redundancy. Also, when searching by broad thingsl ike ingredients or glassware, information returned was limited:
+<img src="./docs/screenshots/CDBgin.png" >    
+so using postman (although this is clearly a chrome shot, the initial work was done with postman) I was able to see what exactly was being returned and then manipulate these results to return more data, and specifically, the data we required.
+<img src="./docs/screenshots/PMKbybasegin.png" >
+<img src="./docs/screenshots/PMgetheavy.png" >
+
+Beyond these examples testing of other redundant code was performed using POSTMAN to ensure it worked, however once it was ascertained that we would not be using it in the final prooduct Jest testing was omitted in the interests of time and efficiency.
 
 ## Application Screenshots
 ???????????
@@ -413,6 +664,17 @@ Component libraries:
 
 ## Trello
 Trello Board: [https://trello.com/b/mkjckRkJ/shakr-backend](https://trello.com/b/mkjckRkJ/shakr-backend)
+
+From an initial Trelloboard:
+<img src="./docs/screenshots/Trello1.png" >  
+
+That had a list all of ourt tasks, we gradually developed our knowledge and understanding of how to use trello and created task assignment board that was much more informative at just a quick glance:  
+
+<img src="./docs/screenshots/TrelloJEST.png" >  
+
+adding screenshots to cards was useful to let each other know what was happening, especially as we kept slightly different hours and one of us may be working at 6AM or the other working at midnight depending.  Assigning tasks was useful too especially as a lot of the tasks overlapped, for example search functionality. Knowing that we could skip over each others cards in the pursuit oof ticking off our own checklist was very helpful. Labels were just awesome too. As cliche as it sounds, when you're in the zone coding and just having a good day of it it's great to just knock tasks out one after another.
+
+
 
 CMP1043-1.1 Demonstrate separation of concerns in the App.
 
