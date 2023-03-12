@@ -1,8 +1,6 @@
 import React from "react";
 import { Wrapper, Content, Slogan, LogoImg } from "../Header/Header.Styles";
-// import { Link } from "react-router-dom";
 import TopMenu from "./TopMenu";
-
 import ShkrLogo from "../../images/Shkr_logo.png";
 import { Link } from "react-router-dom";
 
@@ -16,7 +14,7 @@ const Header = () => {
                 </Link>
                 <TopMenu />
             </Content>
-            <Slogan>The cocktail drinks for you!</Slogan>
+            <Slogan>Cocktails for you!</Slogan>
         </Wrapper>
     );
 };

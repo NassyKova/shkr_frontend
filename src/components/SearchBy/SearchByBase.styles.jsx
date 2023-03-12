@@ -5,7 +5,6 @@ export const Wrapper = styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-
 `;
 
 export const Button = styled.div`

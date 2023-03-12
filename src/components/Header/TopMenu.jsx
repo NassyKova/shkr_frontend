@@ -5,8 +5,8 @@ const TopMenu = () => {
     return (
         <Wrapper>
             {" "}
-            <Link to="/about" style={{ textDecoration: "none" }}>
-                <Button>About us</Button>
+            <Link to="/" style={{ textDecoration: "none" }}>
+                <Button>About</Button>
             </Link>
             <Link to="/drinks" style={{ textDecoration: "none" }}>
                 <Button>Drinks</Button>

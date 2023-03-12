@@ -8,6 +8,31 @@ A MERN Application built by Patrick Hamer and Anastasia Dyakova(aka Nassy Kova)
 <img src="./docs/icons8-github-30.png" height="20"> [Nassy Kova](https://github.com/NassyKova/)
 
 
+  * [App description](#app-description)
+    + [Purpose](#purpose)
+    + [Functionality / Features](#functionality---features)
+      - [**The Library _(drinkControllers)_**](#--the-library---drinkcontrollers----)
+    + [Target audience](#target-audience)
+  * [Links](#links)
+    + [System requirements](#system-requirements)
+    + [Server Installation](#server-installation)
+    + [Client Installation](#client-installation)
+  * [API Endpoints](#api-endpoints)
+  * [Server Libraries and Dependencies](#server-libraries-and-dependencies)
+    + [Server Libraries](#server-libraries)
+    + [Server Development Dependencies](#server-development-dependencies)
+  * [Client Libraries and Dependencies](#client-libraries-and-dependencies)
+    + [Client Libraries](#client-libraries)
+    + [Client Development Dependencies](#client-development-dependencies)
+  * [Frontend testing](#frontend-testing)
+  * [Backend testing](#backend-testing)
+    + [JEST](#jest)
+  * [Application Screenshots](#application-screenshots)
+  * [Difference with original plan](#difference-with-original-plan)
+    + [Wireframes at the planning stage](#wireframes-at-the-planning-stage)
+    + [Wireframes at the deployed stage](#wireframes-at-the-deployed-stage)
+  * [Trello](#trello)
+
 ## App description
 A big thanks is owed to [TheCocktailDB](https://www.thecocktaildb.com/api.php) for providing us with the cocktail database we used as a 3rd party resource. Not only did it save us from creating a whole new database which would have cost us considerable time, but also gave us real world experience of dealing with data that is not necessarily what you need for your particular app, thus leading to greater understanding of functions, classes, modular coding and DRY coding. Retrieving the data we wanted was sometimes complex due to the structure of the database which really enriched the learning experience.
 
@@ -72,9 +97,9 @@ The last demographic, and possibly the most important as these would be the peop
 
 ## Links
 
-Deployed Application: [https://link](https://link)
+Deployed Application: [https://shkrapp.netlify.app](https://shkrapp.netlify.app)
 
-Staging Environment: [https://link](https://link)
+Staging Environment: [https://shakr-backend-production.up.railway.app/](https://shakr-backend-production.up.railway.app/)
 
 Server Repo: [https://github.com/Patrick655321/Shakr--Backend](https://github.com/Patrick655321/Shakr--Backend)
 
@@ -654,6 +679,13 @@ Beyond these examples testing of other redundant code was performed using POSTMA
 
 ## Application Screenshots
 ???????????
+
+## Difference with original plan
+### Wireframes at the planning stage
+ <img src="docs/1024.png" alt="Plan A">
+ 
+ ### Wireframes at the deployed stage
+ <img src="docs/1024_updated.png" alt="Plan B">
 
 ## Trello
 Trello Board: [https://trello.com/b/mkjckRkJ/shakr-backend](https://trello.com/b/mkjckRkJ/shakr-backend)
