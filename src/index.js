@@ -4,8 +4,8 @@ import App from './App';
 import axios from 'axios';
 
 // axios.defaults.baseURL="https://www.thecocktaildb.com/api/json/v2/9973533"
-axios.defaults.baseURL="http://localhost:5000"
-// axios.defaults.baseURL="https://shakr-backend-production.up.railway.app/"
+// axios.defaults.baseURL="http://localhost:5000"
+axios.defaults.baseURL="https://shakr-backend-production.up.railway.app/"
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
